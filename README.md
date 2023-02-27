@@ -1,1 +1,0 @@
-# lpg-gamesdev.github.io
