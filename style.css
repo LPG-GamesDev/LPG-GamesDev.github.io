@@ -1,0 +1,115 @@
+html,body
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+html
+{
+	scroll-behavior: smooth;
+	scroll-padding-top: 3.8rem;
+}
+
+body
+{
+	background-color: rgba(50,50,50,1);
+	min-height: 200vh;
+}
+
+
+#header
+{
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	display: fixed;
+}
+
+
+nav
+{
+	position:fixed;
+	width: 100%;
+	
+    top: 0px;
+    width: 100%;
+    height: 100px;
+    z-index: 1;
+}
+
+nav ul
+{
+	list-style: none;
+	background: rgba(10,10,10,0.6);
+	overflow: hidden;
+	padding: 0;
+	text-align: center;
+	margin: 0;
+	transition: 1s;
+	
+}
+
+nav ul li
+{
+	display: inline-block;	
+	padding: 20px;
+}
+
+nav ul li a
+{
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	font-size: 20;
+}
+
+
+
+
+
+#VideoTemp,
+#About,
+#Professional,
+#Personal,
+#Contact,
+#Spacer
+{
+	height:1000px;
+}
+
+#VideoTemp
+{
+	height:1030px;
+}
+
+#About
+{
+	background-color: rgba(100,0,0,1);
+	color: white;
+	height:400px;
+}
+
+#Professional
+{
+	background-color: rgba(100,50,25,1);
+	color: white;
+}
+
+#Personal
+{
+	background-color: rgba(100,50,25,1);
+	color: white;
+}
+
+#Contact
+{
+	height:150px;
+	background-color: rgba(100,0,0,1);
+	color: white;
+}
+#Spacer
+{
+	height:30px;
+}
