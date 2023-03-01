@@ -8,24 +8,14 @@ html,body
 html
 {
 	scroll-behavior: smooth;
-	scroll-padding-top: 3.8rem;
+	scroll-padding-top: 4rem;
 }
 
 body
 {
-	background-color: rgba(50,50,50,1);
+	background-color: rgba(40,40,40,1);
 	min-height: 200vh;
 }
-
-
-#header
-{
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	display: fixed;
-}
-
 
 nav
 {
@@ -65,51 +55,555 @@ nav ul li a
 	font-size: 20;
 }
 
+a
+{
+	color: rgba(250,250,250,1);
+}
 
 
 
 
-#VideoTemp,
-#About,
-#Professional,
-#Personal,
-#Contact,
+
+
+
+
+#Video-JumpOffset-Section,
+#Video-Section,
+
+#About-JumpOffset-Section,
+#About-Heading-Section,
+#About-Text-Section,
+
+#Professional-Work-JumpOffset-Section,
+#Professional-Work-Heading-Section,
+#Professional-Work-Section-1,
+#Professional-Work-Section-2,
+#Professional-Work-Section-3,
+#Professional-Work-Section-4,
+
+#Personal-Work-JumpOffset-Section,
+#Personal-Work-Heading-Section,
+#Personal-Work-Section-1,
+#Personal-Work-Section-2,
+#Personal-Work-Section-3,
+#Personal-Work-Section-4,
+
+
+#Contact-JumpOffset-Section,
+#Contact-Heading-Section,
+#Contact-Text-Section,
+
 #Spacer
+
+
+
+
+
+
+
+
+#Video-JumpOffset-Section
 {
-	height:1000px;
+	background-color: rgba(100,0,0,1);
+	
+	height: 1100px;
+	width: 100%;
+}
+#Video-Section
+{
+	background-color: rgba(10,0,0,1);
+	color: white;
+	
+	height: 90%;
+	width: 100%;
+	
+	position: absolute;
+	
+	margin: auto;
 }
 
-#VideoTemp
-{
-	height:1030px;
-}
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
 
-#About
+#About-JumpOffset-Section
+{
+	background-color: rgba(100,0,0,1);
+	
+	height: 350px;
+	width: auto;
+}
+#About-Heading-Section
 {
 	background-color: rgba(100,0,0,1);
 	color: white;
-	height:400px;
+	
+	height: 50px;
+	width: 100%;
+	
+	position: relative;
+		top: 20px;
+	line-height: 100%;
+	
+	font-size: 40px;
+	font-family: 'Corbel',sans-serif;
+	
+	margin: auto;
 }
-
-#Professional
+#About-Text-Section
 {
-	background-color: rgba(100,50,25,1);
-	color: white;
-}
-
-#Personal
-{
-	background-color: rgba(100,50,25,1);
-	color: white;
-}
-
-#Contact
-{
-	height:150px;
 	background-color: rgba(100,0,0,1);
 	color: white;
+	
+	height: 200px;
+	width: auto;
+	
+	position: relative;
+		top: 20px;
+	
+	font-size: 20px;
+	font-family: 'Corbel',sans-serif;
+	
+	margin-left:350px;
+	margin-right:350px;
 }
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+#Professional-Work-JumpOffset-Section
+{
+	background-color: rgba(40,40,40,1);
+	
+	height: 1000px;
+	width: auto;
+	
+	position: relative;
+		bottom: 20px;
+}
+#Professional-Work-Heading-Section
+{
+	background-color: rgba(20,20,20,1);
+	color: white;
+	
+	height: 50px;
+	width: 100%;
+		
+	position: relative;
+		bottom: 1px;	
+	line-height: 250%;
+	
+	font-size: 20px;
+	font-family: 'Corbel',sans-serif;
+	
+	margin: auto;
+}
+
+/* SECTION 1 */
+#Professional-Work-Section-1
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		right: 700px;
+		top: 100px;
+	
+	margin: auto;
+}
+
+	#Professional-Work-Game-Image-1
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Professional-Work-GameName-1
+	{
+		color: white;
+		
+		font-size: 40px;
+		text-align: center;
+		
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+	
+	#Professional-Work-GameInfo-1
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+	
+/* SECTION 2 */
+#Professional-Work-Section-2
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		right: 240px;
+		bottom: 700px;
+		
+	margin: auto;
+}
+
+	#Professional-Work-Game-Image-2
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Professional-Work-GameName-2
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Professional-Work-GameInfo-2
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+
+/* SECTION 3 */
+#Professional-Work-Section-3
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		left: 240px;
+		bottom: 1500px;
+	
+	margin: auto;
+}
+
+	#Professional-Work-Game-Image-3
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Professional-Work-GameName-3
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Professional-Work-GameInfo-3
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+	
+/* SECTION 4 */
+#Professional-Work-Section-4
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		left: 700px;
+		bottom: 2300px;
+	
+	margin: auto;
+}
+
+	#Professional-Work-Game-Image-4
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Professional-Work-GameName-4
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Professional-Work-GameInfo-4
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+#Personal-Work-JumpOffset-Section
+{
+	background-color: rgba(40,40,40,1);
+	
+	height: 1000px;
+	width: auto;
+}
+#Personal-Work-Heading-Section
+{
+	background-color: rgba(20,20,20,1);
+	color: white;
+	
+	height: 50px;
+	width: 100%;
+	
+	line-height: 300%;
+	
+	font-size: 20px;
+	font-family: 'Corbel',sans-serif;
+	
+	margin: auto;
+}
+
+/* SECTION 1 */
+#Personal-Work-Section-1
+{
+	background-color: rgba(50,0,0,1);
+	color: white;
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		right: 700px;
+		top: 100px;
+	
+	margin: auto;
+}
+	
+	#Personal-Work-Game-Image-1
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Personal-Work-GameName-1
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Personal-Work-GameInfo-1
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+	
+/* SECTION 2 */
+#Personal-Work-Section-2
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		right: 240px;
+		bottom: 700px;
+		
+	margin: auto;
+}
+	#Personal-Work-Game-Image-2
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Personal-Work-GameName-2
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Personal-Work-GameInfo-2
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+	
+/* SECTION 3 */
+#Personal-Work-Section-3
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		left: 240px;
+		bottom: 1500px;
+	
+	margin: auto;
+}
+	#Personal-Work-Game-Image-3
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Personal-Work-GameName-3
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Personal-Work-GameInfo-3
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+
+/* SECTION 4 */
+#Personal-Work-Section-4
+{
+	background-color: rgba(50,0,0,1);
+	
+	height: 800px;
+	width: 400px;
+	
+	position: relative;
+		left: 700px;
+		bottom: 2300px;
+	
+	margin: auto;
+}
+	#Personal-Work-Game-Image-4
+	{
+		height: 60%;
+		width: 100%;
+	}
+	
+	#Personal-Work-GameName-4
+	{
+		color: white;
+		
+		font-size: 40px;
+		font-family: 'Corbel',sans-serif;
+		text-align: center;
+		
+		margin: auto;
+	}
+	
+	#Personal-Work-GameInfo-4
+	{
+		color: white;
+		
+		font-size: 20px;
+		font-family: 'Corbel',sans-serif;
+		
+		margin: auto;
+	}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+#Contact-JumpOffset-Section
+{
+	background-color: rgba(100,0,0,1);
+	
+	height: 150px;
+}
+#Contact-Heading-Section
+{
+	background-color: rgba(100,0,0,1);
+	color: white;
+	
+	height: 50px;
+	width: auto;
+	
+	line-height: 300%;
+	
+	font-size: 25px;
+	font-family: 'Corbel',sans-serif;
+	
+	margin-left:10px;
+	margin-right:10px;
+}
+#Contact-Text-Section
+{
+	background-color: rgba(100,0,0,1);
+	color: white;
+	
+	height: 50px;
+	width: auto;
+	
+	font-size: 20px;
+	font-family: 'Corbel',sans-serif;
+	
+	margin-left:200px;
+	margin-right:200px;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
 #Spacer
 {
-	height:30px;
+	height: 40px;
+	width: 100%;
 }
