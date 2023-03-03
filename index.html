@@ -1,349 +1,551 @@
 <html>
-<head>
-<title>Portfolio</title>
-	<meta charset = "UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
 	
-	<link href="style.css" rel="stylesheet">
-</head>
+	<title>Portfolio</title>
 
-
-<body>
-	<div class="wrapper">
-		<header>
+	</head>
+	
+	
+	
+	
+	
+	<body>
+	
+		<!-- Navbar -->
+		<div class="top">
 			<nav>
-				<div class="Menu">
-					<ul>
-						<li><a href="#Video-JumpOffset-Section" 								class="w3-button w3-bar-item">Luke Gatehouse</a></li>
-						<li><a href="#About-JumpOffset-Section" 								class="w3-button w3-bar-item">About Me</a></li>
-						<li><a href="#Professional-Work-JumpOffset-Section" 					class="w3-button w3-bar-item">Professional Work</a></li>
-						<li><a href="#Personal-Work-JumpOffset-Section" 						class="w3-button w3-bar-item">Personal Work</a></li>
-						<li><a href="DOC/CV Resume.pdf" 					target="_blank"		class="w3-button w3-bar-item">Resume</a></li>
-						<li><a href="#Contact-JumpOffset-Section" 								class="w3-button w3-bar-item">Contact</a></li>
-					</ul>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#Video-Offset-Section" 								class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="#About-Offset-Section" 								class="bar-item button padding-large hide-small">About</a>
+					<a href="#Professional-Work-Offset-Section" 					class="bar-item button padding-large hide-small">Professional Work</a>
+					<a href="#Personal-Work-Offset-Section" 						class="bar-item button padding-large hide-small">Personal Work</a>
+					<a href="DOC/CV Resume.pdf" 				target="_blank"		class="bar-item button padding-large hide-small">Resume</a>
+					<a href="#Contact-Offset-Section" 								class="bar-item button padding-large hide-small">Contact</a>
 				</div>
 			</nav>
-		</header>
-	</div>	
-	
-	
+		</div>
 
 
-	<section id="Video-JumpOffset-Section">
-		<section id="Video-Section">
-			<video autoplay muted loop class="Video" width="100%">
-				<source src="VIDEO/TestVideo.mp4" type="video/mp4">
-			</video>
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="#About-Offset-Section" 									class="bar-item button padding-large" onclick="myFunction()">About Me</a>
+			<a href="#Professional-Work-Offset-Section" 						class="bar-item button padding-large" onclick="myFunction()">Professional Work</a>
+			<a href="#Personal-Work-Offset-Section" 							class="bar-item button padding-large" onclick="myFunction()">Personal Work</a>
+			<a href="DOC/CV Resume.pdf" 					target="_blank"		class="bar-item button padding-large" onclick="myFunction()">Resume</a>
+			<a href="#Contact-Offset-Section" 									class="bar-item button padding-large" onclick="myFunction()">Contact</a>
+		</div>
+
+
+		<section id="Video-Offset-Section">
+			<section id="Video-Section">
+				<video autoplay muted loop class="Video" width="100%">
+					<source src="VIDEO/TestVideo.mp4" type="video/mp4">
+				</video>
+			</section>
 		</section>
-	</section>
+
+
+		<!-- ABOUT -->
+		<div class="jump-offset" id="About-Offset-Section"></div>
+		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
+			<div class="section-content">
+				<span class="title--big title">About Me</span>
+				<br>
+				<div class="section-desc">
+					<span class="text">
+						<p>
+							Hello, i'm Luke & I'm a junior games developer from the UK. I've always had a passion for games since I was a child, my passion has only grown since I entered university and started the games developing journey. 
+						
+							I'm currently still at university ( University Of Central Uclan ) in my 3rd year then moving swiftly onto the masters programme.
+						</p>
+						
+						<p>
+							Here you can see some of the projects I've been working on or projects I've had the opportunity to taken part in, this may be professional projects or personal projects this may also give some insight to the games I enjoy. 
+								
+							I enjoy learning new things such as programming techniques, engines or different mechanics and taking on new challeneges. I like adding further polish to projects to get the desired outcome of the project and for it to be as good as it can be.
+						</p>
+					</span>
+				</div>
+			</div>
+		</div>
 
 
 
 
-	<!-- ABOUT -->
-	<section id="About-JumpOffset-Section">
-		<section id="About-Heading-Section">
-			<h1 align="center"> ABOUT ME </h1>
-		</section>
-		<section id="About-Text-Section">
-			<span>
-				<p>
-					Hello, i'm Luke & I'm a junior games developer from the UK. I've always had a passion for games since I was a child, my passion has only grown since I entered university and started the games developing journey. 
-			
-					I'm currently still at university ( University Of Central Uclan ) in my 3rd year then moving swiftly onto the masters programme.
-				</p>
-			
-				<p>
-					Here you can see some of the projects I've been working on or projects I've had the opportunity to taken part in, this may be professional projects or personal projects this may also give some insight to the games I enjoy. 
+		<!-- Professional PROJECTS -->
+		<div class="jump-offset" id="Professional-Work-Offset-Section"></div>
+		<div id="group-projects" class="section--med section" style="background-color:	rgba(20,20,20,1); display: table;">
+			<div class="section-content" style="display: table-cell; vertical-align: middle;">
+				<span class="title--med title">Professional Projects</span>
+			</div>
+		</div>
+
+
+		<!-- Professional WORK -->
+		<div class="work-section-container">
+			<div class="container">
+				<div class="work-section-contents">
+					<div class="row" align="center">
 					
-					I enjoy learning new things such as programming techniques, engines or different mechanics and taking on new challeneges. I like adding further polish to projects to get the desired outcome of the project and for it to be as good as it can be.
-				</p>
-			</span>
-		</section>
-	</section>
-	
-	
-	
-	
-	<!-- PROFESSIONAL -->
-	<section id="Professional-Work-JumpOffset-Section">
-		<section id="Professional-Work-Heading-Section">
-			<h1 align="center"> PROFESSIONAL WORK </h1>
-		</section>
-		
-		
-			<!-- SECTION 1 -->
-			<section id="Professional-Work-Section-1">
-				<div id="Professional-Work-Game-Image-1">
-					<img src="IMAGE/SlasherGameImage.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Professional-Work-GameName-1">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Slasher </span></u>
-				</div>
-				
-				<div id="Professional-Work-GameInfo-1">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							Hack & slash, souls-like game <br>
-						</p>
+						<!-- Game 1 -->
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="work-item-container">
+								<div class="work-item">
+									<div class="work-item-bg"> <img src="IMAGE/SlasherGame.png" width="90%"></div>
+										<div class="work-item-title-container">
+											<div class="work-item-title">
+												<span> Slasher </span>
+											</div>
+										</div>
+								</div>
+								
+									<!-- TAGS -->
+									<div class="work-item-tags-container">
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>gamedev</span>
+										</div>
+										
+										<!-- PROJECT BUILT -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>University</span>
+										</div>
+										
+										<!-- ENGINE -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>UE4</span>
+										</div>
+										
+										<!-- LANGUAGE -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>C++</span>
+										</div>
+									</div>
+									
+									<!-- -->
+									<div class="work-item-desc-container">
+										<div class="work-item-desc">
+											<span> RPG souls-like game </span>
+										</div>
+									</div>
+										<div class="work-item-desc-container">
+											<table class="work-item-desc" style="margin: auto;">
+												<!-- -->
+												<tbody>
+													<tr>
+														<td class="work-item-contrib-cell"></td>
+														<td class="work-item-contrib-cell"> Functionality & Mechanics: </td>
+													</tr>
+														
+													<!-- -->
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> ADD LIST HERE</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+							</div>
+						</div>
 						
-						<p align="left">
-							- GamesDev <br>
-							- UniVersity Project <br>
-							- UE4 (Unreal Engine 4) <br>
-							- C++, Blueprints <br>
-							- Fully working UI, Level-up system <br>
-						</p>
-					</span>
-				</div>
-			</section>
-			
-			
-			<!-- SECTION 2 -->
-			<section id="Professional-Work-Section-2">
-				<div id="Professional-Work-Game-Image-2">
-					<img src="IMAGE/TestImage.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Professional-Work-GameName-2">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Name </span></u>
-				</div>
-				
-				<div id="Professional-Work-GameInfo-2">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							notes in the creation of the project: <br>
-						</p>
 						
-						<p align="left">
-							- GamesDev / tool / technical <br>
-							- Uni / Games Company / solo <br>
-							- engine <br>
-							- language <br>
-							- key mechanics <br>
-							- contributions <br>
-						</p>
-					</span>
-				</div>
-			</section>
-			
-			
-			<!-- SECTION 3 -->
-			<section id="Professional-Work-Section-3">
-				<div id="Professional-Work-Game-Image-3">
-					<img src="IMAGE/TestImage.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Professional-Work-GameName-3">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Name </span></u>
-				</div>
-				
-				<div id="Professional-Work-GameInfo-3">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							notes in the creation of the project: <br>
-						</p>
+						<!-- Game 2 -->
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="work-item-container">
+								<div class="work-item">
+									<div class="work-item-bg"><img src="IMAGE/TestImage.png" width="100%"></div>
+										<div class="work-item-title-container">
+											<div class="work-item-title">
+												<span> NAME </span>
+											</div>
+										</div>
+								</div>
+								
+									<!-- TAGS -->
+									<div class="work-item-tags-container">
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>Games/Software/Tech</span>
+										</div>
+										
+										<!--  -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>University/Solo</span>
+										</div>
+											
+										<!-- -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>Engine</span>
+										</div>
+											
+										<!-- -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>Language</span>
+										</div>
+									</div>
+									
+									<!-- -->
+									<div class="work-item-desc-container">
+										<div class="work-item-desc">
+											<span> brief description </span>
+										</div>
+									</div>
+										<div class="work-item-desc-container">
+											<table class="work-item-desc" style="margin: auto;">
+												<!-- -->
+												<tbody>
+													<tr>
+														<td class="work-item-contrib-cell"></td>
+														<td class="work-item-contrib-cell"> Functionality & Mechanics: </td>
+													</tr>
+														
+													<!-- -->
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> ADD LIST HERE</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+							</div>
+						</div>
 						
-						<p align="left">
-							- GamesDev / tool / technical <br>
-							- Uni / Games Company / solo <br>
-							- engine <br>
-							- language <br>
-							- key mechanics <br>
-							- contributions <br>
-						</p>
-					</span>
-				</div>
-			</section>
-			
-			
-			<!-- SECTION 4 -->
-			<section id="Professional-Work-Section-4">
-				<div id="Professional-Work-Game-Image-4">
-					<img src="IMAGE/TestImage.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Professional-Work-GameName-4">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Name </span></u>
-				</div>
-				
-				<div id="Professional-Work-GameInfo-4">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							notes in the creation of the project: <br>
-						</p>
 						
-						<p align="left">
-							- GamesDev / tool / technical <br>
-							- Uni / Games Company / solo <br>
-							- engine <br>
-							- language <br>
-							- key mechanics <br>
-							- contributions <br>
-						</p>
-					</span>
+						<!-- Game 3 -->
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="work-item-container">
+								<div class="work-item">
+									<div class="work-item-bg"><img src="IMAGE/TestImage.png" width="100%"></div>
+										<div class="work-item-title-container">
+											<div class="work-item-title">
+												<span> NAME </span>
+											</div>
+										</div>
+								</div>
+								
+									<!-- -->
+									<div class="work-item-tags-container">
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>Games/Software/Tech</span>
+										</div>
+										
+										<!-- -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>University/Solo</span>
+										</div>
+										
+										<!-- -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>Engine</span>
+										</div>
+										
+										<!-- -->
+										<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+											<span>Language</span>
+										</div>
+									</div>
+									
+									<!-- -->
+									<div class="work-item-desc-container">
+										<div class="work-item-desc">
+											<span> brief description </span>
+										</div>
+									</div>
+										<div class="work-item-desc-container">
+											<table class="work-item-desc" style="margin: auto;">
+												<!-- -->
+												<tbody>
+													<tr>
+														<td class="work-item-contrib-cell"></td>
+														<td class="work-item-contrib-cell"> Functionality & Mechanics: </td>
+													</tr>
+														
+													<!-- -->
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> ADD LIST HERE</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</section>
-	</section>
+			</div>
+		</div>
 
 
 
 
-	<!-- PERSONAL -->
-	<section id="Personal-Work-JumpOffset-Section">
-		<section id="Personal-Work-Heading-Section">
-			<h1 align="center"> PERSONAL WORK </h1>
-		</section>
-		
-		
-			<!-- SECTION 1 -->
-			<section id="Personal-Work-Section-1">
-				<div id="Personal-Work-Game-Image-1">
-					<img src="IMAGE/SimonGame.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Personal-Work-GameName-1">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Simon Says </span></u>
-				</div>
-				
-				<div id="Personal-Work-GameInfo-1">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							Simon says color clicker <br>
-						</p>
-						
-						<p align="left">
-							- GamesDev <br>
-							- Solo built<br>
-							- No engine used <br>
-							- JavaScript, HTML, CSS <br>
-							- functional power switch, functional strict switch, random colour sequence & counter <br>
-						</p>
-					</span>
-				</div>
-				
-			</section>
-			
-			
-			<!-- SECTION 2 -->
-			<section id="Personal-Work-Section-2">
-				<div id="Personal-Work-Game-Image-2">
-					<img src="IMAGE/TestImage.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Personal-Work-GameName-2">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Name </span></u>
-				</div>
-				
-				<div id="Personal-Work-GameInfo-2">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							notes in the creation of the project: <br>
-						</p>
-						
-						<p align="left">
-							- GamesDev / tool / technical <br>
-							- Uni / Games Company / solo <br>
-							- engine <br>
-							- language <br>
-							- key mechanics <br>
-							- contributions <br>
-						</p>
-					</span>
-				</div>
-			</section>
-				
-				
-			<!-- SECTION 3 -->
-			<section id="Personal-Work-Section-3">
-				<div id="Personal-Work-Game-Image-3">
-					<img src="IMAGE/TestImage.png" height="80%" width="100%">
-				</div>
-			
-				<div id="Personal-Work-GameName-3">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Name </span></u>
-				</div>
-				
-				<div id="Personal-Work-GameInfo-3">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							notes in the creation of the project: <br>
-						</p>
-						
-						<p align="left">
-							- GamesDev / tool / technical <br>
-							- Uni / Games Company / solo <br>
-							- engine <br>
-							- language <br>
-							- key mechanics <br>
-							- contributions <br>
-						</p>
-					</span>
-				</div>
-			</section>
-				
-				
-			<!-- SECTION 4 -->
-			<section id="Personal-Work-Section-4">
-				<div id="Personal-Work-Game-Image-4">
-					<img src="IMAGE/TestImage.png" height="80%" width="100%">
-				</div>
-				
-				<div id="Personal-Work-GameName-4">
-					<u><span align="center" style = "position:relative; bottom: 100px;"> Name </span></u>
-				</div>
-				
-				<div id="Personal-Work-GameInfo-4">
-					<span align="center" style = "position:relative; bottom: 50px;">
-						<p>
-							notes in the creation of the project: <br>
-						</p>
-						
-						<p align="left">
-							- GamesDev / tool / technical <br>
-							- Uni / Games Company / solo <br>
-							- engine <br>
-							- language <br>
-							- key mechanics <br>
-							- contributions <br>
-						</p>
-					</span>
-				</div>
-			</section>
-	</section>
-	
-	
-	
-	
-	<!-- CONTACT -->
-	<section id="Contact-JumpOffset-Section">
-		<section id="Contact-Heading-Section">
-			<h1 align="center"> CONTACT ME </h1>
-		</section>
-			<section id="Contact-Text-Section">
-				<span>
-					<p align="center"> 
-						Feel free to send me an Email at: 
-						<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a>
-						, I'll respond as soon as I'm able.
-					</p>
+
+
+
+
+		<!-- PERSONAL PROJECTS -->
+		<div class="jump-offset" id="Personal-Work-Offset-Section"></div>
+		<div id="group-projects" class="section--med section" style="background-color:	rgba(20,20,20,1); display: table;">
+			<div class="section-content" style="display: table-cell; vertical-align: middle;">
+				<span class="title--med title">Personal Work</span>	
+			</div>
+		</div>
+
+
+
+
+		<!-- Personal WORK -->
+		<div class="work-section-container">
+			<div class="container">
+				<div class="work-section-contents">
+					<div class="row">
 					
-					<p align="center">
-						<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
-					</p>
-				</span>
+						<!-- Game 1 -->
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="work-item-container">
+								<div class="work-item">
+									<div class="work-item-bg"><img src="IMAGE/SimonGame.png" width="100%"></div>
+										<div class="work-item-title-container">
+											<div class="work-item-title">
+												<span> Simon Says </span>
+											</div>
+										</div>
+								</div>
+									
+								<!-- -->
+								<div class="work-item-tags-container">
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>gamedev</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Solo Project</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>JavaScript</span>
+									</div>
+									
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>HTML & CSS</span>
+									</div>
+								</div>
+									
+									<!-- -->
+									<div class="work-item-desc-container">
+										<div class="work-item-desc">
+											<span> brief description </span>
+										</div>
+									</div>
+										<div class="work-item-desc-container">
+											<table class="work-item-desc" style="margin: auto;">
+												<!-- -->
+												<tbody>
+													<tr>
+														<td class="work-item-contrib-cell"></td>
+														<td class="work-item-contrib-cell"> Functionality & Mechanics: </td>
+													</tr>
+														
+													<!-- -->
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> Functional Power Switch</td>
+													</tr>
+													
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> Funtional Strict Mode</td>
+														
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> Random Colour Sequence & Counter</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+							</div>
+						</div>
+						
+						
+						<!-- Game 2 -->
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="work-item-container">
+								<div class="work-item">
+									<div class="work-item-bg"><img src="IMAGE/TestImage.png" width="100%"></div>
+										<div class="work-item-title-container">
+											<div class="work-item-title">
+												<span> NAME </span>
+											</div>
+										</div>
+								</div>
+									
+								<!-- -->
+								<div class="work-item-tags-container">
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Games/Software/Tech</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>University/Solo</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Engine</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Language</span>
+									</div>
+								</div>
+									
+									<!-- -->
+									<div class="work-item-desc-container">
+										<div class="work-item-desc">
+											<span> brief description </span>
+										</div>
+									</div>
+										<div class="work-item-desc-container">
+											<table class="work-item-desc" style="margin: auto;">
+												<!-- -->
+												<tbody>
+													<tr>
+														<td class="work-item-contrib-cell"></td>
+														<td class="work-item-contrib-cell"> Functionality & Mechanics: </td>
+													</tr>
+														
+													<!-- -->
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell"> ADD LIST HERE</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+							</div>
+						</div>
+						
+						
+						<!-- Game 3 -->
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="work-item-container">
+								<div class="work-item">
+									<div class="work-item-bg"><img src="IMAGE/TestImage.png" width="100%"></div>
+										<div class="work-item-title-container">
+											<div class="work-item-title">
+												<span> NAME </span>
+											</div>
+										</div>
+								</div>
+									
+								<!-- -->
+								<div class="work-item-tags-container">
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Games/Software/Tech</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>University/Solo</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Engine</span>
+									</div>
+										
+									<!-- -->
+									<div class="work-item-tag" style="background-color: rgba(100,0,0,1)">
+										<span>Language</span>
+									</div>
+								</div>
+									
+									<!-- -->
+									<div class="work-item-desc-container">
+										<div class="work-item-desc">
+											<span> brief description </span>
+										</div>
+									</div>
+										<div class="work-item-desc-container">
+											<table class="work-item-desc" style="margin: auto;">
+												<!-- -->
+												<tbody>
+													<tr>
+														<td class="work-item-contrib-cell"></td>
+														<td class="work-item-contrib-cell"> Functionality & Mechanics: </td>
+													</tr>
+													
+													<!-- -->
+													<tr>
+														<td class="work-item-contrib-cell"><i class="fa fa-check" aria-hidden="true"></i></td>
+														<td class="work-item-contrib-cell">ADD LIST HERE</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			 
+		</div>
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
 			</section>
-	</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at: 
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a>
+							, I'll respond as soon as I'm able.
+						</p>
+						
+						<p align="center">
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+					</span>
+				</section>
+		</section>
 
-
-
-
-	<section id="spacer">
-	</section>
-
-<!-- SPACER -->
-<!-- SPACER -->
-
-</body>
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+		
+	</body>
 </html>
