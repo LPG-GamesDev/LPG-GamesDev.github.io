@@ -19,12 +19,11 @@
 html,body
 {
 	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-html
-{
+    width: 100%;
+    display: block;
+	
+	overflow-x: hidden;
+	
 	scroll-behavior: smooth;
 	scroll-padding-top: 2.6rem;
 }
