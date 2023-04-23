@@ -1132,7 +1132,7 @@ a:hover {
 
 .row
 {
-	display: flex;
+	display: block;
 	flex-wrap: wrap;
 	
 	margin-left:10%;
