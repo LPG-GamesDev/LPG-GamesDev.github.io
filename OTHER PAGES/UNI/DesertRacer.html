@@ -1,0 +1,849 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+	
+	<title>Desert Racer</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#Video-Offset-Section" 								class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../Portfolio.html" 										class="bar-item button padding-large">Home</a>
+					<a href="../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../Portfolio.html" 	 									class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../Uni.html" 			 									class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" style="display:block; margin-top:80px;">
+		<div class="row" align="center">
+			
+			<div class="section-content" style="display: table-cell; vertical-align: middle;">
+				<span class="title--med title">Desert Racer</span>
+			</div>
+			
+			<table style="margin: auto;">
+				<tbody>
+					<tr>
+						<td>
+							<strong><a> Project Type: </a></strong>
+						</td>
+						<td>
+							<a> University </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Software/Engine:  </a></strong>
+						</td>
+						<td>
+							<a> TL-Engine </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Language:  </a></strong>
+						</td>
+						<td>
+							<a> C++ </a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<div class="section-desc">
+				<span class="text">
+					<p>
+						The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+					</p>
+			
+					<p align="center">
+						<a href="https://github.com/LPG-GamesDev/uni-Year-1-CO1301-Games-Concept-" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-1-CO1301-Games-Concept- </a>
+					</p>
+				</span>
+			</div>
+			
+					
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../../VIDEO/TestVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<embed src="" width="1100px" height="800px">
+				</div>	
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+						
+// Desert Racer.cpp: A program using the TL-Engine
+
+#include &lt;TL-Engine.h&gt;	// TL-Engine include file and namespace
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;string.h&gt;
+#include &lt;vector&gt;
+
+using namespace tle;
+using namespace std;
+
+// COLLISON FUNCTIONS CALLED FROM THE BOTTOM
+bool PointToBoxCollisions(IModel* Box, float BoxWidth, float BoxLength, IModel* point);
+bool SphereToBox(IModel* Box, float SphereRadius, IModel* Floor, float FloorWidth, float FloorHeight);
+bool SpehereToSphere(IModel* A, float AR, IModel* B, float BR);
+
+// CREATING VECTOR 2
+struct Vector2
+{
+	float X;
+	float Y;
+};
+
+// CREATING VECTOR 3
+struct Vector3
+{
+	float X;
+	float Y;
+	float Z;
+};
+
+float GameSpeed = 0.0f;
+float GameRotationSpeed = 100.0f;
+
+// MOVEMENT FUNCTIONS
+void Movement(I3DEngine* myEngine, IModel* HoverCar, ICamera* MyCamera)
+{
+	//const float kGameSpeed = 50.0f;
+	float DeltaTime = myEngine-&gt;Timer();
+	float CameraSpeed = 200.0f;
+
+	// SLOWLY INCREASES SPEED/THRUST
+	if (myEngine-&gt;KeyHeld(Key_W))
+	{
+		GameSpeed += 0.01f;
+		if (GameSpeed &gt;= 100.0f)
+		{
+			GameSpeed = 100.0f;
+		}
+	}
+	// SLOWLY USES BACKTRUST TO REVERSE OR SLOW DOWN THE CAR
+	else if (myEngine-&gt;KeyHeld(Key_S))
+	{
+		GameSpeed -= 0.01f;
+		if (GameSpeed &lt;= -100.0f)
+		{
+			GameSpeed = -100.0f;
+		}
+	}
+
+	// PUSHES THE CAR FORWARD WITH FORCE
+	HoverCar-&gt;MoveLocalZ(GameSpeed * DeltaTime);
+
+	// ROTATES HOVERCAR ON THE YAXIS TO TURN CORNERS
+	if (myEngine-&gt;KeyHeld(Key_A))
+	{
+		HoverCar-&gt;RotateY(-GameRotationSpeed * DeltaTime);
+	}
+	else if (myEngine-&gt;KeyHeld(Key_D))
+	{
+		HoverCar-&gt;RotateY(GameRotationSpeed * DeltaTime);
+	}
+
+	// CHANGES THE CAMERA LOCATION WHEN ARROW KEYS ARE PRESSED
+	if (myEngine-&gt;KeyHeld(Key_Up))
+	{
+		MyCamera-&gt;MoveLocalZ(CameraSpeed * DeltaTime);
+	}
+	else if (myEngine-&gt;KeyHeld(Key_Down))
+	{
+		MyCamera-&gt;MoveLocalZ(-CameraSpeed * DeltaTime);
+	}
+
+	if (myEngine-&gt;KeyHeld(Key_Left))
+	{
+		MyCamera-&gt;MoveLocalX(-CameraSpeed * DeltaTime);
+	}
+	else if (myEngine-&gt;KeyHeld(Key_Right))
+	{
+		MyCamera-&gt;MoveLocalX(CameraSpeed * DeltaTime);
+	}
+}
+
+void main()
+{
+	// Create a 3D engine (using TLX engine here) and open a window for it
+	I3DEngine* myEngine = New3DEngine(kTLX);
+	myEngine-&gt;StartWindowed();
+	//
+	//
+	// Add default folder for meshes and other media
+	myEngine-&gt;AddMediaFolder(&quot;S:\\TL-Engine\\Media&quot;);
+	//
+	// CAMERA SETUP AND SETTINGS
+	ICamera* MyCamera;
+	MyCamera = myEngine-&gt;CreateCamera(kManual);
+	MyCamera-&gt;SetPosition(0.0f, 0.0f, 0.0f);
+	MyCamera-&gt;RotateLocalX(20.0f);
+	//
+	//BUILDING THE BASIC LAYOUT
+	IMesh* SkyboxMesh = myEngine-&gt;LoadMesh(&quot;skybox 07.x&quot;);
+	IModel* Skybox = SkyboxMesh-&gt;CreateModel(0.0f, -960.0f, 0.0f);
+	IMesh* GroundMesh = myEngine-&gt;LoadMesh(&quot;Ground.x&quot;);
+	IModel* Ground = GroundMesh-&gt;CreateModel();
+	//
+	//BUILDING ARRAYS FOR RACE TRACK
+	const int CheckpointArraySize = 4;
+	IMesh* CheckpointMesh = myEngine-&gt;LoadMesh(&quot;checkpoint.x&quot;);
+	IModel* CheckpointArray[CheckpointArraySize];
+	CheckpointArray[0] = CheckpointMesh-&gt;CreateModel(0.0f, 0.0f, 0.0f);
+	CheckpointArray[1] = CheckpointMesh-&gt;CreateModel(10.0f, 0.0f, 120.0f);
+	CheckpointArray[1]-&gt;RotateY(90.0f);
+
+	CheckpointArray[2] = CheckpointMesh-&gt;CreateModel(25.0f, 0.0f, 56.0f);
+	CheckpointArray[3] = CheckpointMesh-&gt;CreateModel(10.0f, 0.0f, -15.0f);
+	CheckpointArray[3]-&gt;RotateY(90.0f);
+
+	const float CheckpointOffSet = 9.8f;
+	//
+	//
+	const int DummyArraySize = CheckpointArraySize * 2;
+	IMesh* DummyMesh = myEngine-&gt;LoadMesh(&quot;dummy.x&quot;);
+	IModel* DummyArray[DummyArraySize];
+	DummyArray[0] = DummyMesh-&gt;CreateModel(CheckpointArray[0]-&gt;GetX() - CheckpointOffSet, CheckpointArray[0]-&gt;GetY(), CheckpointArray[0]-&gt;GetZ());
+	DummyArray[1] = DummyMesh-&gt;CreateModel(CheckpointArray[0]-&gt;GetX() + CheckpointOffSet, CheckpointArray[0]-&gt;GetY(), CheckpointArray[0]-&gt;GetZ());
+
+	DummyArray[2] = DummyMesh-&gt;CreateModel(CheckpointArray[1]-&gt;GetX() , CheckpointArray[1]-&gt;GetY(), CheckpointArray[1]-&gt;GetZ() - CheckpointOffSet);
+	DummyArray[3] = DummyMesh-&gt;CreateModel(CheckpointArray[1]-&gt;GetX() , CheckpointArray[1]-&gt;GetY(), CheckpointArray[1]-&gt;GetZ() + CheckpointOffSet);
+
+	DummyArray[4] = DummyMesh-&gt;CreateModel(CheckpointArray[2]-&gt;GetX() - CheckpointOffSet, CheckpointArray[2]-&gt;GetY(), CheckpointArray[2]-&gt;GetZ());
+	DummyArray[5] = DummyMesh-&gt;CreateModel(CheckpointArray[2]-&gt;GetX() + CheckpointOffSet, CheckpointArray[2]-&gt;GetY(), CheckpointArray[2]-&gt;GetZ());
+
+	DummyArray[6] = DummyMesh-&gt;CreateModel(CheckpointArray[3]-&gt;GetX() , CheckpointArray[3]-&gt;GetY(), CheckpointArray[3]-&gt;GetZ() - CheckpointOffSet);
+	DummyArray[7] = DummyMesh-&gt;CreateModel(CheckpointArray[3]-&gt;GetX() , CheckpointArray[3]-&gt;GetY(), CheckpointArray[3]-&gt;GetZ() + CheckpointOffSet);
+	//
+	//
+	const int IsleArraySize = 17;
+	IMesh* IsleMesh = myEngine-&gt;LoadMesh(&quot;isleStraight.x&quot;);
+	IModel* IsleArray[IsleArraySize];
+	IsleArray[0] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 8.0f);
+	IsleArray[1] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 8.0f);
+	IsleArray[2] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 24.0f);
+	IsleArray[3] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 24.0f);
+	IsleArray[4] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 40.0f);
+	IsleArray[5] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 40.0f);
+	IsleArray[6] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 56.0f);
+	IsleArray[7] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 56.0f);
+	IsleArray[8] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 72.0f);
+	IsleArray[9] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 72.0f);
+	IsleArray[10] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 88.0f);
+	IsleArray[11] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 88.0f);
+	IsleArray[12] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 104.0f);
+	IsleArray[13] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 104.0f);
+	IsleArray[14] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 120.0f);
+	IsleArray[15] = IsleMesh-&gt;CreateModel(-10.0f, 0.0f, 136.0f);
+	IsleArray[16] = IsleMesh-&gt;CreateModel(10.0f, 0.0f, 136.0f);
+	//
+	//
+	const int WallArraySize = 20;
+	IMesh* WallMesh = myEngine-&gt;LoadMesh(&quot;wall.x&quot;);
+	IModel* WallArray[WallArraySize];
+	WallArray[0] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 0.0f);
+	WallArray[1] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 0.0f);
+	WallArray[2] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 16.0f);
+	WallArray[3] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 16.0f);
+	WallArray[4] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 32.0f);
+	WallArray[5] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 32.0f);
+	WallArray[6] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 48.0f);
+	WallArray[7] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 48.0f);
+	WallArray[8] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 64.0f);
+	WallArray[9] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 64.0f);
+	WallArray[10] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 80.0f);
+	WallArray[11] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 80.0f);
+	WallArray[12] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 96.0f);
+	WallArray[13] = WallMesh-&gt;CreateModel(10.0f, 0.0f, 96.0f);
+	WallArray[14] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 112.0f);
+	WallArray[15] = WallMesh-&gt;CreateModel(-10.0f, 0.0f, 128.0f);
+	WallArray[16] = WallMesh-&gt;CreateModel(-4.0f, 0.0f, 136.0f);
+	WallArray[16]-&gt;RotateY(90.0f);
+
+	WallArray[17] = WallMesh-&gt;CreateModel(4.0f, 0.0f, 136.0f);
+	WallArray[17]-&gt;RotateY(90.0f);
+
+	WallArray[18] = WallMesh-&gt;CreateModel(15.0f, 0.0f, 136.0f);
+	WallArray[18]-&gt;RotateY(90.0f);
+
+	WallArray[19] = WallMesh-&gt;CreateModel(25.0f, 0.0f, 136.0f);
+	WallArray[19]-&gt;RotateY(90.0f);
+
+	const int WaterTankArraySize = 5;
+	IMesh* WaterTankMesh = myEngine-&gt;LoadMesh(&quot;TankSmall1.x&quot;);
+	IModel* WaterTankArray[WaterTankArraySize];
+	WaterTankArray[0] = WaterTankMesh-&gt;CreateModel(-5.0f, 0.0f, 125.0f);
+	WaterTankArray[1] = WaterTankMesh-&gt;CreateModel(2.0f, 0.0f, 130.0f);
+	WaterTankArray[2] = WaterTankMesh-&gt;CreateModel(20.0f, 0.0f, 130.0f);
+	WaterTankArray[3] = WaterTankMesh-&gt;CreateModel(27.0f, 0.0f, 125.0f);
+
+	WaterTankArray[4] = WaterTankMesh-&gt;CreateModel(25.0f, -5.0f, 20.0f);
+	WaterTankArray[4]-&gt;RotateX(-45);
+
+	//WaterTankArray[5] = WaterTankMesh-&gt;CreateModel(0.0f, 0.0f, 0.0f);
+	//WaterTankArray[6] = WaterTankMesh-&gt;CreateModel(0.0f, 0.0f, 0.0f);
+	//WaterTankArray[7] = WaterTankMesh-&gt;CreateModel(0.0f, 0.0f, 0.0f);
+	//WaterTankArray[8] = WaterTankMesh-&gt;CreateModel(0.0f, 0.0f, 0.0f);
+	//WaterTankArray[9] = WaterTankMesh-&gt;CreateModel(0.0f, 0.0f, 0.0f);
+	//
+	// BUILD HOVER CAR AND SET PERAMETRES
+	IMesh* HoverCarMesh = myEngine-&gt;LoadMesh(&quot;race2.x&quot;);
+	IModel* HoverCar = HoverCarMesh-&gt;CreateModel(0.0f, 0.0f, -20.0f);
+	//
+	//
+	MyCamera-&gt;AttachToParent(HoverCar);
+	MyCamera-&gt;SetLocalPosition(0.0f, 30.0f, -50.0f);
+	//
+	// ADD BACKDROP FOR STYRINGS TO BE SHOWN
+	ISprite* UI_BackdropSprite = myEngine-&gt;CreateSprite(&quot;ui_backdrop.jpg&quot;);
+	//
+	//
+	stringstream GameStateString;
+	IFont* GameStateFont = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 36U);
+
+	stringstream StartCountDownString;
+	IFont* StartCountDownFont = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 72U);
+	float CountDown = 3.0f;
+
+	stringstream CheckpointNotifictionString;
+	IFont* CheckpointNotificationFont = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 36U);
+
+	stringstream HoverCarSpeedString;
+	IFont* HoverCarSpeedFont = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 36U);
+	//
+	// ENUM STATES
+	enum EGameState { Playing, Paused, GameOver, Won };
+	EGameState GameState = Paused;
+
+	enum ECountDown { Three, Two, One, Go };
+	ECountDown GameCountDown = Three;
+
+	enum EcheckpointStage { Waiting_Checkpoint, Stage_1_Complete, Stage_2_Complete, Stage_3_Complete,Stage_4_Complete, Race_Complete };
+	EcheckpointStage CheckpointState = Waiting_Checkpoint;
+
+	enum ECameraAngle{DefaultChase, FirstPerson};
+	ECameraAngle CameraAngle = DefaultChase;
+	//
+	//
+	const Vector2 CheckpointDem = { 19.0f, 2.5f };
+	const Vector2 MiddleWallRowDem = { 1.0f, 4.8f };
+	const float kHoverCarRadius = 3.0f;
+	const float WaterTankRadius = 4.5f;
+	Vector2 OldHoverCarPosition;
+	//
+	// REMOVES MOUSE FROM FULL SCREEN
+	myEngine-&gt;StartMouseCapture();
+	//
+	//
+	float UpperLimit = 50.0f;
+	float StandardCameraAngle = 20.0f;
+	//
+	//
+	float CameraRotationX = 0.0f;
+	float CameraRotationY = 0.0f;
+	//
+	//
+	int HoverCarHealth = 100;
+	float DelayTimer = 0.1f;
+
+	bool HealthTimer = false;
+	//
+	// The main game loop, repeat until engine is stopped
+	while (myEngine-&gt;IsRunning())
+	{
+		float DeltaTime = myEngine-&gt;Timer();
+
+		// Draw the scene (update scene)
+		myEngine-&gt;DrawScene();
+		
+		
+		// DIFFERENT STATES OF THE GAME
+		switch (GameState)
+		{
+		case Playing:
+			// SHOWS THE GAME STATE TOP LEFT OF THE SCREEN
+			GameStateString &lt;&lt; &quot;Playing&quot;;
+			GameStateFont-&gt;Draw(GameStateString.str(), 50.0f, 0.0f, kBlack, kCentre);
+			GameStateString.str(&quot;&quot;);
+
+			// COUNTDOWN FOR THE GAME TO START
+			CountDown -= DeltaTime;
+
+			if (CountDown &lt;= 0.0f)
+			{
+				CountDown = 0.0f;
+				StartCountDownString.str(&quot;&quot;);
+
+				GameCountDown = Go;
+			}
+			else
+			{
+				StartCountDownString &lt;&lt; (int)CountDown;
+				StartCountDownFont-&gt;Draw(StartCountDownString.str(), myEngine-&gt;GetWidth() / 2, myEngine-&gt;GetHeight() / 2, kBlack, kCentre);
+				StartCountDownString.str(&quot;&quot;);
+			}
+			//
+			//
+			switch (GameCountDown)
+			{
+			case Three:
+				break;
+			case Two:
+				break;
+			case One:
+				break;
+			case Go:
+				// OLD CAR POSTION 
+				OldHoverCarPosition.X = HoverCar-&gt;GetX();
+				OldHoverCarPosition.Y = HoverCar-&gt;GetZ();
+
+				// CALLED FUNCTION FOR THE MOVEMENT OF THE HOVER CAR
+				Movement(myEngine, HoverCar, MyCamera);
+
+				// BOOLS FOR THE FOR LOOPS AND COLLISIONS
+				bool HoverCarToWall = false;
+				bool HoverCarToStrut = false;
+				bool HoverCarToWaterTank = false;
+				bool Collision = false;
+				
+				// HOVER CAR TO WALL ARRAY COLLISION DETECTION
+				for (int i = 0; i &lt; WallArraySize; i++)
+				{
+					if (!HoverCarToWall)
+					{
+						HoverCarToWall = SphereToBox(HoverCar, kHoverCarRadius, WallArray[i], MiddleWallRowDem.X, MiddleWallRowDem.Y);
+					}
+				}
+				//
+				// HOVER CAR TO CHECKPOINT LEGS COLLISION DETECTION
+				for (int i = 0; i &lt; DummyArraySize; i++)
+				{
+					if (!HoverCarToStrut)
+					{
+						HoverCarToStrut = SpehereToSphere(HoverCar, kHoverCarRadius, DummyArray[i], 1);
+					}
+				}
+				//
+				// HOVER CAR TO WATER TANK COLLISION DETECTION
+				for (int i = 0; i &lt; WaterTankArraySize; i++)
+				{
+					if (!HoverCarToWaterTank)
+					{
+						HoverCarToWaterTank = SpehereToSphere(HoverCar, kHoverCarRadius, WaterTankArray[i], WaterTankRadius);
+					}
+				}
+				//
+				// IF HOVER CAR COLLIDES THEN APPLY OLD HOVER CAR LOCATION
+				Collision = HoverCarToWall || HoverCarToStrut || HoverCarToWaterTank;
+				if (Collision)
+				{
+					HoverCar-&gt;SetPosition(OldHoverCarPosition.X, 0.0f, OldHoverCarPosition.Y);
+					
+					if (!HealthTimer)
+					{
+						HoverCarHealth -= 1.0f;
+						HealthTimer = true;
+					}
+				}
+				// CAR HEALTH AND TIMER SO HEALTH DOESNT DEPLEATE INSTANTLY 
+				if (HealthTimer)
+				{
+					DelayTimer -= DeltaTime;
+					if (DelayTimer &lt;= 0)
+					{
+						DelayTimer = 0.1;
+						HealthTimer = false;
+					}
+				}
+				//
+				//
+
+				// -6.4 &lt;&gt; 6.4 = 12/13 units (hover car)....hover car is 4 metres longs....12/4=3....3 is used to divide the UP/S to give speed (m/h)
+				HoverCarSpeedString &lt;&lt; &quot;Speed MPH: &quot; &lt;&lt; (int)((GameSpeed * DeltaTime * (1 / DeltaTime)) / 3 *60 *60) /1610;
+				HoverCarSpeedFont-&gt;Draw(HoverCarSpeedString.str(), 500.0f, 0.0f, kBlack, kCentre);
+				HoverCarSpeedString.str(&quot;&quot;);
+
+				GameStateString &lt;&lt; &quot;Health: &quot; &lt;&lt; (int)HoverCarHealth;
+				GameStateFont-&gt;Draw(GameStateString.str(), 900.0f, 0.0f, kBlack, kCentre);
+				GameStateString.str(&quot;&quot;);
+				//
+				//
+				float MouseMovementX = myEngine-&gt;GetMouseMovementX();
+				float MouseMovementY = myEngine-&gt;GetMouseMovementY();
+
+				CameraRotationY += MouseMovementX;
+				CameraRotationX += MouseMovementY;
+				//
+				// CAMERA ROTATION FIX
+				if (CameraRotationX &gt; 90.0f)
+				{
+					CameraRotationX -= MouseMovementY;
+				}
+				else if (CameraRotationX &lt; -90.0f)
+				{
+					CameraRotationX -= MouseMovementY;
+				}
+				else
+				{
+					MyCamera-&gt;RotateLocalX(MouseMovementY);
+				}
+				//
+				// CAMERA ROTATION FIX
+				if (CameraRotationY &gt; 90.0f)
+				{
+					CameraRotationY -= MouseMovementX;
+				}
+				else if (CameraRotationY &lt; -90.0f)
+				{
+					CameraRotationY -= MouseMovementX;
+				}
+				else
+				{
+					MyCamera-&gt;RotateY(MouseMovementX);
+				}
+				//
+				// DEFAULT VIEW
+				if (myEngine-&gt;KeyHit(Key_1) &amp;&amp; CameraAngle != DefaultChase)
+				{
+					if (CameraAngle == FirstPerson)
+					{
+						MyCamera-&gt;RotateX(0.0);
+					}
+					CameraAngle = DefaultChase;
+
+					MyCamera-&gt;DetachFromParent();
+					MyCamera-&gt;AttachToParent(HoverCar);
+					MyCamera-&gt;SetLocalPosition(0.0f, 20.0f, -40.0f);
+					MyCamera-&gt;RotateX(StandardCameraAngle);
+				}
+				//
+				// FIRST PERSON VIEW
+				if (myEngine-&gt;KeyHit(Key_2) &amp;&amp; CameraAngle != FirstPerson)
+				{
+
+					if (CameraAngle == DefaultChase)
+					{
+						MyCamera-&gt;RotateX(-StandardCameraAngle);
+					}
+					CameraAngle = FirstPerson;
+
+					MyCamera-&gt;DetachFromParent();
+					MyCamera-&gt;AttachToParent(HoverCar);
+					MyCamera-&gt;SetLocalPosition(0.0f, 5.0f, 1.0f);
+					MyCamera-&gt;RotateX(0.0f);
+				}
+				//
+				//
+				if (CheckpointState == Race_Complete)
+				{
+					GameState = Won;
+				}
+				//
+				//
+				if (HoverCarHealth == 0)
+				{
+					GameState = GameOver;
+				}
+
+				break;
+			}
+			//
+			//
+			break;
+			// GAME STATES ON THE TOP LEFT WHEN THE STATES HAVE CHANGED
+		case Paused:
+			GameStateString &lt;&lt; &quot;Paused&quot;;
+			GameStateFont-&gt;Draw(GameStateString.str(), 50.0f, 0.0f, kBlack, kCentre);
+			GameStateString.str(&quot;&quot;);
+
+			GameStateString &lt;&lt; &quot;Hit Space to Start&quot;;
+			GameStateFont-&gt;Draw(GameStateString.str(), myEngine-&gt;GetWidth() / 2, myEngine-&gt;GetHeight() / 2, kRed, kCentre);
+			GameStateString.str(&quot;&quot;);
+			break;
+
+		case GameOver:
+			GameStateString &lt;&lt; &quot;GameOver&quot;;
+			GameStateFont-&gt;Draw(GameStateString.str(), 50.0f, 0.0f, kBlack, kCentre);
+			GameStateString.str(&quot;&quot;);
+			break;
+
+		case Won:
+			GameStateString &lt;&lt; &quot;Race Won&quot;;
+			GameStateFont-&gt;Draw(GameStateString.str(), 50.0f, 0.0f, kBlack, kCentre);
+			GameStateString.str(&quot;&quot;);
+
+			break;
+		}
+
+		// CHECKPOINT DEMENSIONS FOR CHECKING IF THE CAR HAS GONE THROUGH THE CHECK POINT IN THE CORRECT ORDER
+		bool HoverCarCheckpoint_1 = PointToBoxCollisions(CheckpointArray[0], CheckpointDem.X, CheckpointDem.Y, HoverCar);
+		bool HoverCarCheckpoint_2 = PointToBoxCollisions(CheckpointArray[1], CheckpointDem.X, CheckpointDem.Y, HoverCar);
+		bool HoverCarCheckpoint_3 = PointToBoxCollisions(CheckpointArray[2], CheckpointDem.X, CheckpointDem.Y, HoverCar);
+		bool HoverCarCheckpoint_4 = PointToBoxCollisions(CheckpointArray[3], CheckpointDem.X, CheckpointDem.Y, HoverCar);
+		bool HoverCarCheckpoint_5 = PointToBoxCollisions(CheckpointArray[0], CheckpointDem.X, CheckpointDem.Y, HoverCar);
+
+		switch (CheckpointState)
+		{
+		case Waiting_Checkpoint:
+
+			CheckpointNotifictionString &lt;&lt; &quot;Awaiting Checkpoint&quot;;
+			CheckpointNotificationFont-&gt;Draw(CheckpointNotifictionString.str(), 250.0f, 0.0f, kBlack, kCentre);
+			CheckpointNotifictionString.str(&quot;&quot;);
+
+			if (HoverCarCheckpoint_1)
+			{
+				CheckpointState = Stage_1_Complete;
+			}
+
+			break;
+
+		case Stage_1_Complete:
+
+			CheckpointNotifictionString &lt;&lt; &quot;Stage 1 Complete&quot;;
+			CheckpointNotificationFont-&gt;Draw(CheckpointNotifictionString.str(), 250.0f, 0.0f, kBlack, kCentre);
+			CheckpointNotifictionString.str(&quot;&quot;);
+
+			if (HoverCarCheckpoint_2)
+			{
+				CheckpointState = Stage_2_Complete;
+			}
+
+			break;
+
+		case Stage_2_Complete:
+			CheckpointNotifictionString &lt;&lt; &quot;Stage 2 Complete&quot;;
+			CheckpointNotificationFont-&gt;Draw(CheckpointNotifictionString.str(), 250.0f, 0.0f, kBlack, kCentre);
+			CheckpointNotifictionString.str(&quot;&quot;);
+
+			if (HoverCarCheckpoint_3)
+			{
+				CheckpointState = Stage_3_Complete;
+			}
+
+			break;
+
+		case Stage_3_Complete:
+			CheckpointNotifictionString &lt;&lt; &quot;Stage 3 Complete&quot;;
+			CheckpointNotificationFont-&gt;Draw(CheckpointNotifictionString.str(), 250.0f, 0.0f, kBlack, kCentre);
+			CheckpointNotifictionString.str(&quot;&quot;);
+
+			if (HoverCarCheckpoint_4)
+			{
+				CheckpointState = Stage_4_Complete;
+			}
+
+			break;
+
+		case Stage_4_Complete:
+			CheckpointNotifictionString &lt;&lt; &quot;Stage 4 Complete&quot;;
+			CheckpointNotificationFont-&gt;Draw(CheckpointNotifictionString.str(), 250.0f, 0.0f, kBlack, kCentre);
+			CheckpointNotifictionString.str(&quot;&quot;);
+
+			if (HoverCarCheckpoint_5)
+			{
+				CheckpointState = Race_Complete;
+			}
+			break;
+
+		case Race_Complete:
+			CheckpointNotifictionString &lt;&lt; &quot;Race Complete&quot;;
+			CheckpointNotificationFont-&gt;Draw(CheckpointNotifictionString.str(), myEngine-&gt;GetWidth() / 2, myEngine-&gt;GetHeight() / 2, kBlack, kCentre);
+			CheckpointNotifictionString.str(&quot;&quot;);
+			break;
+		}
+
+		if (GameState == Paused)
+		{
+			if (myEngine-&gt;KeyHit(Key_Space))
+			{
+				GameState = Playing;
+			}
+		}
+
+		if (myEngine-&gt;KeyHit(Key_Escape))
+		{
+			myEngine-&gt;Stop();
+		}
+	}
+
+	// Delete the 3D engine now we are finished with it
+	myEngine-&gt;Delete();
+}
+
+// COLLSIONS
+bool PointToBoxCollisions(IModel* Box, float BoxWidth, float BoxLength, IModel* point)
+{
+	float CombinedWidth = (BoxWidth * 0.5f);
+	float CombinedHeight = (BoxLength * 0.5f);
+
+	if (point-&gt;GetX() &gt;= Box-&gt;GetX() - CombinedWidth &amp;&amp; point-&gt;GetX() &lt;= Box-&gt;GetX() + CombinedWidth &amp;&amp;
+		point-&gt;GetZ() &gt;= Box-&gt;GetZ() - CombinedHeight &amp;&amp; point-&gt;GetZ() &lt;= Box-&gt;GetZ() + CombinedHeight)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool SphereToBox(IModel* Box, float SphereRadius, IModel* Floor, float FloorWidth, float FloorHeight)
+{
+	float CombinedWidth = SphereRadius + FloorWidth * 0.5f;
+	float CombinedHeight = SphereRadius + FloorHeight * 0.5f;
+
+	if (Box-&gt;GetX() &gt;= Floor-&gt;GetX() - CombinedWidth &amp;&amp; Box-&gt;GetX() &lt;= Floor-&gt;GetX() + CombinedWidth &amp;&amp;
+		Box-&gt;GetZ() &gt;= Floor-&gt;GetZ() - CombinedHeight &amp;&amp; Box-&gt;GetZ() &lt;= Floor-&gt;GetZ() + CombinedHeight)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool SpehereToSphere(IModel* A, float AR, IModel* B, float BR)
+{
+	float	X, Y, Z;
+	X = A-&gt;GetX() - B-&gt;GetX();
+	Y = A-&gt;GetY() - B-&gt;GetY();
+	Z = A-&gt;GetZ() - B-&gt;GetZ();
+
+	float Distance = sqrt(X * X + Y * Y + Z * Z);
+
+	if (Distance &lt; AR + BR)
+	{
+		return true;
+	}
+	return false;
+}
+						
+						</code>
+					</pre>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

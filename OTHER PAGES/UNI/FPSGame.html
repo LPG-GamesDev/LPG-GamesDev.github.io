@@ -1,0 +1,563 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+	
+	<title>FPS Game</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#Video-Offset-Section" 									class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../Portfolio.html" 										class="bar-item button padding-large">Home</a>
+					<a href="../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../Portfolio.html" 	 											class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../Uni.html" 			 											class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" style="display:block; margin-top:80px;">
+		<div class="row" align="center">
+			
+			<div class="section-content" style="display: table-cell; vertical-align: middle;">
+				<span class="title--med title">FPS Game</span>
+			</div>
+			
+			<table style="margin: auto;">
+				<tbody>
+					<tr>
+						<td>
+							<strong><a> Project Type: </a></strong>
+						</td>
+						<td>
+							<a> University </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Software/Engine:  </a></strong>
+						</td>
+						<td>
+							<a> UE4 (Unreal Engine 4) </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Language:  </a></strong>
+						</td>
+						<td>
+							<a> C++ </a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+					
+			
+			<div class="section-desc">
+				<span class="text">
+					<p>
+						The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+					</p>
+			
+					<p align="center">
+						<a href="https://github.com/LPG-GamesDev/uni-Year-2-CO2301-Games-Development" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-2-CO2301-Games-Development </a>
+					</p>
+				</span>
+			</div>			
+					
+					
+					
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../../VIDEO/TestVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<embed src="DOC/Y2_FPSGame.pdf" width="1100px" height="800px">
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<p> MainCharacter</p>
+					<pre>
+						<code>
+						
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include &quot;MainCharacter.h&quot;
+#include &quot;Components/SceneCaptureComponent2D.h&quot;
+#include &quot;Grenade.h&quot;
+#include &quot;HealthComponent.h&quot;
+
+
+// Sets default values
+AMainCharacter::AMainCharacter()
+{
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+
+	DamageType = UDamageType::StaticClass();
+	Damage = 10.0f;
+	GrenadeDamage = 20.0f;
+
+	TurnSpeed = 100.0f;
+
+	// spring arm &amp; camera settings
+	SpringArm = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(&quot;SpringArm&quot;));
+	SpringArm-&gt;SetupAttachment(RootComponent);
+
+	SpringArm-&gt;SetRelativeLocation(FVector(-60.0f, 60.0f, 108.0f));
+	SpringArm-&gt;SetRelativeRotation(FRotator(0.0f, -10.0f, 0.0f));
+	SpringArm-&gt;TargetArmLength = 150.0f;
+
+	Camera = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(&quot;Camera&quot;));
+	Camera-&gt;SetupAttachment(SpringArm);
+
+	Camera-&gt;SetRelativeLocation(FVector(0.0f, 0.0f, -30.0f));
+	Camera-&gt;SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+
+	//render mini map
+	MapArm = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(&quot;MapArm&quot;));
+	MapArm-&gt;SetupAttachment(RootComponent);
+	MapArm-&gt;SetRelativeRotation(FRotator(-90.0f, 0.0f, 0.0f));
+	MapArm-&gt;TargetArmLength = 300.0f;
+
+	MapCamera = CreateDefaultSubobject&lt;USceneCaptureComponent2D&gt;(TEXT(&quot;MapCamera&quot;));
+	MapCamera-&gt;SetupAttachment(MapArm);
+
+	/// &lt;summary&gt;
+	RayFire = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(&quot;RayCast&quot;));
+	RayFire-&gt;SetupAttachment(RootComponent);
+	
+	RayFire-&gt;SetRelativeLocation(FVector(0.0f, 25.0f, 18.0f));
+	RayFire-&gt;SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+
+	//
+	GrenadeSpawnPoint = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(&quot;Projectile Spawn Point&quot;));
+	GrenadeSpawnPoint-&gt;SetupAttachment(RootComponent);
+	GrenadeSpawnPoint-&gt;SetRelativeLocation(FVector(10.0f, 10.0f, 45.0f));
+	GrenadeSpawnPoint-&gt;SetRelativeRotation(FRotator(0.0f, 40.0f, 0.0f));
+
+	//posses player
+	AutoPossessPlayer = EAutoReceiveInput::Player0;
+}
+
+// Called when the game starts or when spawned
+void AMainCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AMainCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+// Called to bind functionality to input
+void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	InputComponent-&gt;BindAxis(&quot;Forward&quot;, this, &amp;AMainCharacter::Forward);
+	InputComponent-&gt;BindAxis(&quot;Strafe&quot;, this, &amp;AMainCharacter::Strafe);
+
+	InputComponent-&gt;BindAction(&quot;Crouch&quot;, IE_Pressed, this, &amp;AMainCharacter::StartCrouch);
+	InputComponent-&gt;BindAction(&quot;Crouch&quot;, IE_Released, this, &amp;AMainCharacter::StopCrouch);
+
+	InputComponent-&gt;BindAction(&quot;Sprint&quot;, IE_Pressed, this, &amp;AMainCharacter::Sprint);
+	InputComponent-&gt;BindAction(&quot;Sprint&quot;, IE_Released, this, &amp;AMainCharacter::StopSprint);
+
+	InputComponent-&gt;BindAction(&quot;Jump&quot;, IE_Pressed, this, &amp;AMainCharacter::Jump);
+
+	InputComponent-&gt;BindAction(&quot;Fire&quot;, IE_Pressed, this, &amp;AMainCharacter::StartFire);
+	InputComponent-&gt;BindAction(&quot;Fire&quot;, IE_Released, this, &amp;AMainCharacter::StopFire);
+
+	InputComponent-&gt;BindAction(&quot;ThrowGrenade&quot;, IE_Pressed, this, &amp;AMainCharacter::StartThrow);
+	InputComponent-&gt;BindAction(&quot;ThrowGrenade&quot;, IE_Released, this, &amp;AMainCharacter::EndThrow);
+
+	InputComponent-&gt;BindAxis(&quot;Pitch&quot;, this, &amp;AMainCharacter::Pitch);
+	InputComponent-&gt;BindAxis(&quot;Yaw&quot;, this, &amp;AMainCharacter::Yaw);
+}
+
+void AMainCharacter::Forward(float Value)
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Forward&quot;));
+	AddMovementInput(GetActorForwardVector() * Value);
+}
+
+void AMainCharacter::Strafe(float Value)
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Strafe&quot;));
+	AddMovementInput(GetActorRightVector() * Value);
+}
+
+void AMainCharacter::StartCrouch()
+{
+}
+
+void AMainCharacter::StopCrouch()
+{
+}
+
+void AMainCharacter::Sprint()
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Running&quot;));
+	GetCharacterMovement()-&gt;MaxWalkSpeed = 1200.0f;
+}
+
+void AMainCharacter::StopSprint()
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Not Running&quot;));
+	GetCharacterMovement()-&gt;MaxWalkSpeed = 600.0f;
+}
+
+void AMainCharacter::Yaw(float Value)
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Yaw&quot;));
+	AddControllerYawInput(Value * TurnSpeed * GetWorld()-&gt;GetDeltaSeconds());
+}
+
+void AMainCharacter::Pitch(float Value)
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Pitch&quot;));
+	AddControllerPitchInput(Value * TurnSpeed * GetWorld()-&gt;GetDeltaSeconds());
+}
+
+void AMainCharacter::StartFire()
+{
+	Fire();
+
+	GetWorldTimerManager().SetTimer(TimerHandle_Handlefire, this, &amp;AMainCharacter::Fire, 0.08f, true);
+}
+
+void AMainCharacter::StopFire()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle_Handlefire);
+}
+
+void AMainCharacter::Fire()
+{
+	FHitResult Hit;
+
+	FVector Start = RayFire-&gt;GetComponentLocation();
+	FVector ForwardVector = Camera-&gt;GetForwardVector();
+
+	Start = Start + (ForwardVector * SpringArm-&gt;TargetArmLength / 2);
+	FVector End = Start + (ForwardVector * 5000.0f);
+
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(this-&gt;GetOwner());
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Blue, false, 1, 0, 1);
+
+	bool IsHit = GetWorld()-&gt;LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, CollisionParams);
+
+	if (IsHit)
+	{
+		AActor* HitActor = Hit.GetActor();
+
+		UGameplayStatics::ApplyPointDamage(HitActor, Damage, Start, Hit, DamageInstigator, this, DamageType);
+
+		DrawDebugBox(GetWorld(), Hit.ImpactPoint, FVector(10, 10, 10), FColor::Yellow, false, 2.0f);
+	}
+}
+
+void AMainCharacter::StartThrow()
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Grenade Pressed&quot;));
+}
+
+void AMainCharacter::EndThrow()
+{
+	//UE_LOG(LogTemp, Warning, TEXT(&quot;Grenade Released&quot;));
+
+	FHitResult GHit;
+
+	FVector SpawnLocation = GrenadeSpawnPoint-&gt;GetComponentLocation();
+	FRotator SpawnRotation = GrenadeSpawnPoint-&gt;GetComponentRotation();
+	FVector ForwardVector = Camera-&gt;GetForwardVector();
+
+	FVector MaxDistance = SpawnLocation + (ForwardVector * 1000.0f);
+
+	SpawnLocation = SpawnLocation + (ForwardVector * SpringArm-&gt;TargetArmLength / 2);
+
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(this-&gt;GetOwner());
+
+	DrawDebugLine(GetWorld(), SpawnLocation, MaxDistance, FColor::Green, false, 1, 0, 1);
+
+	bool IsGHit = GetWorld()-&gt;LineTraceSingleByChannel(GHit, SpawnLocation, MaxDistance, ECC_Visibility, CollisionParams);
+
+	if (IsGHit)
+	{
+		AActor* HitActor = GHit.GetActor();
+
+		UGameplayStatics::ApplyPointDamage(HitActor, GrenadeDamage, SpawnLocation, GHit, DamageInstigator, this, DamageType);
+
+		DrawDebugBox(GetWorld(), GHit.ImpactPoint, FVector(10, 10, 10), FColor::Yellow, false, 2.0f);
+	}
+
+	if (Grenade) { //checks grenade projectile has been set in the editor
+
+		AGrenade* TempGrenade = GetWorld()-&gt;SpawnActor&lt;AGrenade&gt;(Grenade, SpawnLocation, SpawnRotation);
+	}
+}
+
+float AMainCharacter::TakeDamage(float DamageAmount, FDamageEvent const DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	Health -= DamageAmount;
+	UE_LOG(LogTemp, Warning, TEXT(&quot;Health: &quot;), Health);
+
+	if (Health &lt;= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT(&quot;Dead&quot;));
+	}
+	return DamageAmount;
+}
+						
+						</code>
+					</pre>
+				
+						
+						
+						
+						
+				<p> Enemy AI </p>
+					<pre>
+						<code>
+						
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#include &quot;Enemy_Zombie.h&quot;
+#include &quot;DrawDebugHelpers.h&quot;
+
+// Sets default values
+AEnemy_Zombie::AEnemy_Zombie()
+{
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	Health = DeafualtHealth;
+
+	DamageType = UDamageType::StaticClass();
+	Damage = 50.0f;
+
+	/// creating scene for raycast
+	RayFireZ = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(&quot;RayCast&quot;));
+	RayFireZ-&gt;SetupAttachment(RootComponent);
+		   
+	RayFireZ-&gt;SetRelativeLocation(FVector(0.0f, 25.0f, 18.0f));
+	RayFireZ-&gt;SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+
+}
+
+// Called when the game starts or when spawned
+void AEnemy_Zombie::BeginPlay()
+{
+	Super::BeginPlay();
+
+	OnActorHit.AddDynamic(this, &amp;AEnemy_Zombie::HandleHit);
+	
+}
+
+// Called every frame
+void AEnemy_Zombie::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+// Called to bind functionality to input
+void AEnemy_Zombie::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+}
+
+void AEnemy_Zombie::StartFireZ()
+{
+	FireZ();
+
+	GetWorldTimerManager().SetTimer(TimerHandle_Handlefire, this, &amp;AEnemy_Zombie::FireZ, 0.08f, true);
+}
+
+void AEnemy_Zombie::StopFireZ()
+{
+	GetWorldTimerManager().ClearTimer(TimerHandle_Handlefire);
+}
+
+void AEnemy_Zombie::FireZ()
+{
+	FHitResult ZHit;
+
+	FVector Start = RayFireZ-&gt;GetComponentLocation();
+	FVector ForwardVector = RayFireZ-&gt;GetForwardVector();
+
+	Start = Start + (ForwardVector * 75.0f);
+	FVector End = Start + (ForwardVector * 5000.0f);
+
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(this-&gt;GetOwner());
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
+
+	bool IsHit = GetWorld()-&gt;LineTraceSingleByChannel(ZHit, Start, End, ECC_Visibility, CollisionParams);
+
+	if (IsHit)
+	{
+		AActor* HitActor = ZHit.GetActor();
+
+		UGameplayStatics::ApplyPointDamage(HitActor, Damage, Start, ZHit, DamageInstigator, this, DamageType);
+
+		DrawDebugBox(GetWorld(), ZHit.ImpactPoint, FVector(10, 10, 10), FColor::Yellow, false, 2.0f);
+	}
+}
+
+void AEnemy_Zombie::HandleHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult&amp; Hit)
+{
+	UE_LOG(LogTemp, Warning, TEXT(&quot;Hit by: &quot;), *OtherActor-&gt;GetName());
+}
+
+float AEnemy_Zombie::TakeDamage(float DamageAmount, FDamageEvent const DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	Health -= DamageAmount;
+	UE_LOG(LogTemp, Warning, TEXT(&quot;Health: &quot;), Health);
+
+	if (Health &lt;= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT(&quot;Dead&quot;));
+	}
+	return DamageAmount;
+}
+			
+					</code>
+				</pre>
+			</div>
+	
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

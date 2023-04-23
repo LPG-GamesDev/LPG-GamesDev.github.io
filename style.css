@@ -19,8 +19,8 @@
 html,body
 {
 	margin: 0;
-    	width: 100%;
-    	display: block;
+    width: 100%;
+    display: block;
 	
 	overflow-x: hidden;
 	
@@ -34,7 +34,7 @@ body
 	background-color: rgba(10,10,10,1);
 	height: 100%;
 	min-width: 320px;
-	min-height: 500px;
+	min-height: 453px;
 }
 
 body:before
@@ -1086,26 +1086,14 @@ a:hover {
 **************************************/
 .accordion
 {
+	color:white;
     width: 100%;
     display: block;
-    background: rgba(97, 77, 77, 0.86);
-    color: #fefefe;
     padding: .75em;
     border-radius: 0.15em;
     transition: background .3s ease;
     margin-bottom: 10px;
     border-radius: 3px;
-  
-    &:hover 
-    {
-    	cursor: pointer;
-        background: rgba(105, 87, 87, 0.9);
-    }
-
-    &.active
-    {
-    	background: rgba(140, 113, 108, 0.9);
-    }
 }
 
 .accordion-inner 
@@ -1125,7 +1113,6 @@ a:hover {
 .accordion-icon
 {
 	float: right;
-
     -moz-transition: -moz-transform 0.2s ease-in-out;
     -o-transition: -o-transform 0.2s ease-in-out;
     -webkit-transition: -webkit-transform 0.2s ease-in-out;
@@ -1142,18 +1129,6 @@ a:hover {
         transform: rotate(0deg);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .row
 {
@@ -1177,37 +1152,23 @@ a:hover {
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-	
-	align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .padding-large{padding: 10px 10px!important;}
 
-.top{background-color: rgba(30,30,30,0.8); text-align: center; 	text-transform: uppercase;}
+.top{background-color: rgba(30,30,30,0.8); text-transform: uppercase;}
 
 .content,.auto{margin-left:auto;margin-right:auto}.content{max-width:980px}
 .container{padding:0.01em 16px}{margin-top:16px;margin-bottom:16px}
 
 .top{position:fixed;width:100%;z-index:1}.top{top:0}{bottom:0}
 
-.right {float: right!important}
 .right{float:right!important}
-.button:hover{color: rgba(250,250,250,1)!important; background-color: rgba(100,0,0,1)!important}
 
-.bar{width:100%;overflow:hidden} 
-.bar{display:inline-block;width:100%; font-size: 20px;}
+.button:hover{color: rgba(250,250,250,1)!important;background-color: rgba(100,0,0,1)!important}
+.bar{text-align: center;}
+.bar{width:100%; overflow:hidden} 
+.bar{display:inline-block; width:100%; font-size:20px; letter-spacing: 2px;}
 .bar .bar-item{padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
 .bar .dropdown-hover,.bar .dropdown-click{position:static;float:left}
 .bar .button{white-space:normal}
@@ -1239,8 +1200,50 @@ a:hover {
 	min-height: 120px;
 }
 
-
 #Spacer
 {
 	height: 40px;
+}
+
+.accordion {
+  background-color: rgba(100,0,0,1);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  box-sizing: border-box;
+  display: block;
+}
+
+.active, .accordion:hover {
+  background-color: rgba(100,0,0,1);
+}
+
+.accordion:after {
+  content: '\002B';
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: rgba(10,10,10,1);
+  color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  text-align: left;
+  align: center;
+  display: block;
+  box-sizing: border-box;
 }

@@ -1,0 +1,482 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+	
+	<title>Vending Machine</title>
+
+	</head>
+	
+	
+
+<body>
+	
+	<!-- Navbar -->
+	<div class="top">
+		<nav>
+			<div class="bar card">
+				
+				<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+			
+				<a href="#Video-Offset-Section" 									class="bar-item button padding-large">Luke Gatehouse</a>
+				<a href="../../Portfolio.html" 										class="bar-item button padding-large">Home</a>
+				<a href="../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+			</div>
+		</nav>
+	</div>
+
+
+	<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+	<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+		<a href="../../Portfolio.html" 	 											class="bar-item button padding-large" onclick="myFunction()">Home</a>
+		<a href="../Uni.html" 			 											class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+		
+	</div>
+		
+		
+	<div class="page" style="display:block; margin-top:80px;">
+		<div class="row" align="center">
+			
+			<div class="section-content" style="display: table-cell; vertical-align: middle;">
+				<span class="title--med title">Vending Machine</span>
+			</div>
+			
+			<table style="margin: auto;">
+				<tbody>
+					<tr>
+						<td>
+							<strong><a> Project Type: </a></strong>
+						</td>
+						<td>
+							<a> University </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Software/Engine:  </a></strong>
+						</td>
+						<td>
+							<a> CLI (CommandLine) </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Language:  </a></strong>
+						</td>
+						<td>
+							<a> C# </a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<div class="section-desc">
+				<span class="text">
+					<p>
+						The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+					</p>
+			
+					<p align="center">
+						<a href="https://github.com/LPG-GamesDev/uni-Year-1-CO1404-Intro-to-programming" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-1-CO1404-Intro-to-programming </a>
+					</p>
+				</span>
+			</div>
+					
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../../VIDEO/TestVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<embed src="DOC/Y1_VendingMachineAssignment.pdf" width="1100px" height="800px">
+				</div>	
+				
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+							
+using System;
+using System.Collections.Generic;
+
+namespace intro_to_programming_assignment
+{
+    class Program
+    {
+        static void Main() // initialises data and shows 'menu'
+        {
+            string[,] Products = { { &quot;Chocolate Bar&quot;, &quot;0.80&quot; }, { &quot;Soda Can&quot;, &quot;0.70&quot; }, { &quot;Soda Bottle&quot;, &quot;1.25&quot; }, { &quot;Crisps&quot;, &quot;0.50&quot; }, { &quot;Cookies&quot;, &quot;1.10&quot; } };
+            int[] Quantity = { 5, 5, 5, 5, 5 }; // quantity of all products = to 5
+            double Credits = 0;
+            List&lt;string&gt; Order_List = new List&lt;string&gt;(); // creates order list for basket
+            List&lt;double&gt; Price_List = new List&lt;double&gt;(); // creates price list
+            MainMenu(Products, Quantity, Credits, Order_List, Price_List); //parameters
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static void Display(string[,] Products, int[] Quantity) // displays products and quantity parameters
+        {
+            Console.WriteLine(&quot;Product number | Product Name | Product Price | Quantity &quot;);
+            for (int i = 0; i != 5; i++)
+            {
+                Console.WriteLine(&quot;{0}.  {1}  {2}  {3}&quot;, i + 1, Products[i, 0], Products[i, 1], Quantity[i]);
+            }
+            Console.WriteLine();
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static double credits(double Credits) // tests, checks and adds credits
+        {
+            bool Loop = true;
+            while (Loop == true)
+            {
+                Console.WriteLine(&quot;Please enter credits(&pound;0.00)&quot;); // starts credits off at &pound;0.00
+                Console.WriteLine();
+                var Check_D = Console.ReadLine();
+                bool Working = Double.TryParse(Check_D, out double num);
+                if (Working)
+                {
+                    Credits += double.Parse(Check_D);
+                    Loop = false;
+                }
+                else
+                {
+                    Console.WriteLine(&quot;'{0}', not a supported format&quot;, Check_D);
+                }
+            }
+            Console.WriteLine(&quot;{0}&quot;, Credits.ToString(&quot;c2&quot;));
+            return Credits;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static void Order(string[,] Products, int[] Quantity, double Credits, List&lt;string&gt; Order_List, List&lt;double&gt; Price_List)
+        {
+            Display(Products, Quantity);
+
+            bool loop = true;
+            while (loop == true)
+            {
+                Console.WriteLine(&quot;please choose a product for purchase, enter product number here: &quot;);
+
+                var Check_I = Console.ReadLine();
+                int Chosen = 0;
+                bool Success = Int32.TryParse(Check_I, out int number); // checks data type
+                if (Success)
+                {
+                    Chosen = int.Parse(Check_I) - 1;
+
+                    if (Quantity[Chosen] &lt;= 0)
+                    {
+                        Console.WriteLine(&quot;product out of stock&quot;); // shows the item is less then 5 or out of stock
+                    }
+                    else
+                    {
+                        Order_List.Add(Products[Chosen, 0]);
+                        Price_List.Add(double.Parse(Products[Chosen, 1]));
+                        Quantity[Chosen] -= 1;
+                        string Options;
+                        bool loop2 = true;
+                        while (loop2 == true)
+                        {
+                            Console.WriteLine(&quot;do you wish you continue shopping?(y/n)&quot;); // choices if you wish to buy 1 or multiple products
+                            Options = Console.ReadLine().ToLower();
+                            if (Options == &quot;y&quot;)
+                            {
+                                loop2 = false;
+                            }
+                            if (Options == &quot;n&quot;)
+                            {
+                                loop = false;
+                                loop2 = false;
+                            }
+                            else if (Options != &quot;n&quot; &amp;&amp; Options != &quot;y&quot;)
+                            {
+                                Console.WriteLine(&quot;invaild option&quot;); // invaild option from choices
+                            }
+                        }
+                    }
+                }
+            }
+            Basket(Products, Quantity, Credits, Order_List, Price_List);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static void Basket(string[,] Products, int[] Quantity, double Credits, List&lt;string&gt; Order_List, List&lt;double&gt; Price_List)
+        {
+            if (Order_List.Count == 0)
+            {
+                Console.WriteLine(&quot;basket is empty&quot;); // this shows the baskets current count
+            }
+            else
+            {
+                Console.WriteLine(&quot;product    price&quot;); // this shows whats in your basket
+                double Total = 0;
+
+                for (int item = 0; item &lt; Order_List.Count; item++)
+                {
+                    Console.WriteLine(&quot;{0}  {1}&quot;, Order_List[item], Price_List[item]);
+                    Total += Price_List[item];
+                }
+                Console.WriteLine(&quot;\n--------------------\n Total: {0}&quot;, Total.ToString(&quot;c2&quot;));
+                bool loop = true;
+                while (loop == true)
+                {
+                    string Answer;
+                    Console.WriteLine(&quot;do you wish to purchase? (y/n)&quot;); // this is the choice of if you wish to buy whats in the basket
+                    Answer = Console.ReadLine().ToLower();
+                    if (Answer == &quot;y&quot;)
+                    {
+                        if (Credits &lt; Total)
+                        {
+                            Console.WriteLine(&quot;insuficent funds&quot;); // this shows you dont have enough money for purchasing
+                            bool loop_1 = true;
+                            while (loop_1 == true)
+                            {
+                                string Answer_1;
+                                Console.WriteLine(&quot;do you wish to add credits? (y/n)&quot;); // this is if you wish to add funds/credits (choice)
+                                Answer_1 = Console.ReadLine().ToLower();
+                                if (Answer_1 == &quot;y&quot;)
+                                {
+                                    Credits = credits(Credits);
+                                    loop_1 = false;
+                                }
+                                if (Answer_1 == &quot;n&quot;)
+                                {
+                                    Console.WriteLine(&quot;please add credits to continue shopping&quot;);
+                                }
+                                else if (Answer_1 != &quot;y&quot; &amp;&amp; Answer_1 != &quot;n&quot;)
+                                {
+                                    Console.WriteLine(&quot;invaild option&quot;); // invaild option choice between Y or N
+                                }
+                            }
+                        }
+                        else if (Credits &gt;= Total)
+                        {
+                            loop = false;
+                        }
+                    }
+                    if (Answer == &quot;n&quot;)
+                    {
+                        for (int i = 0; i == Quantity.Length; i++)
+                        {
+                            Quantity[i] = 5; // resets basket and adds inventory back to the shelf
+                        }
+                        Order_List.Clear();
+                        Price_List.Clear();
+                        Console.WriteLine(&quot;inventory reset&quot;);
+                        MainMenu(Products, Quantity, Credits, Order_List, Price_List);
+                        loop = false;
+                    }
+                    else if (Answer != &quot;y&quot; &amp;&amp; Answer != &quot;n&quot;)
+                    {
+                        Console.WriteLine(&quot;invaild option&quot;); // invaild option choice between Y or N
+                    }
+                }
+                Credits -= Total;
+                Console.WriteLine(&quot;balance = {0}, balance being dispenced&quot;, Credits.ToString(&quot;c2&quot;)); // this shows how many credits you have left
+                Credits = 0;
+                Order_List.Clear();
+                Price_List.Clear();
+
+                MainMenu(Products, Quantity, Credits, Order_List, Price_List); // this takes you back to the menu
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static void MainMenu(string[,] Products, int[] Quantity, double Credits, List&lt;string&gt; Order_List, List&lt;double&gt; Price_List) // variables will update when called/re-called 
+        {
+            // Display(Products, Quantity);
+            bool Loop1 = true;
+
+            while (Loop1 == true)
+            {
+
+                string Answer_1;
+
+                // welcoming the user to the vending machine and asking if they wish to continue
+                Console.WriteLine(&quot;Do you want to see the menu?\n Y / N\n--------------------\n&quot;);
+
+
+                Answer_1 = Console.ReadLine().ToLower(); //changes input to lowercase
+
+                if (Answer_1 == &quot;n&quot;)
+                {
+                    //Console.Clear();
+                    Console.WriteLine(&quot;thanks for using me, goodbye&quot;);
+                    Environment.Exit(-1); // this exits the console and stops the process
+                    // Console.Clear();
+                }
+                else if (Answer_1 == &quot;y&quot;)
+                {
+                    Console.WriteLine(&quot;--------------------&quot;);
+                    Display(Products, Quantity);
+                    Loop1 = false;
+                }
+                else
+                {
+                    Console.WriteLine(&quot;please enter the correct option&quot;);
+                }
+            }
+
+
+
+            bool Loop = true;
+            while (Loop == true)
+            {
+                Console.WriteLine(&quot;--------------------\nLets continue\n--------------------&quot;);
+                int Option;
+                Console.WriteLine(&quot;what option would you like to select?\n \n1) Credits &gt;\n2) Order &gt;\n3) Basket &gt;\n\n0) Exit &gt;\n--------------------&quot;);
+
+                var Check_I = Console.ReadLine();
+                bool Success = Int32.TryParse(Check_I, out int number); // checks data type
+                if (Success)
+                {
+                    Option = int.Parse(Check_I);
+                    if (Option == 1)
+                    {
+                        Credits = credits(Credits);
+                        Console.WriteLine(&quot;--------------------\nreturning back to menu&quot;);
+                        //Loop = false;
+                    }
+                    if (Option == 2)
+                    {
+                        Order(Products, Quantity, Credits, Order_List, Price_List); // calls order to be used and viewed
+                        //Loop = false;
+                    }
+                    if (Option == 3)
+                    {
+                        Basket(Products, Quantity, Credits, Order_List, Price_List); // calls basket to be used and viewed
+                        //Loop = false;
+                    }
+                    if (Option == 0)
+                    {
+                        MainMenu(Products, Quantity, Credits, Order_List, Price_List); // calls menu to be used and viewed
+                        //Loop = false;
+                    }
+                    else if (Option != 0 &amp;&amp; Option != 1 &amp;&amp; Option != 2 &amp;&amp; Option != 3)
+                    {
+                        Console.WriteLine(&quot;invaild option&quot;); // invaild option from the choices given
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(&quot;'{0}', not a supported format&quot;, Check_I);
+                }
+            }
+        }
+    }
+}
+						</code>
+					</pre>
+				</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

@@ -1,0 +1,1723 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+	
+	<title>Monopol-ish</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#Video-Offset-Section" 									class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../Portfolio.html" 										class="bar-item button padding-large">Home</a>
+					<a href="../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../Portfolio.html" 												class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../Uni.html" 														class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" style="display:block; margin-top:80px;">
+		<div class="row" align="center">
+			
+			<div class="section-content" style="display: table-cell; vertical-align: middle;">
+				<span class="title--med title">Monopol-ish</span>
+			</div>
+			
+			<table style="margin: auto;">
+				<tbody>
+					<tr>
+						<td>
+							<strong><a> Project Type: </a></strong>
+						</td>
+						<td>
+							<a> University </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Software/Engine:  </a></strong>
+						</td>
+						<td>
+							<a> CLI (CommandLine) </a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a> Language:  </a></strong>
+						</td>
+						<td>
+							<a> C++ </a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<div class="section-desc">
+				<span class="text">
+					<p>
+						The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+					</p>
+			
+					<p align="center">
+						<a href="https://github.com/LPG-GamesDev/uni-Year-2-CO2402-Advanced-Programming" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-2-CO2402-Advanced-Programming </a>
+					</p>
+				</span>
+			</div>
+			
+			
+			
+			
+			
+			
+					
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../../VIDEO/TestVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+				
+				
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<embed src="DOC/Y2_Monopolish.pdf" width="1100px" height="800px">
+				</div>
+				
+				
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+				<p> Main </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+#define _CRTDBG_MAP_ALLOC
+#include &lt;crtdbg.h&gt;
+
+#include &lt;iostream&gt;
+#include &quot;CMonopolish.h&quot;
+
+using namespace std;
+
+int main()
+{
+	{
+		unique_ptr&lt;CMonopolish&gt; Game = make_unique&lt;CMonopolish&gt;();
+		Game-&gt;Start();
+	}
+	_CrtDumpMemoryLeaks();
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> CMonopolish </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the Monopolish/main aspect. how they are called used etc
+
+in this cpp file we have the main section of the game, this is where everything is linked and runs
+
+void MainTest function:
+
+void ReadFile function:
+this reads the &quot;monopolish.txt&quot; file and pushes it into an array so that it can later be used to call on for squares, player position, cost, rent etc
+
+void Random function:
+this function is a random number generator of sorts, it picks a random number between 1-6
+
+void PlayGame function:
+this function is the start of our game, it outputs welcome and creates the players and accepts the seed &quot;47&quot;, this allows th same set of numbers to be output to allow for testing.
+it also creates a 20 round system and adds those players to the rounds
+
+void rounds function:
+this function sets the random function above to a variable called diceroll which is output to show what the player got
+we also have a very specific line		&quot;PSquares[Player1-&gt;GetPosition()]-&gt;SquareTask(Player1, PSquares);&quot;
+
+this line runs the program, due to SquareTask being in the base CSquare, every cpp file has this function too which runs all the types of squares when they are needed
+
+void GameOver function:
+this function is called when all 20 rounds are complete, it also calculates who won the game buy stating who has the most money left, and incase of players having the same amount its a draw
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CSquareFactory.h&quot;
+#include &quot;CMonopolish.h&quot;
+
+using namespace std;
+
+void CMonopolish::Start()
+{
+	ReadFile();
+	PlayGame();
+}
+CMonopolish::~CMonopolish()
+{
+}
+
+void CMonopolish::ReadFile()
+{
+	// reads file and loads into an array
+	ifstream file(&quot;monopolish.txt&quot;);
+	if (file.is_open())
+	{
+		while (file)
+		{
+			int type = 0;
+			file &gt;&gt; type;
+
+			if (type != 0)
+			{
+				PSquares.push_back(NewSquare(ESquareType(type), file));
+			}
+		}
+	}
+	else
+	{
+		cout &lt;&lt; &quot;couldnt open file&quot;;
+	}
+}
+
+int CMonopolish::Random()
+{
+	// random number between 1-6
+	return static_cast&lt;int&gt;(static_cast&lt;double&gt; (rand()) / (RAND_MAX + 1) * 6.0f + 1);
+}
+
+void CMonopolish::PlayGame()
+{
+	// welcome to monopolish game
+	cout &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot; WELCOME TO MONOPOL-ISH  &quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl &lt;&lt; endl;
+
+	// creates players with shared pointers (money, name etc)
+	shared_ptr&lt;CPlayer&gt; Player1 = make_shared&lt;CPlayer&gt;(&quot;Hamster&quot;, 1500, 0);
+	shared_ptr&lt;CPlayer&gt; Player2 = make_shared&lt;CPlayer&gt;(&quot;Pumpkin&quot;, 1500, 0);
+
+	// fixed seed to check against later
+	srand(47);
+	// 20 rounds for the game
+	for (int i = 1; i &lt;= 20; i++)
+	{
+		// outputs the round
+		cout &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot; ROUND &quot; &lt;&lt; i &lt;&lt; endl;
+		cout &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+
+		// plays round based on players etc
+		Rounds(Player1, PSquares);
+		Rounds(Player2, PSquares);
+	}
+	// calls game over function
+	GameOver(Player1.get(), Player2.get());
+}
+
+void CMonopolish::Rounds(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector&amp; PSquares)
+{
+	// sets &quot;random&quot; function equal to &quot;DiceRoll&quot; variable
+	int DiceRoll = Random();
+	int LastPos = Player1-&gt;GetPosition();
+
+	// cout the diceroll number
+	cout &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; rolled: &quot; &lt;&lt; DiceRoll &lt;&lt; endl &lt;&lt; endl;
+
+	// adds the diceroll to their current position
+	int temp = LastPos + DiceRoll;
+	if (temp &gt; 25)
+	{
+		Player1-&gt;SetPosition(temp - 26);
+		PSquares[Player1-&gt;GetPosition()]-&gt;SquareGo(Player1, PSquares);
+	}
+	else { Player1-&gt;SetPosition(Player1-&gt;GetPosition() + DiceRoll); }
+
+	cout &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; has landed on: &quot; &lt;&lt; PSquares[Player1-&gt;GetPosition()]-&gt;GetSquareName();
+	
+	PSquares[Player1-&gt;GetPosition()]-&gt;SquareTask(Player1, PSquares);
+
+	// end of round output
+	cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot;'s Current total: &quot; &lt;&lt; POUND &lt;&lt; Player1-&gt;GetMoney() &lt;&lt; endl &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+}
+
+void CMonopolish::GameOver(CPlayer* Player1, CPlayer* Player2)
+{
+	// game over output
+	cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot;~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;  GAME OVER &quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;~~~~~~~~~~~~~&quot; &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+
+	// output of players and total money
+	cout &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot;|| Total: &quot; &lt;&lt; POUND &lt;&lt; Player1-&gt;GetMoney() &lt;&lt; endl;
+	cout &lt;&lt; &quot; &quot; &lt;&lt; Player2-&gt;GetName() &lt;&lt; &quot;|| Total: &quot; &lt;&lt; POUND &lt;&lt; Player2-&gt;GetMoney() &lt;&lt; endl;
+
+	// checks if player 1 wins
+	if (Player1-&gt;GetMoney() &gt; Player2-&gt;GetMoney())
+	{
+		{
+			cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;  &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; &quot; &lt;&lt; &quot;is the WINNER&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+		}
+	}
+
+	// checks if player 2 wins
+	if (Player2-&gt;GetMoney() &gt; Player1-&gt;GetMoney())
+	{
+		{
+			cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;  &quot; &lt;&lt; Player2-&gt;GetName() &lt;&lt; &quot; &quot; &lt;&lt; &quot;is the WINNER&quot; &lt;&lt; endl;
+			cout &lt;&lt; &quot;~~~~~~~~~~~~~~~~~~~~~~~~~&quot; &lt;&lt; endl;
+		}
+	}
+
+	// checks for a draw
+	if (Player1-&gt;GetMoney() == Player2-&gt;GetMoney() || Player2-&gt;GetMoney() == Player1-&gt;GetMoney())
+	{
+		cout &lt;&lt; &quot;~~~~~~~&quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot; DRAW &quot; &lt;&lt; endl;
+		cout &lt;&lt; &quot;~~~~~~~&quot; &lt;&lt; endl;
+	}
+}
+						
+						</code>
+					</pre>
+					
+					<p> CSquare </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the CSquare aspect. how they are called used etc
+
+this is the base root of all the other classes, all other classes are derived from this one class, this is why
+there are all variables that are both public and virtual,
+
+public:
+this allows other classes to have access to the base
+
+virtual:
+this allows for those same variables to be overriden by other cpp files
+
+void SquareTask function:
+this links to all other cpp files and runs their specific function to allow the monopoly game to be fully polymorphic and automated
+
+void SquareGo function:
+this is the same as whats in &quot;CGo&quot; the difference being if you pass over the square go then you still get the money and the comment, while the
+CGo is if you land directly on the square, both have the same output though
+
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CSquare.h&quot;
+
+CSquare::CSquare(istream&amp; file)
+{
+	file &gt;&gt; *this;
+	mIsOwned = false;
+	mOwningPlayer = nullptr;
+}
+CSquare::~CSquare()
+{
+}
+void CSquare::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+
+}
+void CSquare::SquareGo(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// pass go reward
+	Player1-&gt;SetMoney(Player1-&gt;GetMoney() + PassGoPayment);
+
+	// cout the above
+	cout &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; passes GO and collects &quot; &lt;&lt; POUND &lt;&lt; &quot;200&quot; &lt;&lt; endl;
+}
+
+string CSquare::GetSquareName()
+{
+	return name;
+}
+
+void CSquare::SetOwned(bool isOwned, int group)
+{
+	mIsOwned = isOwned;
+}
+bool CSquare::GetOwned()
+{
+	return mIsOwned;
+}
+
+void CSquare::SetOwner(shared_ptr&lt;CPlayer&gt; player)
+{
+	mOwningPlayer = player;
+}
+shared_ptr&lt;CPlayer&gt; CSquare::GetOwner()
+{
+	return mOwningPlayer;
+}
+	
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CSquare&amp; square)
+{
+	bool anotherWord = false;
+	int nextChar = 0;
+	do
+	{
+		string word;
+		inputStream &gt;&gt; word;
+		square.name += word;
+
+		inputStream &gt;&gt; ws;
+
+		nextChar = inputStream.peek();
+
+		anotherWord = !isdigit(nextChar) &amp;&amp; nextChar != EOF;
+
+		if (anotherWord) square.name += &quot; &quot;;
+	} while (anotherWord);
+	return inputStream;
+}
+ostream&amp; operator &lt;&lt; (ostream&amp; outputStream, const CSquare&amp; square)
+{
+	outputStream &lt;&lt; square.name;
+	return outputStream;
+}
+						
+						</code>
+					</pre>
+					
+					<p> CSquareFactory </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the SquareFactory aspect. how they are called used etc
+
+all this section does is connect the vector/array (CSquare) of information to the correct CPP files
+
+for example, if you land on a square with type 6, it is read as &quot;jail&quot; so it will run the SquareTask function in the Jail.cpp
+
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CMonopolish.h&quot;
+#include &quot;CSquareFactory.h&quot;
+#include &quot;CProperty.h&quot;
+#include &quot;CGo.h&quot;
+#include &quot;CStations.h&quot;
+#include &quot;CBonus.h&quot;
+#include &quot;CPenalty.h&quot;
+#include &quot;CJail.h&quot;
+#include &quot;CGoToJail.h&quot;
+#include &quot;CFreeParking.h&quot;
+
+unique_ptr&lt;CSquare&gt; NewSquare(ESquareType PSquares, istream&amp; file)
+{
+	unique_ptr&lt;CSquare&gt; squarePtr;
+	switch (PSquares)
+	{
+	case ESquareType::Property:
+	{
+		squarePtr = make_unique&lt;CProperty&gt;(file, 1);
+		break;
+	}
+	case ESquareType::Go:
+	{
+		squarePtr = make_unique &lt;CGo&gt;(file, 2);
+		break;
+	}
+	case ESquareType::Stations:
+	{
+		squarePtr = make_unique &lt;CStations&gt;(file, 3);
+		break;
+	}
+	case ESquareType::Bonus:
+	{
+		squarePtr = make_unique &lt;CBonus&gt;(file, 4);
+		break;
+	}
+	case ESquareType::Penalty:
+	{
+		squarePtr = make_unique &lt;CPenalty&gt;(file, 5);
+		break;
+	}
+	case ESquareType::Jail:
+	{
+		squarePtr = make_unique &lt;CJail&gt;(file, 6);
+		break;
+	}
+	case ESquareType::GoToJail:
+	{
+		squarePtr = make_unique &lt;CGoToJail&gt;(file, 7);
+		break;
+	}
+	case ESquareType::FreeParking:
+	{
+		squarePtr = make_unique &lt;CFreeParking&gt;(file, 8);
+		break;
+	}
+	default:
+		cout &lt;&lt; &quot;COSMIC ERRROR!&quot;;
+	}
+	return squarePtr;
+}
+						
+						</code>
+					</pre>
+					
+					<p> CBonus </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on bonuses. how they are called used etc
+
+Void SquareTask function:
+this function provides what needs to happen for the Get bonus to work. i.e.
+- rolls a dice
+- send the dice number to Getbonus
+- output the dice number
+
+GetBonus function:
+this function has a list of rewards based on what the dice roll is, once the dice roll has been recieved
+the matching number in terms of what is rolled is output to the console and the changes applied to the player
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CBonus.h&quot;
+
+CBonus::CBonus(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+}
+CBonus::~CBonus()
+{
+}
+void CBonus::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// random dice roll for reward
+	int rollDiceAgain = static_cast&lt;int&gt;(static_cast&lt;double&gt; (rand()) / (RAND_MAX + 1) * 6.0f + 1);
+
+	cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; rolled: &quot; &lt;&lt; rollDiceAgain;
+
+	float BonusPrice = this-&gt;GetBonus(rollDiceAgain);
+	Player1-&gt;SetMoney(Player1-&gt;GetMoney() + BonusPrice);
+}
+
+int CBonus::GetType()
+{
+	return mSquareType;
+}
+float CBonus::GetCost()
+{
+	return Null;
+}
+float CBonus::GetRent()
+{
+	return Null;
+}
+
+float CBonus::GetBonus(int diceRoll)
+{
+	float price = 0.0f;
+
+	switch (diceRoll)
+	{
+		case 1:
+			cout &lt;&lt; endl &lt;&lt; &quot; Find some money.&quot; &lt;&lt; endl &lt;&lt; &quot; Gain &quot; &lt;&lt; POUND &lt;&lt; &quot;20&quot;;
+			price = 20.0f;
+			break;
+
+		case 2:
+			cout &lt;&lt; endl &lt;&lt; &quot; Win a coding competition.&quot; &lt;&lt; endl &lt;&lt; &quot; Gain &quot; &lt;&lt; POUND &lt;&lt; &quot;50&quot;;
+			price = 50.0f;
+			break;
+
+		case 3:
+			cout &lt;&lt; endl &lt;&lt; &quot; Receive a rent rebate.&quot; &lt;&lt; endl &lt;&lt; &quot; Gain &quot; &lt;&lt; POUND &lt;&lt; &quot;100 &quot;;
+			price = 100.0f;
+			break;
+
+		case 4:
+			cout &lt;&lt; endl &lt;&lt; &quot; Win the lottery.&quot; &lt;&lt; endl &lt;&lt; &quot; Gain &quot; &lt;&lt; POUND &lt;&lt; &quot;150&quot;;
+			price = 150.0f;
+			break;
+
+		case 5:
+			cout &lt;&lt; endl &lt;&lt; &quot; Sell your iPad.&quot; &lt;&lt; endl &lt;&lt; &quot; Gain &quot; &lt;&lt; char(156) &lt;&lt; &quot;200&quot;;
+			price = 200.0f;
+			break;
+
+		case 6:
+			cout &lt;&lt; endl &lt;&lt; &quot; It's your birthday.&quot; &lt;&lt; endl &lt;&lt; &quot; Gain &quot; &lt;&lt; char(156) &lt;&lt; &quot;300&quot;;
+			price = 300.0f;
+			break;
+
+		default:
+			break;
+	}
+	return price;
+}
+float CBonus::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CBonus::GetColourGroup()
+{
+	return Null;
+}
+bool CBonus::GroupOwned(int group)
+{
+	return true;
+}
+
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CBonus&amp; bonus)
+{
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					<p> CFreeParking </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the FreeParking aspect. how they are called used etc
+
+Void SquareTask function:
+this function provides what needs to happen when you land on the free parking square which is very simple
+it gets the players name and outputs &quot;they are resting&quot; as this is its only purpose
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CFreeParking.h&quot;
+#include &quot;Cplayer.h&quot;
+
+CFreeParking::CFreeParking(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+}
+CFreeParking::~CFreeParking()
+{
+}
+void CFreeParking::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; is resting&quot;;
+}
+
+int CFreeParking::GetType()
+{
+	return mSquareType;
+}
+float CFreeParking::GetCost()
+{
+	return Null;
+}
+float CFreeParking::GetRent()
+{
+	return Null;
+}
+
+float CFreeParking::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CFreeParking::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CFreeParking::GetColourGroup()
+{
+	return Null;
+}
+bool CFreeParking::GroupOwned(int group)
+{
+	return true;
+}
+
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CFreeParking&amp; freeParking)
+{
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					<p> CGo </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the Go aspect. how they are called used etc
+
+Void SquareGo function:
+this function provides what needs to happen when the player has landed on CGo. this is a very basic, it simply states that when the player
+has landed on the square the the player collects $200 and output the same message
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CGo.h&quot;
+
+CGo::CGo(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+}
+CGo::~CGo()
+{
+}
+void CGo::SquareGo(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// pass go reward
+	Player1-&gt;SetMoney(Player1-&gt;GetMoney() + PassGoPayment);
+
+	// cout the above
+	cout &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; passes GO and collects &quot; &lt;&lt; POUND &lt;&lt; &quot;200&quot; &lt;&lt; endl;
+}
+
+float CGo::GetRent()
+{
+	return Null;
+}
+float CGo::GetCost()
+{
+	return Null;
+}
+int CGo::GetType()
+{
+	return mSquareType;
+}
+
+float CGo::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CGo::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CGo::GetColourGroup()
+{
+	return Null;
+}
+bool CGo::GroupOwned(int group)
+{
+	return true;
+}
+
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CGo&amp; go)
+{
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> CGoToJail </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the GoToJail aspect. how they are called used etc
+
+Void SquareTask function:
+this function provides what needs to happen when the player has landed on go to jail. this is a very simple premis for the monopoly game.
+if you land on go to jail then your players position is moved to the jail square and the player also pays a fine of $50, all of this is 
+outputted in the console
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CGoToJail.h&quot;
+
+CGoToJail::CGoToJail(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+}
+CGoToJail::~CGoToJail()
+{
+}
+void CGoToJail::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// changes position to be in jail
+	Player1-&gt;SetPosition(6);
+
+	// removes money for bail
+	Player1-&gt;SetMoney(Player1-&gt;GetMoney() - JailPayment);
+
+	// cout the above
+	cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; &quot; &lt;&lt; this-&gt;GetSquareName();
+	cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; pays: &quot; &lt;&lt; POUND &lt;&lt; &quot;50&quot;;
+}
+
+int CGoToJail::GetType()
+{
+	return mSquareType;
+}
+float CGoToJail::GetCost()
+{
+	return Null;
+}
+float CGoToJail::GetRent()
+{
+	return Null;
+}
+
+float CGoToJail::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CGoToJail::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CGoToJail::GetColourGroup()
+{
+	return Null;
+}
+bool CGoToJail::GroupOwned(int group)
+{
+	return true;
+}
+
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CGoToJail&amp; goToJail)
+{
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					<p> CJail </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the jail aspect. how they are called used etc
+
+Void SquareTask function:
+this function provides what needs to happen when you land on the jail square which is very simple
+it gets the players name and outputs &quot;they are visiting&quot; as this is its only purpose
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CJail.h&quot;
+
+CJail::CJail(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+}
+CJail::~CJail()
+{
+}
+void CJail::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; is just visiting&quot;;
+}
+
+int CJail::GetType()
+{
+	return mSquareType;
+}
+float CJail::GetCost()
+{
+	return Null;
+}
+float CJail::GetRent()
+{
+	return Null;
+}
+
+float CJail::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CJail::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CJail::GetColourGroup()
+{
+	return Null;
+}
+bool CJail::GroupOwned(int group)
+{
+	return true;
+}
+
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CJail&amp; jail)
+{
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					<p> CPenalty </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the penalty aspect. how they are called used etc
+
+Void SquareTask function:
+this function provides what needs to happen for the GetPenalty to work. i.e.
+- rolls a dice
+- send the dice number to GetPenalty
+- output the dice number
+
+GetPenalty function:
+this function has a list of penalties based on what the dice roll is, once the dice roll has been recieved
+the matching number in terms of what is rolled is output to the console and the changes applied to the player
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CPenalty.h&quot;
+
+CPenalty::CPenalty(istream&amp; file, int type) : CSquare(file) 
+{
+	file &gt;&gt; *this;
+	mSquareType = type; 
+}
+CPenalty::~CPenalty()
+{
+}
+void CPenalty::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// random dice roll for penalty
+	int rollDiceAgain = static_cast&lt;int&gt;(static_cast&lt;double&gt; (rand()) / (RAND_MAX + 1) * 6.0f + 1);
+
+	cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; rolled: &quot; &lt;&lt; rollDiceAgain;
+
+	float penaltyPrice = this-&gt;GetPenalty(rollDiceAgain);
+	Player1-&gt;SetMoney(Player1-&gt;GetMoney() - penaltyPrice);
+}
+
+int CPenalty::GetType()
+{
+	return mSquareType;
+}
+float CPenalty::GetCost()
+{
+	return Null;
+}
+float CPenalty::GetRent()
+{
+	return Null;
+}
+
+float CPenalty::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CPenalty::GetPenalty(int diceRoll)
+{
+	float price = 0.0f; 
+
+	switch (diceRoll)
+	{
+	case 1:
+		cout &lt;&lt; endl &lt;&lt; &quot; Buy a coffee in Starbucks.&quot; &lt;&lt; endl &lt;&lt; &quot; Lose &quot; &lt;&lt; POUND &lt;&lt; &quot;20&quot;;
+		price = 20.0f;
+		break;
+
+	case 2:
+		cout &lt;&lt; endl &lt;&lt; &quot; Pay your broadband bill.&quot; &lt;&lt; endl &lt;&lt; &quot; Lose &quot; &lt;&lt; POUND &lt;&lt; &quot;50&quot;;
+		price = 50.0f;
+		break;
+
+	case 3:
+		cout &lt;&lt; endl &lt;&lt; &quot; Visit the SU shop for food.&quot; &lt;&lt; endl &lt;&lt; &quot; Lose &quot; &lt;&lt; POUND &lt;&lt; &quot;100 &quot;;
+		price = 100.0f;
+		break;
+
+	case 4:
+		cout &lt;&lt; endl &lt;&lt; &quot; Buy an assignment solution.&quot; &lt;&lt; endl &lt;&lt; &quot; Lose &quot; &lt;&lt; POUND &lt;&lt; &quot;150&quot;;
+		price = 150.0f;
+		break;
+
+	case 5:
+		cout &lt;&lt; endl &lt;&lt; &quot; Go for a romantic meal.&quot; &lt;&lt; endl &lt;&lt; &quot; Lose &quot; &lt;&lt; POUND &lt;&lt; &quot;200&quot;;
+		price = 200.0f;
+		break;
+
+	case 6:
+		cout &lt;&lt; endl &lt;&lt; &quot; Pay some university fees.&quot; &lt;&lt; endl &lt;&lt; &quot; Lose &quot; &lt;&lt; POUND &lt;&lt; &quot;300&quot;;
+		price = 300.0f;
+		break;
+
+	default:
+		break;
+	}
+	return price;
+}
+
+int CPenalty::GetColourGroup()
+{
+	return Null;
+}
+bool CPenalty::GroupOwned(int group)
+{
+	return true;
+}
+
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CPenalty&amp; penalty)
+{
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> CPlayer </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the player aspect. how they are called used etc
+
+here is where all the players information is stored, this includes:
+- name
+- position
+- amount of money
+each of these functions have &quot;setters&quot; &amp; &quot;getters&quot;, all this means is that when a player moves onto a square other programs will say your set in this positition
+and when that position is needed later the &quot;getter&quot; will give that information back
+
+this similarly works with money and name.
+
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CPlayer.h&quot;
+
+CPlayer::CPlayer()
+{
+	mName = &quot;&quot;; 
+	mMoney = 0;
+	mPosition = 0;
+}
+CPlayer::CPlayer(string name, float money, int position)
+{
+	mName = name;
+	mMoney = money;
+	mPosition = position;
+}
+CPlayer::~CPlayer()
+{
+}
+
+void CPlayer::SetName(string name)
+{
+	mName = name;
+}
+string CPlayer::GetName()
+{
+	return mName;
+}
+
+void CPlayer::SetMoney(float money)
+{
+	mMoney = money;
+}
+float CPlayer::GetMoney()
+{
+	return mMoney;
+}
+
+void CPlayer::SetPosition(int position)
+{
+	mPosition = position;
+}
+int CPlayer::GetPosition()
+{
+	return mPosition;
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> CProperty </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the property aspect. how they are called used etc
+
+there are alot of functions and variables that take place here
+
+
+void SquareTask function:
+this function allows the player to know multiple things like the square name, type, cost etc
+it also allows you to buy the property and to gain money when someone else stands on the square and you own it
+
+get type
+- tells you the type of square your on
+
+get cost
+- reads the file and tells you how must the square your currently on costs
+
+get rent
+- reads the file and tells you how much you must pay rent if you land on the square and its not yours
+
+get colour group
+- checks what property is what colour
+
+group owned
+- this checks if you own certain colour grouped squares
+
+set owned
+- this sets the property you own with the corresponding colour
+
+get owned
+- this states if you have all the colours of the property group which can double rent later on
+
+set owner
+-  this sets the property to the player (this is used for purchasing)
+
+get owner
+- this gets player of the property a player landed on (this is used for rent)
+
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CProperty.h&quot;
+
+CProperty::CProperty(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+
+	mRedGroup = 0;
+	mGreyGroup = 0;
+	mBrownGroup = 0;
+	mOrangeGroup = 0;
+	mYellowGroup = 0;
+	mGreenGroup = 0;
+	mBlueGroup = 0;
+	mPurpleGroup = 0;
+}
+CProperty::~CProperty()
+{
+}
+void CProperty::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// checks if they have enough money to buy the property
+	if (!this-&gt;GetOwned() &amp;&amp; Player1-&gt;GetMoney() &gt; 0)
+	{
+		// changes property to owned by the player
+		this-&gt;SetOwned(true, this-&gt;GetColourGroup());
+		this-&gt;SetOwner(Player1);
+
+		// deducts the property price from the player
+		Player1-&gt;SetMoney(Player1-&gt;GetMoney() - this-&gt;GetCost());
+
+		// cout the above
+		cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() + &quot; purchased &quot; + this-&gt;GetSquareName() &lt;&lt; endl
+			&lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() + &quot; spent: &quot; &lt;&lt; POUND &lt;&lt; this-&gt;GetCost();
+	}
+
+
+	shared_ptr&lt;CPlayer&gt; owner;
+	if (this-&gt;GetOwned())
+	{
+		owner = this-&gt;GetOwner();
+	}
+
+	// checks if the property is owned by yourself
+	if (this-&gt;GetOwned() &amp;&amp; owner != Player1)
+	{
+		// says who the property is owned by
+		cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; this-&gt;GetSquareName() &lt;&lt; &quot; already owned by: &quot; &lt;&lt; owner-&gt;GetName();
+		// checks if the colour group is owned
+		if (this-&gt;GroupOwned(this-&gt;GetColourGroup()))
+		{
+			// doubles rent payment
+			owner-&gt;SetMoney(owner-&gt;GetMoney() + (this-&gt;GetRent() * 2));
+			Player1-&gt;SetMoney(Player1-&gt;GetMoney() - (this-&gt;GetRent() * 2));
+
+			// cout the above
+			cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; pays &quot; &lt;&lt; POUND &lt;&lt; this-&gt;GetRent() *2 &lt;&lt; &quot; rent to &quot; &lt;&lt; this-&gt;GetOwner()-&gt;GetName();
+		}
+		{
+			// normal rent payment
+			owner-&gt;SetMoney(owner-&gt;GetMoney() + this-&gt;GetRent());
+			Player1-&gt;SetMoney(Player1-&gt;GetMoney() - this-&gt;GetRent());
+
+			// cout the above
+			cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; pays &quot; &lt;&lt; POUND &lt;&lt; this-&gt;GetRent() &lt;&lt; &quot; rent to &quot; &lt;&lt; this-&gt;GetOwner()-&gt;GetName();
+		}
+	}
+}
+	
+int CProperty::GetType()
+{
+	return mSquareType;
+}
+float CProperty::GetCost()
+{
+	return mSquareCost;
+}
+float CProperty::GetRent()
+{
+	return mSquareRent;
+}
+
+float CProperty::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CProperty::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CProperty::GetColourGroup()
+{
+	return mColourGroup;
+}
+bool CProperty::GroupOwned(int group)
+{
+
+	switch (group)
+	{
+	case 0:
+		if (mRedGroup &gt;= 2)
+		{
+			return true;
+		}
+		break;
+
+	case 1:
+		if (mGreyGroup &gt;= 2)
+		{
+			return true;
+		}
+		break;
+
+	case 2:
+		if (mBrownGroup &gt;= 2)
+		{
+			return true;
+		}
+		break;
+
+	case 3:
+		if (mOrangeGroup &gt;= 3)
+		{
+			return true;
+		}
+		break;
+
+	case 4:
+		if (mYellowGroup &gt;= 2)
+		{
+			return true;
+		}
+		break;
+
+	case 5:
+		if (mGreenGroup &gt;= 2)
+		{
+			return true;
+		}
+		break;
+
+	case 6:
+		if (mBlueGroup &gt;= 3)
+		{
+			return true;
+		}
+		break;
+
+	case 7:
+		if (mPurpleGroup &gt;= 2)
+		{
+			return true;
+		}
+		break;
+
+	}
+
+	return false;
+}
+
+void CProperty::SetOwned(bool isOwned, int group)
+{
+	switch (group)
+	{
+	case 0:
+		if (group == 0)
+		{
+			mRedGroup++;
+		}
+		break;
+
+	case 1:
+		if (group == 1)
+		{
+			mGreyGroup++;
+		}
+		break;
+
+	case 2:
+		if (group == 2)
+		{
+			mBrownGroup++;
+		}
+		break;
+
+	case 3:
+		if (group == 3)
+		{
+			mOrangeGroup++;
+		}
+		break;
+
+	case 4:
+		if (group == 4)
+		{
+			mYellowGroup++;
+		}
+		break;
+
+	case 5:
+		if (group == 5)
+		{
+			mGreenGroup++;
+		}
+		break;
+
+	case 6:
+		if (group == 6)
+		{
+			mBlueGroup++;
+		}
+		break;
+
+	case 7:
+		if (group == 7)
+		{
+			mBlueGroup++;
+		}
+		break;
+	}
+
+	mIsOwned = isOwned;
+}
+bool CProperty::GetOwned()
+{
+	return mIsOwned;
+}
+
+void CProperty::SetOwner(shared_ptr&lt;CPlayer&gt; Player)
+{
+	mOwningPlayer = Player;
+}
+shared_ptr&lt;CPlayer&gt; CProperty::GetOwner()
+{
+	return mOwningPlayer;
+}
+	
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CProperty&amp; property)
+{
+	inputStream &gt;&gt;
+		property.mSquareCost &gt;&gt;
+		property.mSquareRent &gt;&gt;
+		property.mColourGroup;
+
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> CSations </p>
+					<pre>
+						<code>
+						
+// LUKE.P.GATEHOUSE 
+// C++ ADVANCED PROGRAMMING ASSIGNMENT 
+// MONOPOLISH (MONOPOLOY)
+
+// COMMENTS
+/***********************************/
+/*
+this file focuses on the Stations aspect. how they are called used etc
+
+there are alot of functions and variables that take place here
+
+
+void SquareTask function:
+this function allows the player to know multiple things like the square name, type, cost etc
+it also allows you to buy the station and to gain money when someone else stands on the square and you own it
+
+get type
+- tells you the type of square your on
+
+get cost
+- reads the file and tells you how must the square your currently on costs
+
+get rent
+- reads the file and tells you how much you must pay rent if you land on the square and its not yours
+
+set owner
+-  this sets the property to the player (this is used for purchasing)
+
+get owner
+- this gets player of the property a player landed on (this is used for rent)
+
+
+other &quot;ints&quot; &quot;floats&quot; &quot;bools&quot; etc are called due to the base class being CSquare, although they dont do anything they need to be part of the public
+*/
+/***********************************/
+
+#pragma once
+#include &quot;CStations.h&quot;
+
+CStations::CStations(istream&amp; file, int type) : CSquare(file)
+{
+	file &gt;&gt; *this;
+	mSquareType = type;
+}
+CStations::~CStations()
+{
+}
+void CStations::SquareTask(shared_ptr&lt;CPlayer&gt; Player1, CSquareVector PSquares)
+{
+	// checks if they have enough money to buy the station
+	if (!this-&gt;GetOwned() &amp;&amp; Player1-&gt;GetMoney() &gt; 0)
+	{
+		// changes property to owned by the player
+		this-&gt;SetOwned(true, this-&gt;GetColourGroup());
+		this-&gt;SetOwner(Player1);
+
+		// deducts the station price from the player
+		Player1-&gt;SetMoney(Player1-&gt;GetMoney() - this-&gt;GetCost());
+
+		// cout the above
+		cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() + &quot; purchased &quot; + this-&gt;GetSquareName() &lt;&lt; endl
+			&lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() + &quot; spent: &quot; &lt;&lt; POUND &lt;&lt; this-&gt;GetCost() &lt;&lt; endl;
+	}
+
+
+	shared_ptr&lt;CPlayer&gt; owner;
+	if (this-&gt;GetOwned())
+	{
+		owner = this-&gt;GetOwner();
+	}
+
+	// checks if the station is owned by yourself
+	if (this-&gt;GetOwned() &amp;&amp; owner != Player1)
+	{
+		cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; this-&gt;GetSquareName() &lt;&lt; &quot; already owned by: &quot; &lt;&lt; owner-&gt;GetName();
+
+		// ticket payment
+		owner-&gt;SetMoney(owner-&gt;GetMoney() + this-&gt;GetRent());
+		Player1-&gt;SetMoney(Player1-&gt;GetMoney() - this-&gt;GetRent());
+
+		// cout the above
+		cout &lt;&lt; endl &lt;&lt; &quot; &quot; &lt;&lt; Player1-&gt;GetName() &lt;&lt; &quot; pays &quot; &lt;&lt; POUND &lt;&lt; this-&gt;GetRent()
+			&lt;&lt; &quot; ticket to &quot; &lt;&lt; this-&gt;GetOwner()-&gt;GetName() &lt;&lt; endl;
+	}
+}
+
+int CStations::GetType()
+{
+	return mSquareType;
+}
+float CStations::GetCost()
+{
+	return mSquareCost;
+}
+float CStations::GetRent()
+{
+	return mSquareRent;
+}
+
+float CStations::GetBonus(int diceRoll)
+{
+	return Null;
+}
+float CStations::GetPenalty(int diceRoll)
+{
+	return Null;
+}
+
+int CStations::GetColourGroup()
+{
+	return Null;
+}
+bool CStations::GroupOwned(int group)
+{
+	return true;
+}
+
+void CStations::SetOwned(bool isOwned, int group)
+{
+	mIsOwned = isOwned;
+}
+bool CStations::GetOwned()
+{
+	return mIsOwned;
+}
+
+void CStations::SetOwner(shared_ptr&lt;CPlayer&gt; Player)
+{
+	mOwningPlayer = Player;
+}
+shared_ptr&lt;CPlayer&gt; CStations::GetOwner()
+{
+	return mOwningPlayer;
+}
+	
+istream&amp; operator &gt;&gt; (istream&amp; inputStream, CStations&amp; station)
+{
+	inputStream &gt;&gt;
+		station.mSquareCost &gt;&gt;
+		station.mSquareRent;
+		
+
+	return inputStream;
+}
+						
+						</code>
+					</pre>
+					
+					
+
+					
+					
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+	</body>
+</html>
