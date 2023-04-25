@@ -1241,3 +1241,13 @@ a:hover {
   display: block;
   box-sizing: border-box;
 }
+
+iframes{
+	
+	height: 800px; 
+	width: 100%;
+	frameBorder: 0;
+	position: absolute;
+	overflow: auto!important;
+	-webkit-overflow-scrolling: touch!important;
+}
