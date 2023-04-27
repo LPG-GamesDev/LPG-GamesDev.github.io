@@ -1,0 +1,1111 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../../style.css">
+	
+	<title>Smart Building</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#About" 														class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../../index.html" 											class="bar-item button padding-large">Home</a>
+					<a href="../../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../../index.html" 	 												class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../../Uni.html" 			 											class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" id="About" style="display:block; margin-top:80px;">
+		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
+			<div align="center">
+				<div class="section-content" style="display: table-cell; vertical-align: middle;">
+					<span class="title--med title" align="center">Smart Building</span>
+				</div>
+			
+				<table style="margin: auto;">
+					<tbody>
+						<tr>
+							<td>
+								<strong><a> Project Type: </a></strong>
+							</td>
+							<td>
+								<a> University </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Software/Engine:  </a></strong>
+							</td>
+							<td>
+								<a> CLI (CommandLine & Visual Studio) </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Language:  </a></strong>
+							</td>
+							<td>
+								<a> C# </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="section-desc">
+					<span class="text">
+						<p>
+							The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+						</p>
+				
+						<p align="center">
+							<a href="https://github.com/LPG-GamesDev/uni-Year-2-CO2401-Software-Development" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-2-CO2401-Software-Development </a>
+						</p>
+					</span>
+				</div>
+				
+			</div>		
+	
+		</div>	
+	
+		<div align="center" style="margin-left:5%; margin-right:5%;" >
+		
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../Video/SmartBuildingVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<iframe src="https://drive.google.com/file/d/1Y3p0yM0o-Xr3jHX7AQpK2Dml5phPPFrb/preview?usp=sharing" frameBorder="0" scrolling="yes" height="800px" width="100%"></iframe>
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+using software_dev_assignment;
+using System;
+using NUnit.Framework;
+using NSubstitute;
+
+namespace software_dev_assignment_test
+{
+    [TestFixture]
+    public class BuildingControllerTests
+    {
+        #region PRIVATE Methods
+
+        string Test = &quot;&quot;;
+
+        private IDoorManager                        MS_doorManager;
+        private IEmailService                       MS_emailService;
+        private IFireAlarmManager                   MS_fireAlarmManager;
+        private ILightManager                       MS_lightManager;
+        private IWebService                         MS_webService;
+
+        private BuildingController                  MS_buildingController;
+
+        private const string ClosedState            = &quot;closed&quot;;
+        private const string Out_Of_Hours_State     = &quot;out of hours&quot;;
+        private const string OpenState              = &quot;open&quot;;
+        private const string FireDrill_State        = &quot;fire drill&quot;;
+        private const string FireAlarm_State        = &quot;fire alarm&quot;;
+
+        [SetUp]
+        public void Setup()
+        {
+            //Mock Setup
+            MS_doorManager                          = Substitute.For&lt;IDoorManager&gt;();
+            MS_emailService                         = Substitute.For&lt;IEmailService&gt;();
+            MS_lightManager                         = Substitute.For&lt;ILightManager&gt;();
+            MS_fireAlarmManager                     = Substitute.For&lt;IFireAlarmManager&gt;();
+            MS_webService                           = Substitute.For&lt;IWebService&gt;();
+        }
+
+        #endregion
+
+        #region LEVEL 1
+
+        #region L1R1 &amp; L1R2
+
+        [TestCase(&quot;&quot;)]
+        public void ID_Passed_Constructor(string ID)
+        {
+            // Arrange
+            BuildingController bc = new BuildingController(ID);
+
+            // Act
+            string Result_1 = bc.GetBuildingID();
+
+            // Assert
+            Assert.AreEqual(Result_1, ID);
+        }
+
+        #endregion
+
+        #region L1R3 &amp; L1R4
+
+        [TestCase(&quot;Case Change&quot;)]
+        public void ID_Passed_Constructor____CaseChange(string ID)
+        {
+            string ID_Lower = &quot;zxcvbnm&quot;;
+            string ID_Upper = &quot;ZXCVBNM&quot;;
+
+            // Arrange
+            BuildingController bc = new BuildingController(ID_Upper);
+
+            // Act
+            string Result_2 = bc.GetBuildingID();
+
+            // Assert
+            Assert.AreEqual(Result_2, ID_Lower);
+        }
+
+        #endregion
+
+        #region L1R5
+
+        [TestCase(&quot;out of hours&quot;)]
+        public void GetCurrentState____Valid(string ID)
+        {
+            // Arrange
+            BuildingController bc = new BuildingController(ID);
+
+            // Act
+            string Result_3 = bc.GetCurrentState();
+
+            // Assert
+            Assert.AreEqual(Result_3, ID);
+        }
+
+        [TestCase(&quot;In hours&quot;)]
+        public void GetCurrentState____Invalid(string ID)
+        {
+            //Arrange
+            BuildingController bc = new BuildingController(ID);
+
+            // Act
+            string Result_4 = bc.GetCurrentState();
+
+            //Assert
+            Assert.AreNotEqual(Result_4, ID);
+        }
+
+        #endregion
+
+        #region L1R6
+
+        [TestCase(&quot;open&quot;)]
+        [TestCase(&quot;closed&quot;)]
+        public void GetCurrentState(string ID)
+        {
+            //Arrange
+            BuildingController bc = new BuildingController(ID);
+
+            // Act
+            string Result_5 = bc.GetCurrentState();
+
+            //Assert
+            Assert.AreNotEqual(Result_5, ID);
+        }
+
+        #endregion
+
+        #region L1R7
+
+        [TestCase(&quot;open&quot;)]
+        [TestCase(&quot;closed&quot;)]
+        [TestCase(&quot;out of hours&quot;)]
+        [TestCase(&quot;fire alarm&quot;)]
+        [TestCase(&quot;fire drill&quot;)]
+        public void SetCurrentState____Vaild(string State)
+        {
+            //Arrange
+            BuildingController bc = new BuildingController(Test);
+
+            // Act
+            bool Result_6 = bc.SetCurrentState(State);
+
+            //Assert
+            Assert.IsTrue(Result_6);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region LEVEL 2
+
+        #region L2R1
+
+        [Test]
+        // change state valid
+        [TestCase(&quot;open&quot;, &quot;out of hours&quot;)]
+        [TestCase(&quot;open&quot;, &quot;fire alarm&quot;)]
+        [TestCase(&quot;open&quot;, &quot;fire drill&quot;)]
+
+        [TestCase(&quot;closed&quot;, &quot;out of hours&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;fire alarm&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;fire drill&quot;)]
+
+        [TestCase(&quot;out of hours&quot;, &quot;open&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;fire alarm&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;fire drill&quot;)]
+
+        [TestCase(&quot;cloSEd&quot;, &quot;fiRe drill&quot;)]
+        [TestCase(&quot;OpEn&quot;, &quot;OuT Of HoUrS&quot;)]
+        public void SetCurrentState____2Part_Change____Valid(string FirstState, string SecondState)
+        {
+            //Arrange
+            MS_buildingController = new BuildingController(Test, FirstState);
+
+            //Act
+            MS_buildingController.SetCurrentState(SecondState);
+            var Result = MS_buildingController.GetCurrentState();
+
+            //Assert
+            Assert.AreEqual(Result, SecondState.ToLower());
+        }
+
+        // change state invalid
+        [TestCase(&quot;open&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;open&quot;)]
+
+        [TestCase(&quot;fire alarm&quot;, &quot;fire drill&quot;)]
+        [TestCase(&quot;fire drill&quot;, &quot;fire alarm&quot;)]
+        public void SetCurrentState____2Part_Change____Invalid(string FirstState, string SecondState)
+        {
+
+            //Arrange
+            MS_buildingController = new BuildingController(Test);
+            MS_buildingController.SetCurrentState(FirstState);
+
+            //Act
+            MS_buildingController.SetCurrentState(SecondState);
+            var result = MS_buildingController.GetCurrentState();
+
+            //Assert
+            Assert.AreNotEqual(result, SecondState.ToLower());
+        }
+
+        // 3 part valid
+        [TestCase(&quot;open&quot;, &quot;fire alarm&quot;, &quot;open&quot;)]
+        [TestCase(&quot;open&quot;, &quot;fire drill&quot;, &quot;open&quot;)]
+
+        [TestCase(&quot;closed&quot;, &quot;fire alarm&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;fire drill&quot;, &quot;closed&quot;)]
+
+        [TestCase(&quot;out of hours&quot;, &quot;fire alarm&quot;, &quot;out of hours&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;fire drill&quot;, &quot;out of hours&quot;)]
+        public void SetCurrentState____3Part_Change____valid(string FirstState, string SecondState, string ThirdState)
+        {
+            //Arrange
+            MS_buildingController = new BuildingController(Test, FirstState);
+            MS_buildingController.SetCurrentState(SecondState);
+
+            //Act
+            MS_buildingController.SetCurrentState(ThirdState);
+            var result = MS_buildingController.GetCurrentState();
+
+            //Assert
+            Assert.AreEqual(result, ThirdState.ToLower());
+        }
+
+        // 3 part invalid
+        [TestCase(&quot;open&quot;, &quot;fire alarm&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;open&quot;, &quot;fire alarm&quot;, &quot;out of hours&quot;)]
+        [TestCase(&quot;open&quot;, &quot;fire drill&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;open&quot;, &quot;fire drill&quot;, &quot;out of hours&quot;)]
+
+        [TestCase(&quot;closed&quot;, &quot;fire alarm&quot;, &quot;open&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;fire alarm&quot;, &quot;out of hours&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;fire drill&quot;, &quot;open&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;fire drill&quot;, &quot;out of hours&quot;)]
+
+        [TestCase(&quot;out of hours&quot;, &quot;fire alarm&quot;, &quot;open&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;fire alarm&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;fire drill&quot;, &quot;open&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;fire drill&quot;, &quot;closed&quot;)]
+        public void SetCurrentState____3Part_Change____Invalid(string FirstState, string SecondState, string ThirdState)
+        { 
+            //Arrange
+            MS_buildingController = new BuildingController(Test, FirstState);
+            MS_buildingController.SetCurrentState(SecondState);
+
+            //Act
+            MS_buildingController.SetCurrentState(ThirdState);
+            var result = MS_buildingController.GetCurrentState();
+
+            //Assert
+            Assert.AreNotEqual(result, ThirdState.ToLower());
+        }
+
+        #endregion
+
+        #region L2R2
+
+        // same state 
+        [TestCase(&quot;open&quot;, &quot;open&quot;)]
+        [TestCase(&quot;closed&quot;, &quot;closed&quot;)]
+        [TestCase(&quot;out of hours&quot;, &quot;out of hours&quot;)]
+        [TestCase(&quot;fire alarm&quot;, &quot;fire alarm&quot;)]
+        [TestCase(&quot;fire drill&quot;, &quot;fire drill&quot;)]
+        public void SetCurrentState____SS(string FirstState, string SecondState)
+        {
+            //Arrange
+            MS_buildingController = new BuildingController(Test);
+            MS_buildingController.SetCurrentState(FirstState);
+
+            //Act
+            MS_buildingController.SetCurrentState(SecondState);
+            var result = MS_buildingController.GetCurrentState();
+
+            //Assert
+            Assert.AreEqual(result, SecondState);
+        }
+
+        #endregion
+
+        #region L2R3
+
+        [Test]
+        public void Check_constructor_accepts_FA()
+        {
+            //Arrange
+
+            //Act
+            Exception ex = Assert.Throws&lt;ArgumentException&gt;(() =&gt; MS_buildingController = new BuildingController(Test, FireAlarm_State));
+
+            //Assert
+            Assert.That(ex.Message, Is.EqualTo(&quot;Argument Exception: BuildingController can only be initialised to the following states 'open', 'closed', 'out of hours'&quot;));
+
+        }
+
+        #endregion
+
+        #endregion
+
+        #region LEVEL 3
+
+        #region L3R2
+        [Test]
+        // check light manager class
+        public void GetStatus____LMC()
+        {
+            //Arrange
+            MS_lightManager.GetStatus().Returns(&quot;Lights,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+
+            //Act
+            var result = MS_lightManager.GetStatus();
+
+            //Assert
+            Assert.AreEqual(result, &quot;Lights,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+        }
+        
+        [Test]
+        // check door manager class
+        public void GetStatus____DMC()
+        {
+            //Arrange
+            MS_doorManager.GetStatus().Returns(&quot;Doors,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+
+            //Act
+            var result = MS_doorManager.GetStatus();
+
+            //Assert
+            Assert.AreEqual(result, &quot;Doors,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+
+        }
+        
+        [Test]
+        // check fire alarm manager class
+        public void GetStatus____FAMC()
+        {
+            //Arrange
+            MS_fireAlarmManager.GetStatus().Returns(&quot;FireAlarm,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+
+            //Act
+            var result = MS_fireAlarmManager.GetStatus();
+
+            //Assert
+            Assert.AreEqual(result, &quot;FireAlarm,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+        }
+
+        #endregion
+
+        #region L3R3
+
+        [Test]
+        // check get status report
+        public void GetStatus____GSR()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test,
+                    MS_lightManager, 
+                    MS_fireAlarmManager,
+                    MS_doorManager,
+                    MS_webService, 
+                    MS_emailService
+                );
+
+            MS_lightManager.GetStatus().Returns(&quot;Lights,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+            MS_fireAlarmManager.GetStatus().Returns(&quot;FireAlarm,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+            MS_doorManager.GetStatus().Returns(&quot;Doors,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+
+            //Act
+            var result = MS_buildingController.GetStatusReport();
+
+            //Assert
+            Assert.AreEqual(result, &quot;Lights,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,Doors,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,FireAlarm,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,&quot;);
+        }
+
+        #endregion
+
+        #region L3R4
+        [Test]
+        // current state, open while open all doors 
+        public void SetCurrentState____open_while_OAD____false()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test,
+                    MS_lightManager,
+                    MS_fireAlarmManager,
+                    MS_doorManager,
+                    MS_webService,
+                    MS_emailService
+                );
+
+            MS_doorManager.OpenAllDoors().Returns(false);
+
+            //Act
+            var result = MS_buildingController.SetCurrentState(OpenState);
+
+            //Assert
+            Assert.AreEqual(result, false);
+        }
+        #endregion
+
+        #region L3R5
+
+        [Test]
+        // current state, open while open all doors 
+        public void SetCurrentState____open_while_OAD____True()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test,
+                    MS_lightManager, 
+                    MS_fireAlarmManager, 
+                    MS_doorManager, 
+                    MS_webService, 
+                    MS_emailService
+                );
+
+            MS_doorManager.OpenAllDoors().Returns(true);
+
+            //Act
+            var result = MS_buildingController.SetCurrentState(OpenState);
+
+            //Assert
+            Assert.AreEqual(result, true);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region LEVEL 4
+
+        #region L4R1
+
+        [Test]
+        // closed state &gt; lock all doors
+        public void SetCurrentState____closedState_with_LAD____true()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test,
+                    MS_lightManager, 
+                    MS_fireAlarmManager, 
+                    MS_doorManager, 
+                    MS_webService, 
+                    MS_emailService
+                );
+
+            MS_doorManager.LockAllDoors().Returns(true);
+
+            //Act
+            MS_buildingController.SetCurrentState(ClosedState);
+
+            //Assert
+            MS_doorManager.Received().LockAllDoors();
+        }
+
+        #endregion
+
+        #region L4R2
+
+        [Test]
+        // fire alarm log
+        public void SetCurrentState____FA_log_created()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test,
+                    MS_lightManager, 
+                    MS_fireAlarmManager, 
+                    MS_doorManager, 
+                    MS_webService, 
+                    MS_emailService
+                );
+
+            MS_doorManager.OpenAllDoors().Returns(true);
+
+            //Act
+            MS_buildingController.SetCurrentState(FireAlarm_State);
+
+            //Assert
+            MS_webService.Received().LogFireAlarm(FireAlarm_State);
+        }
+
+        #endregion
+
+        #region L4R3
+
+        [Test]
+        public void GetStatus____faulty_lights()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test,
+                    MS_lightManager,
+                    MS_fireAlarmManager, 
+                    MS_doorManager,
+                    MS_webService, 
+                    MS_emailService
+                );
+
+            MS_lightManager.GetStatus().Returns(&quot;FAULT&quot;);
+            MS_doorManager.GetStatus().Returns(&quot;OK&quot;);
+            MS_fireAlarmManager.GetStatus().Returns(&quot;OK&quot;);
+
+            //Act
+            MS_buildingController.GetStatusReport();
+
+            //Assert
+            MS_webService.LogEngineerRequired(&quot;Lights,&quot;);
+        }
+
+        [Test]
+        public void GetStatus____fault_in_two_interfaces()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test, 
+                    MS_lightManager, 
+                    MS_fireAlarmManager, 
+                    MS_doorManager,
+                    MS_webService, 
+                    MS_emailService
+                );
+
+            MS_lightManager.GetStatus().Returns(&quot;FAULT&quot;);
+            MS_doorManager.GetStatus().Returns(&quot;FAULT&quot;);
+            MS_fireAlarmManager.GetStatus().Returns(&quot;OK&quot;);
+
+            //Act
+            MS_buildingController.GetStatusReport();
+
+            //Assert
+            MS_webService.LogEngineerRequired(&quot;Lights,Doors,&quot;);
+        }
+
+        #endregion
+
+        #region L4R4
+
+        [Test]
+        // exception thrown when fire alarm state is called
+        public void ExceptionThrown____FA_State_called()
+        {
+            //Arrange
+            MS_buildingController = new BuildingController
+                (
+                    Test, 
+                    MS_lightManager, 
+                    MS_fireAlarmManager, 
+                    MS_doorManager, 
+                    MS_webService, 
+                    MS_emailService
+                );
+
+                MS_webService
+                .When(x =&gt; x.LogFireAlarm(FireAlarm_State))
+                .Do(x =&gt; { throw new Exception(&quot;error&quot;); });
+
+            //Act
+            MS_buildingController.SetCurrentState(FireAlarm_State);
+
+            //Assert
+            MS_emailService.Received().SendMail(&quot;smartbuilding@uclan.ac.uk&quot;, &quot;failed to log alarm&quot;, &quot;error&quot;);
+        }
+
+        #endregion
+
+        #endregion
+    }
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> Building Controller </p>
+					<pre>
+						<code>
+						
+using System;
+
+namespace software_dev_assignment
+{
+
+    public class BuildingController
+    {
+        #region PRIVATE METHODS
+
+        private string buildingID;
+        private string currentState;
+        private string historystate = &quot;&quot;;
+
+        private ILightManager           iLightManager;
+        private IFireAlarmManager       iFireAlarmManager;
+        private IDoorManager            iDoorManager;
+        private IWebService             iWebService;
+        private IEmailService           iEmailService;
+
+        #endregion
+
+        public BuildingController(string id)
+        {
+            buildingID      = id.ToLower();
+            currentState    = &quot;out of hours&quot;;
+        }
+
+        public BuildingController(string buildingId, string startState)
+        {
+            buildingID = buildingId.ToLower();
+            startState = startState.ToLower();
+
+            if (startState == &quot;closed&quot; || startState == &quot;open&quot; || startState == &quot;out of hours&quot;) currentState = startState;
+            else
+            {
+                throw new ArgumentException(
+                    &quot;Argument Exception: BuildingController can only be initialised to the following states 'open', 'closed', 'out of hours'&quot;);
+            }
+        }
+
+        public BuildingController
+            (
+                string              id, 
+                ILightManager       iLightManager, 
+                IFireAlarmManager   iFireAlarmManager,
+                IDoorManager        iDoorManager, 
+                IWebService         iWebService, 
+                IEmailService       iEmailService
+            )
+        {
+            buildingID                  = id.ToLower();
+            currentState                = &quot;out of hours&quot;;
+
+            this.iLightManager          = iLightManager;
+            this.iFireAlarmManager      = iFireAlarmManager;
+            this.iDoorManager           = iDoorManager;
+            this.iWebService            = iWebService;
+            this.iEmailService          = iEmailService;
+        }
+
+        public string GetBuildingID()
+        {
+            return buildingID;
+        }
+
+        public void SetBuildingID(string id)
+        {
+            buildingID = id.ToLower();
+        }
+
+        public string GetCurrentState()
+        {
+            return currentState;
+        }
+
+        public bool SetCurrentState(string state)
+        {
+            state = state.ToLower();
+
+            bool isFire = false;
+            if (currentState == &quot;fire alarm&quot; || currentState == &quot;fire drill&quot;)
+            {
+                isFire = true;
+            }
+
+            switch (state)
+            {
+                case &quot;open&quot;:
+
+                    if (currentState == &quot;out of hours&quot; || (isFire &amp;&amp; historystate == &quot;open&quot;))
+                    {
+                        currentState = &quot;open&quot;;
+
+                        bool success = true;
+                        if (iDoorManager != null) { success = iDoorManager.OpenAllDoors(); }
+                        if (iLightManager != null) { iLightManager.SetAllLights(true); }
+
+                        return success;
+                    }
+
+                    else if (currentState == &quot;open&quot;)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                    break;
+
+                case &quot;closed&quot;:
+                    if (currentState == &quot;out of hours&quot; || (isFire &amp;&amp; historystate == &quot;closed&quot;))
+                    {
+                        currentState = &quot;closed&quot;;
+
+                        bool success = true;
+                        if (iDoorManager != null)   { success = iDoorManager.LockAllDoors(); }
+                        if (iLightManager != null)  { iLightManager.SetAllLights(false); }
+
+                        return true;
+                    }
+
+                    else if (currentState == &quot;closed&quot;)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                    break;
+
+                case &quot;out of hours&quot;:
+                    if (currentState == &quot;closed&quot; || currentState == &quot;open&quot; || (isFire &amp;&amp; historystate == &quot;out of hours&quot;))
+                    {
+
+                        currentState = &quot;out of hours&quot;;
+
+                        bool success = true;
+                        if (iDoorManager != null) { success = iDoorManager.LockAllDoors(); }
+                        if (iLightManager != null) { iLightManager.SetAllLights(false); }
+
+                        return true;
+                    }
+
+                    else if (currentState == &quot;out of hours&quot;)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                    break;
+
+                case &quot;fire alarm&quot;:
+                    if (currentState != &quot;fire drill&quot;)
+                    {
+                        historystate = currentState;
+                        currentState = &quot;fire alarm&quot;;
+
+                        bool success = true;
+                        if (iDoorManager != null)   { success = iDoorManager.OpenAllDoors(); }
+                        if (iLightManager != null)  { iLightManager.SetAllLights(true); }
+                        if (iFireAlarmManager != null)  { iFireAlarmManager.SetAlarm(true); }
+                       
+                        try { iWebService.LogFireAlarm(&quot;fire alarm&quot;); }
+                        catch (Exception ex) { 
+                            if (iEmailService != null)
+                            {
+                                iEmailService.SendMail(&quot;smartbuilding@uclan.ac.uk&quot;, &quot;failed to log alarm&quot;, ex.Message);
+                            }
+                        }
+
+                        return true;
+                    }
+
+                    return false;
+                    break;
+
+                case &quot;fire drill&quot;:
+                    if (currentState != &quot;fire alarm&quot;)
+                    {
+                        historystate = currentState;
+                        currentState = &quot;fire drill&quot;;
+                        bool success = true;
+                        if (iDoorManager != null)   { success = iDoorManager.OpenAllDoors(); }
+                        if (iLightManager != null)  { iLightManager.SetAllLights(true); }
+                        if (iFireAlarmManager != null)  { iFireAlarmManager.SetAlarm(true); }
+
+                        return true;
+                    }
+
+                    return false;
+                    break;
+
+                default:
+                    return true;
+            }       
+        }
+
+        public string GetStatusReport()
+        {
+            bool   Light_Fault      = false;
+            bool   Door_Fault       = false;
+            bool   FA_Fault         = false;
+            string logDetails       = &quot;&quot;;
+
+            string Light_Status     = iLightManager.GetStatus();
+            string Door_Status      = iDoorManager.GetStatus();
+            string FA_Status        = iFireAlarmManager.GetStatus();
+
+            if (Light_Status.Contains(&quot;FAULT&quot;))             Light_Fault     = true;     logDetails += &quot;Lights,&quot;;
+            if (Door_Status.Contains(&quot;FAULT&quot;))              Door_Fault      = true;     logDetails += &quot;Doors,&quot;;
+            if (FA_Status.Contains(&quot;FAULT&quot;))                FA_Fault        = true;     logDetails += &quot;FireAlarm,&quot;;
+            if (Light_Fault || Door_Fault || FA_Fault)      iWebService.LogEngineerRequired(logDetails);
+
+            return Light_Status + Door_Status + FA_Status;
+        }
+    }
+}
+						
+						</code>
+					</pre>
+					
+					
+					<p> IWebService </p>
+					<pre>
+						<code>
+						
+namespace software_dev_assignment
+{
+    public interface IWebService
+    {
+        void LogFireAlarm(string logDetails);
+        void LogEngineerRequired(string logDetails);
+    }
+}
+
+
+						
+						</code>
+					</pre>
+					
+					
+					<p> ILightManager </p>
+					<pre>
+						<code>
+						
+namespace software_dev_assignment
+{
+    public interface ILightManager
+    {
+        bool SetEngineerRequired(bool needsEngineer);
+        string GetStatus();
+
+        void SetAllLights(bool isOn);
+        void SetLight(bool isOn, int lightID);
+    }
+}
+
+						
+						</code>
+					</pre>
+					
+					
+					<p> IFireAlarmManager </p>
+					<pre>
+						<code>
+						
+namespace software_dev_assignment
+{
+    public interface IFireAlarmManager
+    {
+        bool SetEngineerRequired(bool needsEngineer);
+        string GetStatus();
+
+        void SetAlarm(bool isActive);
+    }
+}
+
+						
+						</code>
+					</pre>
+					
+					
+					<p> IEmailService </p>
+					<pre>
+						<code>
+						
+namespace software_dev_assignment
+{
+    public interface IEmailService
+    {
+        void SendMail(string EmailAddress, string Subject, string Message);
+    }
+}
+
+						
+						</code>
+					</pre>
+					
+					
+					<p> IDoorManager </p>
+					<pre>
+						<code>
+						
+namespace software_dev_assignment
+{
+    public interface IDoorManager
+    {
+        bool SetEngineerRequired(bool needsEngineer);
+        string GetStatus();
+
+        bool OpenAllDoors();
+        bool LockAllDoors();
+        bool OpenDoor(int DoorID);
+        bool LockDoor(int DoorID);
+    }
+}
+						</code>
+					</pre>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

@@ -1,0 +1,1022 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../../style.css">
+	
+	<title>Future Space Frogs</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#About" 														class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../../index.html" 											class="bar-item button padding-large">Home</a>
+					<a href="../../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../../index.html" 	 												class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../../Uni.html" 			 											class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" id="About" style="display:block; margin-top:80px;">
+		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
+			<div align="center">
+				<div class="section-content" style="display: table-cell; vertical-align: middle;">
+					<span class="title--med title" align="center">Future Space Frogs</span>
+				</div>
+			
+				<table style="margin: auto;">
+					<tbody>
+						<tr>
+							<td>
+								<strong><a> Project Type: </a></strong>
+							</td>
+							<td>
+								<a> University </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Software/Engine:  </a></strong>
+							</td>
+							<td>
+								<a> TL-Engine </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Language:  </a></strong>
+							</td>
+							<td>
+								<a> C++ </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="section-desc">
+					<span class="text">
+						<p>
+							The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+						</p>
+				
+						<p align="center">
+							<a href="https://github.com/LPG-GamesDev/uni-Year-1-CO1301-Games-Concept-" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-1-CO1301-Games-Concept- </a>
+						</p>
+					</span>
+				</div>
+				
+			</div>		
+	
+		</div>	
+	
+		<div align="center" style="margin-left:5%; margin-right:5%;" >
+		
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../Video/FutureSpaceFrogsVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<iframe src="" frameBorder="0" scrolling="yes" height="800px" width="100%"></iframe>
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+// future space frogs.cpp: A program using the TL-Engine
+
+#include &lt;TL-Engine.h&gt; // TL-Engine include file and namespace
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;string.h&gt;
+
+using namespace tle;
+using namespace std;
+
+bool SpehereToSphere(IModel* A, float AR, IModel* B, float BR);
+bool BoxToSphere(IModel* Box, float BoxWidth, float BoxHeight, IModel* Sphere, float SpehereRadius);
+bool BoxToBox(IModel* Car, float CarWidth, float CarHeight, IModel* Floor, float FloorWidth, float FloorHeight);
+bool SphereToBox(IModel* Frog, float SphereRadius, IModel* Floor, float FloorWidth, float FloorHeight);
+
+struct Vector2
+{
+	float X;
+	float Y;
+};
+
+void main()
+{
+	// Create a 3D engine (using TLX engine here) and open a window for it
+	I3DEngine* myEngine = New3DEngine(kTLX);
+	myEngine-&gt;StartWindowed();
+
+	// Add default folder for meshes and other media
+	myEngine-&gt;AddMediaFolder(&quot;S:\\TL-Engine\\Media&quot;);
+
+	/**** Set up your scene here ****/
+
+	// CAMERA SETUP &amp; POSITION
+	ICamera* MyCamera;
+	MyCamera = myEngine-&gt;CreateCamera(kManual);
+	MyCamera-&gt;SetPosition(0.0f, 120.0f, -100.0f);
+	MyCamera-&gt;RotateX(50.0f);
+
+	// SKY SETUP &amp; POSITION
+	IMesh* SkyboxMesh = myEngine-&gt;LoadMesh(&quot;skybox.x&quot;);
+	IModel* Skybox = SkyboxMesh-&gt;CreateModel(0.0f, -960.0f, 0.0f);
+
+	// FLOOR SETUP &amp; POSITION
+	IMesh* FloorMesh = myEngine-&gt;LoadMesh(&quot;Surface.x&quot;);
+	IModel* Floor = FloorMesh-&gt;CreateModel(0.0f, -5.0f, 0.0f);
+
+	// ISLAND SETUP &amp; POSITION
+	IMesh* IslandMesh = myEngine-&gt;LoadMesh(&quot;island.x&quot;);
+	IModel* Island = IslandMesh-&gt;CreateModel(0.0f, -6.0f, 0.0f);
+
+	// CAR SETUP &amp; POSITION
+	IMesh* CarMesh = myEngine-&gt;LoadMesh(&quot;rover.x&quot;);
+	IModel* Car = CarMesh-&gt;CreateModel(0.0f, 0.0f, -50.0f);
+
+	// FROGS SETUP &amp; POSITIONS
+	IMesh* FrogMesh = myEngine-&gt;LoadMesh(&quot;frog.x&quot;);
+	IModel* Frog_1 = FrogMesh-&gt;CreateModel(5.0f, 0.0f, 0.0f);
+	IModel* Frog_2 = FrogMesh-&gt;CreateModel(-5.0f, 0.0f, 0.0f);
+	IModel* Frog_3 = FrogMesh-&gt;CreateModel(0.0f, 0.0f, -5.0f);
+	IModel* Frog_4 = FrogMesh-&gt;CreateModel(0.0f, 0.0f, 5.0f);
+	//IModel* Frog_5 = FrogMesh-&gt;CreateModel(0.0f, 20.0f, 0.0f); // (test frog)
+	Frog_1-&gt;RotateY(90.0f);
+	Frog_2-&gt;RotateY(-90.0f);
+	Frog_3-&gt;RotateY(180.0f);
+
+	// PLANTS SETUP &amp; POSITIONS
+	IMesh* PlantMesh = myEngine-&gt;LoadMesh(&quot;plant.x&quot;);
+	IModel* Plant_1 = PlantMesh-&gt;CreateModel(50.0f, 0.0f, 25.0f);
+	IModel* Plant_2 = PlantMesh-&gt;CreateModel(-50.0f, 0.0f, -25.0f);
+	IModel* Plant_3 = PlantMesh-&gt;CreateModel(25.0f, 0.0f, 50.0f);
+	IModel* Plant_4 = PlantMesh-&gt;CreateModel(-25.0f, 0.0f, -50.0f);
+	IModel* Plant_5 = PlantMesh-&gt;CreateModel(50.0f, 0.0f, -50.0f);
+	IModel* Plant_6 = PlantMesh-&gt;CreateModel(-50.0f, 0.0f, 50.0f);
+
+	// PORTAL SETUP AND POSITION
+	IMesh* PortalMesh = myEngine-&gt;LoadMesh(&quot;portal.x&quot;);
+	IModel* Portal = PortalMesh-&gt;CreateModel();
+	Portal-&gt;Scale(1.2);
+
+	// GAME STATE
+	enum EGame_State { Playing, Paused, Over, Won };
+	EGame_State Game_State = Playing;
+
+	// FROG STATE
+	enum EFrog_State { Waiting, Moving, Dead, Escaped };
+	EFrog_State frog_1_State = Moving;
+	EFrog_State frog_2_State = Waiting;
+	EFrog_State frog_3_State = Waiting;
+	EFrog_State frog_4_State = Waiting;
+
+	// WATER STATE
+	enum EWaterState { Safe, Poisoned };
+	EWaterState Water_State = Safe;
+
+	// CAMERA ANGLE STATE
+	enum ECarAngle { Default, Chase, FirstPerson };
+	ECarAngle CarAngle = Default;
+
+	enum eFrogHeight {Up, Down};
+	eFrogHeight FrogHeight_1 = Up;
+	eFrogHeight FrogHeight_2 = Up;
+	eFrogHeight FrogHeight_3 = Up;
+	eFrogHeight FrogHeight_4 = Up;
+
+	const float kGameSpeed = 100.0f; // CAR SPEED
+	float Frog_Speed = kGameSpeed / 20; // FROG SPEED
+
+	const float kGameResume = kGameSpeed;
+
+	const float kGamePause = 0.0f;
+	bool PauseGame = false;
+
+	const float kGameOver = 0.0f;
+	bool GameOver = false;
+
+	float Frog_Z_Rotation = 180.0f;
+
+	const float kFrog_Hop_Height = 5.0f;
+	const float	kFloor = 0.0f;
+
+	// TEXT SETUP FOR SCORE
+	float Score = 0.0f;
+	stringstream Score_String;
+	IFont* Score_Font = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 36U);
+
+	// TEXT SETUP FOR GAME STATE
+	stringstream GameState_String;
+	IFont* GameState_Font = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 72U);
+
+	// TEXT SETUP FOR TIMER
+	stringstream Timer_String;
+	IFont* Timer_Font = myEngine-&gt;LoadFont(&quot;Comic Sans MS&quot;, 36U);
+
+	const float kFrogRadius = 8.0f; // FROGS
+	const float kCarRadius = 2.0f; // CAR (SPHERE COLLISION)
+	const Vector2 CarDem = { 2.79333f, 5.9069f }; // CAR (SQUARE COLLISON)
+	const Vector2 FloorDem = { 125.0f, 125.0f }; // FLOOR
+	const Vector2 PortalDem = { 28.0f, 28.0f }; //PORTAL
+	const float kPlantRadius = 1.5f; // PLANT
+
+	// POSTION THE CAR WAS JUST AT (X,Z)
+	Vector2 OldCarPosition;
+
+	// POSITION THE FROG WAS JUST AT (X,Z)
+	Vector2 OldFrogPosition;
+
+	// TIMER FOR 1 MINUTE
+	float MinuteTimer = 60.0f;
+
+	// TIMER FOR 1 SECOND
+	float OneSecondTimer = 1.0f;
+
+	// HEIGHT THE FROG CAN JUMP
+	const float KFrogHeight = 5.0f;
+
+
+	// The main game loop, repeat until engine is stopped
+	while (myEngine-&gt;IsRunning())
+	{
+		float DeltaTime = myEngine-&gt;Timer();
+
+		// Draw the scene (Update your scene each frame here)
+		myEngine-&gt;DrawScene();
+
+		// SCORE TOP LEFT CORNER
+		Score_String &lt;&lt; &quot;Score: &quot; &lt;&lt; Score;
+		Score_Font-&gt;Draw(Score_String.str(), 0.0f, 0.0f, kBlack);
+		Score_String.str(&quot;&quot;);
+
+		Timer_String &lt;&lt; &quot;Timer: &quot; &lt;&lt; (int)MinuteTimer;
+		Timer_Font-&gt;Draw(Timer_String.str(), myEngine-&gt;GetWidth() / 2, 0.0f, kBlack, kCentre);
+		Timer_String.str(&quot;&quot;);
+
+		// WHAT HAPPENS WHEN GAME OVER
+		if (Game_State == Over)
+		{
+			if (GameOver == false)
+			{
+				GameOver = true;
+			}
+
+			else if (GameOver == true)
+			{
+				Car-&gt;MoveX(kGameOver);
+				Car-&gt;RotateZ(kGameOver);
+				Frog_1-&gt;MoveX(kGameOver);
+				Frog_2-&gt;MoveX(kGameOver);
+				Frog_3-&gt;MoveZ(kGameOver);
+				Frog_4-&gt;MoveZ(kGameOver);
+
+				GameOver = false;
+			}
+		}
+
+		// PAUSES GAME AND STOPS ANYTHING
+		if (myEngine-&gt;KeyHit(Key_P))
+		{
+			if (PauseGame == false)
+			{
+				PauseGame = true;
+				Game_State = Paused;
+			}
+			else
+			{
+				PauseGame = false;
+				Game_State = Playing;
+			}
+		}
+
+		//GAME STATE SWITCH (SWITCHING STATES OF PLAY)
+		switch (Game_State)
+		{
+		case Playing:
+			break;
+
+		case Paused:
+			GameState_String &lt;&lt; &quot;PAUSED&quot;;
+			GameState_Font-&gt;Draw(GameState_String.str(), myEngine-&gt;GetWidth() / 2, myEngine-&gt;GetHeight() / 2, kRed, kCentre);
+			GameState_String.str(&quot;&quot;);
+			break;
+
+		case Over:
+			GameState_String &lt;&lt; &quot;GAME OVER&quot;;
+			GameState_Font-&gt;Draw(GameState_String.str(), myEngine-&gt;GetWidth() / 2, myEngine-&gt;GetHeight() / 2, kRed, kCentre);
+			GameState_String.str(&quot;&quot;);
+			break;
+
+		case Won:
+			GameState_String &lt;&lt; &quot;GAME WON&quot;;
+			GameState_Font-&gt;Draw(GameState_String.str(), myEngine-&gt;GetWidth() / 2, myEngine-&gt;GetHeight() / 2, kRed, kCentre);
+			GameState_String.str(&quot;&quot;);
+			break;
+		}
+
+		// START OF THE GAME)
+		if (GameOver == false)
+		{
+			// RESET THE GAME
+			if (myEngine-&gt;KeyHit(Key_Space))
+			{
+				// RESET GAME MODE/STATE
+				if (Game_State == Over)
+				{
+					Game_State = Playing;
+				}
+
+				if (Game_State == Won)
+				{
+					Game_State = Playing;
+				}
+
+				// RESET TIMER
+				if (MinuteTimer &lt;= 60)
+				{
+					MinuteTimer = 60;
+				}
+
+				// RESET SCORE
+				Score = 0.0f;
+
+				// RESET CAR POSITION
+				Car-&gt;SetPosition(0.0f, 0.0f, -50.0f);
+				Car-&gt;ResetOrientation();
+
+				// RESET FROG STATE
+				frog_1_State = Moving;
+				frog_2_State = Waiting;
+				frog_3_State = Waiting;
+				frog_4_State = Waiting;
+
+				// RESET FROG POSITIONS
+				Frog_1-&gt;SetPosition(5.0f, 0.0f, 0.0f);
+				Frog_1-&gt;ResetOrientation();
+				Frog_1-&gt;RotateY(90.0f);
+				Frog_1-&gt;ResetScale();
+
+				Frog_2-&gt;SetPosition(-5.0f, 0.0f, 0.0f);
+				Frog_2-&gt;ResetOrientation();
+				Frog_2-&gt;RotateY(-90.0f);
+				Frog_2-&gt;ResetScale();
+
+				Frog_3-&gt;SetPosition(0.0f, 0.0f, -5.0f);
+				Frog_3-&gt;ResetOrientation();
+				Frog_3-&gt;RotateY(180.0f);
+				Frog_3-&gt;ResetScale();
+
+				Frog_4-&gt;SetPosition(0.0f, 0.0f, 5.0f);
+				Frog_4-&gt;ResetOrientation();
+				Frog_4-&gt;ResetScale();
+
+				// WATER STATE
+				Water_State = Safe;
+				Floor-&gt;SetSkin(&quot;water.jpg&quot;);
+
+				// RESET CAMERA VIEW
+				if (CarAngle != Default)
+				{
+					if (CarAngle == Chase)
+					{
+						MyCamera-&gt;RotateX(-15.0f);
+					}
+
+					CarAngle = Default;
+
+					MyCamera-&gt;DetachFromParent();
+					MyCamera-&gt;SetPosition(0.0f, 120.0f, -100.0f);
+					MyCamera-&gt;RotateX(50.0f);
+				}
+			}
+
+			// GAME TIMER
+			if (MinuteTimer &lt;= 0.0f)
+			{
+				MinuteTimer = 0.0f;
+
+				// CHECKING STATES OF FROGS &amp; GAME STATE
+				if (frog_1_State, frog_2_State, frog_3_State, frog_4_State == Waiting || frog_1_State, frog_2_State, frog_3_State, frog_4_State == Dead)
+				{
+					if (frog_1_State == Moving)
+					{
+						if (frog_1_State == Escaped)
+						{
+							Game_State = Over;
+						}
+					}
+
+					else
+					{
+						Game_State = Won;
+					}
+
+					if (frog_2_State == Moving)
+					{
+						if (frog_2_State == Escaped)
+						{
+							Game_State = Over;
+						}
+					}
+
+					else
+					{
+						Game_State = Won;
+					}
+
+					if (frog_3_State == Moving)
+					{
+						if (frog_3_State == Escaped)
+						{
+							Game_State = Over;
+						}
+					}
+
+					else
+					{
+						Game_State = Won;
+					}
+
+					if (frog_4_State == Moving)
+					{
+						if (frog_4_State == Escaped)
+						{
+							Game_State = Over;
+						}
+					}
+
+					else
+					{
+						Game_State = Won;
+					}
+				}
+			}
+
+			if (PauseGame == false)
+			{
+				if (Game_State == Playing)
+				{
+					MinuteTimer -= DeltaTime; // COUNTDOWN
+
+					OldCarPosition.X = Car-&gt;GetX();
+					OldCarPosition.Y = Car-&gt;GetZ();
+
+					// CAR MOVEMENT FORWARD &amp; BACKWARD
+					if (myEngine-&gt;KeyHeld(Key_W))
+					{
+						Car-&gt;MoveLocalZ(kGameSpeed * DeltaTime);
+					}
+					else if (myEngine-&gt;KeyHeld(Key_S))
+					{
+						Car-&gt;MoveLocalZ(-kGameSpeed * DeltaTime);
+					}
+
+					// CAR ROTATION CLOCKWISE &amp; ANTI-CLOCKWISE
+					if (myEngine-&gt;KeyHeld(Key_A))
+					{
+						Car-&gt;RotateY(-kGameSpeed * DeltaTime);
+					}
+					else if (myEngine-&gt;KeyHeld(Key_D))
+					{
+						Car-&gt;RotateY(kGameSpeed * DeltaTime);
+					}
+
+					// CAR TO PLANT COLLISION CHECK
+					bool CarIntoPlant_1 = SpehereToSphere(Car, kFrogRadius, Plant_1, kPlantRadius);
+					bool CarIntoPlant_2 = SpehereToSphere(Car, kFrogRadius, Plant_2, kPlantRadius);
+					bool CarIntoPlant_3 = SpehereToSphere(Car, kFrogRadius, Plant_3, kPlantRadius);
+					bool CarIntoPlant_4 = SpehereToSphere(Car, kFrogRadius, Plant_4, kPlantRadius);
+					bool CarIntoPlant_5 = SpehereToSphere(Car, kFrogRadius, Plant_5, kPlantRadius);
+					bool CarIntoPlant_6 = SpehereToSphere(Car, kFrogRadius, Plant_6, kPlantRadius);
+
+					if (CarIntoPlant_1 || CarIntoPlant_2 || CarIntoPlant_3 || CarIntoPlant_4 || CarIntoPlant_5 || CarIntoPlant_6)
+					{
+						Car-&gt;SetPosition(OldCarPosition.X, 0.0f, OldCarPosition.Y);
+					}
+
+					// CAR &amp; FLOOR COLLISION CHECK
+					bool CarOffIsland = !BoxToBox(Car, CarDem.X, CarDem.Y, Floor, FloorDem.X, FloorDem.Y);
+
+					if (CarOffIsland)
+					{
+						Game_State = Over;
+					}
+
+					// CAR TO PORTAL COLLISON CHECK
+					bool CarIntoPortal = BoxToBox(Car, CarDem.X, CarDem.Y, Portal, PortalDem.X, PortalDem.Y);
+
+					if (CarIntoPortal)
+					{
+						Car-&gt;SetPosition(OldCarPosition.X, 0.0f, OldCarPosition.Y);
+					}
+
+					// CAR &amp; FROG COLLISION CHECK
+					bool CollisionOccured_1 = BoxToSphere(Car, CarDem.X, CarDem.Y, Frog_1, kFrogRadius);
+					bool CollisionOccured_2 = BoxToSphere(Car, CarDem.X, CarDem.Y, Frog_2, kFrogRadius);
+					bool CollisionOccured_3 = BoxToSphere(Car, CarDem.X, CarDem.Y, Frog_3, kFrogRadius);
+					bool CollisionOccured_4 = BoxToSphere(Car, CarDem.X, CarDem.Y, Frog_4, kFrogRadius);
+
+					// FROG OFF THE FLOOR COLLISION
+					bool Escaped_1 = SphereToBox(Frog_1, kFrogRadius, Floor, FloorDem.X, FloorDem.Y);
+					bool Escaped_2 = SphereToBox(Frog_2, kFrogRadius, Floor, FloorDem.X, FloorDem.Y);
+					bool Escaped_3 = SphereToBox(Frog_3, kFrogRadius, Floor, FloorDem.X, FloorDem.Y);
+					bool Escaped_4 = SphereToBox(Frog_4, kFrogRadius, Floor, FloorDem.X, FloorDem.Y);
+
+					// frog_1 state and collision
+					if (frog_1_State == Moving)
+					{
+						Frog_1-&gt;MoveX(Frog_Speed * DeltaTime);
+						//Frog_1-&gt;MoveY(kFrog_Hop_Height * DeltaTime);
+
+						if (FrogHeight_1 == Up)
+						{
+							Frog_1-&gt;MoveY(kFrog_Hop_Height * DeltaTime);
+							if (Frog_1-&gt;GetY() &gt;= KFrogHeight)
+							{
+								FrogHeight_1 = Down;
+							}
+						}
+
+						if (FrogHeight_1 == Down)
+						{
+							Frog_1-&gt;MoveY(-kFrog_Hop_Height * DeltaTime);
+							if (Frog_1-&gt;GetY() &lt;= kFloor)
+							{
+								FrogHeight_1 = Up;
+							}
+						}
+
+						OneSecondTimer = 1.0f;
+
+						if (CollisionOccured_1)
+						{
+							Frog_1-&gt;RotateZ(Frog_Z_Rotation);
+							Frog_1-&gt;MoveY(0.50f);
+							Frog_1-&gt;ScaleY(0.20f);
+
+							Score = Score + 10.0f;
+
+							frog_1_State = Dead;
+						}
+						else if (Escaped_1)
+						{
+							frog_1_State = Escaped;
+							Floor-&gt;SetSkin(&quot;poisoned.png&quot;);
+							Game_State = Over;
+						}
+					}
+
+					if (frog_1_State == Dead)
+					{
+						OneSecondTimer -= DeltaTime;
+
+						if (OneSecondTimer &lt;= 0.0f)
+						{
+							frog_1_State = Waiting;
+
+							Frog_1-&gt;RotateZ(-Frog_Z_Rotation);
+							Frog_1-&gt;MoveY(-0.50f);
+							Frog_1-&gt;ResetScale();
+							Frog_1-&gt;SetPosition(5.0f, 0.0f, 0.0f);
+
+							frog_2_State = Moving;
+						}
+					}
+
+					// frog_2 state and collision
+					if (frog_1_State == Waiting)
+					{
+						if (frog_2_State == Moving)
+						{
+							Frog_2-&gt;MoveX(-Frog_Speed * DeltaTime);
+
+							if (FrogHeight_2 == Up)
+							{
+								Frog_2-&gt;MoveY(kFrog_Hop_Height * DeltaTime);
+								if (Frog_2-&gt;GetY() &gt;= KFrogHeight)
+								{
+									FrogHeight_2 = Down;
+								}
+							}
+
+							if (FrogHeight_2 == Down)
+							{
+								Frog_2-&gt;MoveY(-kFrog_Hop_Height * DeltaTime);
+								if (Frog_2-&gt;GetY() &lt;= kFloor)
+								{
+									FrogHeight_2 = Up;
+								}
+							}
+
+							OneSecondTimer = 1.0f;
+
+							if (CollisionOccured_2)
+							{
+								Frog_2-&gt;RotateZ(Frog_Z_Rotation);
+								Frog_2-&gt;MoveY(0.50f);
+								Frog_2-&gt;ScaleY(0.20f);
+
+								Score = Score + 10.0f;
+
+								frog_2_State = Dead;
+							}
+							else if (Escaped_2)
+							{
+								frog_2_State = Escaped;
+								Floor-&gt;SetSkin(&quot;poisoned.png&quot;);
+								Game_State = Over;
+							}
+						}
+					}
+
+					if (frog_2_State == Dead)
+					{
+						OneSecondTimer -= DeltaTime;
+
+						if (OneSecondTimer &lt;= 0.0f)
+						{
+							frog_2_State = Waiting;
+
+							Frog_2-&gt;RotateZ(-Frog_Z_Rotation);
+							Frog_2-&gt;MoveY(-0.50f);
+							Frog_2-&gt;ResetScale();
+							Frog_2-&gt;SetPosition(-5.0f, 0.0f, 0.0f);
+
+							frog_3_State = Moving;
+						}
+					}
+
+					// frog_3 state and collision
+					if (frog_2_State == Waiting)
+					{
+						if (frog_3_State == Moving)
+						{
+							Frog_3-&gt;MoveZ(-Frog_Speed * DeltaTime);
+
+							if (FrogHeight_3 == Up)
+							{
+								Frog_3-&gt;MoveY(kFrog_Hop_Height * DeltaTime);
+								if (Frog_3-&gt;GetY() &gt;= KFrogHeight)
+								{
+									FrogHeight_3 = Down;
+								}
+							}
+
+							if (FrogHeight_3 == Down)
+							{
+								Frog_3-&gt;MoveY(-kFrog_Hop_Height * DeltaTime);
+								if (Frog_3-&gt;GetY() &lt;= kFloor)
+								{
+									FrogHeight_3 = Up;
+								}
+							}
+
+							OneSecondTimer = 1.0f;
+
+							if (CollisionOccured_3)
+							{
+								Frog_3-&gt;RotateZ(Frog_Z_Rotation);
+								Frog_3-&gt;MoveY(0.50f);
+								Frog_3-&gt;ScaleY(0.20f);
+
+								Score = Score + 10.0f;
+
+								frog_3_State = Dead;
+							}
+							else if (Escaped_3)
+							{
+								frog_3_State = Escaped;
+								Floor-&gt;SetSkin(&quot;poisoned.png&quot;);
+								Game_State = Over;
+							}
+						}
+					}
+
+					if (frog_3_State == Dead)
+					{
+						OneSecondTimer -= DeltaTime;
+
+						if (OneSecondTimer &lt;= 0.0f)
+						{
+							frog_3_State = Waiting;
+
+							Frog_3-&gt;RotateZ(-Frog_Z_Rotation);
+							Frog_3-&gt;MoveY(-0.50f);
+							Frog_3-&gt;ResetScale();
+							Frog_3-&gt;SetPosition(0.0f, 0.0f, -5.0f);
+
+							frog_4_State = Moving;
+						}
+					}
+
+					// frog_4 state and collision
+					if (frog_3_State == Waiting)
+					{
+						if (frog_4_State == Moving)
+						{
+							Frog_4-&gt;MoveZ(Frog_Speed * DeltaTime);
+
+							if (FrogHeight_4 == Up)
+							{
+								Frog_4-&gt;MoveY(kFrog_Hop_Height * DeltaTime);
+								if (Frog_4-&gt;GetY() &gt;= KFrogHeight)
+								{
+									FrogHeight_4 = Down;
+								}
+							}
+
+							if (FrogHeight_4 == Down)
+							{
+								Frog_4-&gt;MoveY(-kFrog_Hop_Height * DeltaTime);
+								if (Frog_4-&gt;GetY() &lt;= kFloor)
+								{
+									FrogHeight_4 = Up;
+								}
+							}
+
+							OneSecondTimer = 1.0f;
+
+							if (CollisionOccured_4)
+							{
+								Frog_4-&gt;RotateZ(Frog_Z_Rotation);
+								Frog_4-&gt;MoveY(0.50f);
+								Frog_4-&gt;ScaleY(0.20f);
+
+								Score = Score + 10.0f;
+
+								frog_4_State = Dead;
+							}
+							else if (Escaped_4)
+							{
+								frog_4_State = Escaped;
+								Floor-&gt;SetSkin(&quot;poisoned.png&quot;);
+								Game_State = Over;
+							}
+						}
+					}
+
+					if (frog_4_State == Dead)
+					{
+						OneSecondTimer -= DeltaTime;
+
+						if (OneSecondTimer &lt;= 0.0f)
+						{
+							frog_4_State = Waiting;
+
+							Frog_4-&gt;RotateZ(-Frog_Z_Rotation);
+							Frog_4-&gt;MoveY(-0.50f);
+							Frog_4-&gt;ResetScale();
+							Frog_4-&gt;SetPosition(0.0f, 0.0f, 5.0f);
+
+							frog_1_State = Moving;
+						}
+					}
+
+					// DEFAULT VIEW
+					if (myEngine-&gt;KeyHit(Key_1) &amp;&amp; CarAngle != Default)
+					{
+						if (CarAngle == Chase)
+						{
+							MyCamera-&gt;RotateX(-15.0f);
+						}
+
+						CarAngle = Default;
+
+						MyCamera-&gt;DetachFromParent();
+						MyCamera-&gt;SetPosition(0.0f, 120.0f, -100.0f);
+						MyCamera-&gt;RotateX(50.0f);
+					}
+
+					// CHASE VIEW
+					if (myEngine-&gt;KeyHit(Key_2) &amp;&amp; CarAngle != Chase)
+					{
+						if (CarAngle == Default)
+						{
+							MyCamera-&gt;RotateX(-50.0f);
+						}
+
+						CarAngle = Chase;
+
+						MyCamera-&gt;DetachFromParent();
+						MyCamera-&gt;AttachToParent(Car);
+						MyCamera-&gt;SetLocalPosition(0.0f, 30.0f, -50.0f);
+						MyCamera-&gt;RotateX(15.0f);
+					}
+
+					// FIRST PERSON VIEW
+					if (myEngine-&gt;KeyHit(Key_3) &amp;&amp; CarAngle != FirstPerson)
+					{
+						if (CarAngle == Chase)
+						{
+							MyCamera-&gt;RotateX(-15.0f);
+						}
+						else if (CarAngle == Default)
+						{
+							MyCamera-&gt;RotateX(-50.0f);
+						}
+
+						CarAngle = FirstPerson;
+
+						MyCamera-&gt;DetachFromParent();
+						MyCamera-&gt;AttachToParent(Car);
+						MyCamera-&gt;SetLocalPosition(0.0f, 4.5f, -2.0f);
+					}
+				}
+			}
+		}
+
+		if (myEngine-&gt;KeyHit(Key_Escape))
+		{
+			myEngine-&gt;Stop();
+		}
+	}
+
+	// Delete the 3D engine now we are finished with it
+	myEngine-&gt;Delete();
+}
+
+
+
+
+// CAR TO PLANT
+bool SpehereToSphere(IModel* A, float AR, IModel* B, float BR)
+{
+	float	X, Y, Z;
+	X = A-&gt;GetX() - B-&gt;GetX();
+	Y = A-&gt;GetY() - B-&gt;GetY();
+	Z = A-&gt;GetZ() - B-&gt;GetZ();
+
+	float Distance = sqrt(X * X + Y * Y + Z * Z);
+
+	if (Distance &lt; AR + BR)
+	{
+		return true;
+	}
+	return false;
+}
+
+// CAR TO FROG
+bool BoxToSphere(IModel* Box, float BoxWidth, float BoxHeight, IModel* Sphere, float SpehereRadius)
+{
+	float CombinedWidth = (BoxWidth * 0.5f) + SpehereRadius;
+	float CombinedHeight = (BoxHeight * 0.5f) + SpehereRadius;
+
+	if (Sphere-&gt;GetX() &gt;= Box-&gt;GetX() - CombinedWidth &amp;&amp; Sphere-&gt;GetX() &lt;= Box-&gt;GetX() + CombinedWidth &amp;&amp;
+		Sphere-&gt;GetZ() &gt;= Box-&gt;GetZ() - CombinedHeight &amp;&amp; Sphere-&gt;GetZ() &lt;= Box-&gt;GetZ() + CombinedHeight)
+	{
+		return true;
+	}
+	return false;
+}
+
+// CAR TO FLOOR
+bool BoxToBox(IModel* Car, float CarWidth, float CarHeight, IModel* Floor, float FloorWidth, float FloorHeight)
+{
+	float CombinedWidth = (CarWidth * 0.5f) + FloorWidth * 0.5f;
+	float CombinedHeight = (CarHeight * 0.5f) + FloorHeight * 0.5f;
+
+	if (Car-&gt;GetX() &gt;= Floor-&gt;GetX() - CombinedWidth &amp;&amp; Car-&gt;GetX() &lt;= Floor-&gt;GetX() + CombinedWidth &amp;&amp;
+		Car-&gt;GetZ() &gt;= Floor-&gt;GetZ() - CombinedHeight &amp;&amp; Car-&gt;GetZ() &lt;= Floor-&gt;GetZ() + CombinedHeight)
+	{
+		return true;
+	}
+	return false;
+}
+
+// FROG TO FLOOR
+bool SphereToBox(IModel* Frog, float SphereRadius, IModel* Floor, float FloorWidth, float FloorHeight)
+{
+	float CombinedWidth = SphereRadius + FloorWidth * 0.5f;
+	float CombinedHeight = SphereRadius + FloorHeight * 0.5f;
+
+	if (Frog-&gt;GetX() &gt;= Floor-&gt;GetX() - CombinedWidth &amp;&amp; Frog-&gt;GetX() &lt;= Floor-&gt;GetX() + CombinedWidth &amp;&amp;
+		Frog-&gt;GetZ() &gt;= Floor-&gt;GetZ() - CombinedHeight &amp;&amp; Frog-&gt;GetZ() &lt;= Floor-&gt;GetZ() + CombinedHeight)
+	{
+		return false;
+	}
+	return true;
+}
+						</code>
+					</pre>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

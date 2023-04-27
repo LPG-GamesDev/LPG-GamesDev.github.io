@@ -1,0 +1,328 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../../style.css">
+	
+	<title>Word Search</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#About" 														class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../../index.html" 											class="bar-item button padding-large">Home</a>
+					<a href="../../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../../index.html" 	 												class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../../Uni.html" 			 											class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" id="About" style="display:block; margin-top:80px;">
+		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
+			<div align="center">
+				<div class="section-content" style="display: table-cell; vertical-align: middle;">
+					<span class="title--med title" align="center">Word Search</span>
+				</div>
+			
+				<table style="margin: auto;">
+					<tbody>
+						<tr>
+							<td>
+								<strong><a> Project Type: </a></strong>
+							</td>
+							<td>
+								<a> University </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Software/Engine:  </a></strong>
+							</td>
+							<td>
+								<a> CLI (CommandLine) </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Language:  </a></strong>
+							</td>
+							<td>
+								<a> C++ </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="section-desc">
+					<span class="text">
+						<p>
+							The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+						</p>
+				
+						<p align="center">
+							<a href="https://github.com/LPG-GamesDev/uni-Year-1-CO1404-Programming" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-1-CO1404-Programming </a>
+						</p>
+					</span>
+				</div>
+				
+			</div>		
+	
+		</div>	
+	
+		<div align="center" style="margin-left:5%; margin-right:5%;" >
+		
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../Video/WordSearchVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<iframe src="https://drive.google.com/file/d/1xKIts6pe9rwA8KC7_bRePspoqYx0hALT/preview?usp=sharing" frameBorder="0" scrolling="yes" height="800px" width="100%"></iframe>
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+// removes punctuation so the word can be checked
+void RemovePuncuationCheck_CaseSensitivity(string&amp; RPCS)
+{
+	for (int i = 0; i &lt; RPCS.size(); ++i)
+	{
+		if (!(RPCS[i] &gt;= 65 &amp;&amp; RPCS[i] &lt;= 90 ||
+			RPCS[i] &gt;= 97 &amp;&amp; RPCS[i] &lt;= 122))
+		{
+			RPCS.erase(RPCS.begin() + i);
+		}
+
+		if (RPCS[i] &gt;= 65 &amp;&amp; RPCS[i] &lt;= 90)
+		{
+			RPCS[i] += 32;
+		}
+	}
+}
+
+void CheckFiles(string FileName)
+{
+	std::vector &lt;string&gt; WordArray; // new file array
+	std::vector &lt;string&gt; BannedWordsArray; // holds all banned words
+	std::vector &lt;string&gt; CheckingWordArray; // holds selected files
+
+	// creates files for filtered txt files
+	ofstream NewFileCreated(FileName + &quot; filtered.txt&quot;);
+
+	// opens existing file
+	fstream CheckFile;
+	CheckFile.open(FileName + &quot;.txt&quot;, ios::in);
+	if (!CheckFile)
+	{
+		cout &lt;&lt; &quot;file doesn't exist&quot;; // if it doesnt exist, stops running function
+	}
+	else
+	{
+		// opens banned file
+		fstream BannedFile;
+		BannedFile.open(&quot;banned.txt&quot;, ios::in);
+
+		// temp holds strings
+		string BannedWords;
+		while (true)
+		{
+			BannedFile &gt;&gt; BannedWords; // overwrites temp value with next value in banned file
+			BannedWordsArray.push_back(BannedWords); // adds temp value to array
+			if (BannedFile.eof())
+			{
+				break;
+			}
+		}
+
+		// temp holds strings
+		string CheckedWords;
+		while (true)
+		{
+			CheckFile &gt;&gt; CheckedWords; // overwrites temp value with the next value in checked file
+			RemovePuncuationCheck_CaseSensitivity(CheckedWords);
+			CheckingWordArray.push_back(CheckedWords); // adds temp value to array
+			if (CheckFile.eof())
+			{
+				break;
+			}
+
+		}
+
+		WordArray = CheckingWordArray;
+
+		int WordCount = 0;
+		cout &lt;&lt; FileName &lt;&lt; endl;
+		for (int A = 0; A &lt; BannedWordsArray.size(); A++) // each bannmed word is checked against each word in the check file
+		{
+			for (int B = 0; B &lt; CheckingWordArray.size(); B++) // itterates through the check file
+			{
+				int i = CheckingWordArray[B].find(BannedWordsArray[A]);
+				if (i != -1)
+				{
+					WordCount++;
+					for (int C = i; C &lt; BannedWordsArray[A].size(); ++C)
+					{
+						WordArray[B][C] = '*';
+					}
+				}
+			}
+			// shows how many banned words in each file
+			cout &lt;&lt; &quot;'&quot; + BannedWordsArray[A] + &quot;' banned word found &quot; + to_string(WordCount) + &quot; Time/s&quot; &lt;&lt; endl;
+			WordCount = 0; // resets after each word
+		}
+
+		// seperates each file
+		cout &lt;&lt; endl;
+		cout &lt;&lt; endl;
+
+		// writes each word from new word array to word array
+		for (size_t i = 0; i &lt; WordArray.size(); i++)
+		{
+			NewFileCreated &lt;&lt; WordArray[i] + &quot; &quot;; // adds space after each word
+		}
+
+		// closes files
+		NewFileCreated.close();
+		BannedFile.close();
+		CheckFile.close();
+	}
+
+}
+
+// calls all functions
+int main()
+{
+	CheckFiles(&quot;text1&quot;);
+	CheckFiles(&quot;text2&quot;);
+	CheckFiles(&quot;text3&quot;);
+	CheckFiles(&quot;text4&quot;);
+}
+						</code>
+					</pre>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

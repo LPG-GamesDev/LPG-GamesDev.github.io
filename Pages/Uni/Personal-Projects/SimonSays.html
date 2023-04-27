@@ -1,0 +1,508 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../../style.css">
+	
+	<title>Simon Says</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#About" 													class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../../index.html" 										class="bar-item button padding-large">Home</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../../index.html" 	 											class="bar-item button padding-large" onclick="myFunction()">Home</a>	
+		</div>
+		
+		
+	<div class="page" id="About" style="display:block; margin-top:80px;">
+		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
+			<div align="center">
+				<div class="section-content" style="display: table-cell; vertical-align: middle;">
+					<span class="title--med title" align="center">Simon Says</span>
+				</div>
+			
+				<table style="margin: auto;">
+					<tbody>
+						<tr>
+							<td>
+								<strong><a> Project Type: </a></strong>
+							</td>
+							<td>
+								<a> Solo Personal Test </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Software/Engine:  </a></strong>
+							</td>
+							<td>
+								<a> HTML </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Language:  </a></strong>
+							</td>
+							<td>
+								<a> JavaScript & CSS </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="section-desc">
+					<span class="text">
+						<p>
+							SimonSays is a fun colourful sequence game designed to challenge the players memory. Below are 2 links, the first takes you to my github page, the second lets you try and play the SimonSays game.
+						</p>
+				
+						<p align="center">
+							<a href="https://github.com/LPG-GamesDev/SimonSays" target="_blank"> https://github.com/LPG-GamesDev/SimonSays </a>
+								<br>
+							<a href="Simon-Game/SimonGameIndex.html" target="_blank"> Click here to try Simon Says! </a>
+						</p>
+					</span>
+				</div>
+				
+			</div>		
+	
+		</div>	
+	
+		<div align="center" style="margin-left:5%; margin-right:5%;" >
+		
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../../../VIDEO/TestVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+				
+			
+			
+			<button class="accordion">Rules & Setup</button>
+				<div class="panel">
+					<h1> Rules </h1>
+					<p>The rules for SimonSays are basic and easy to understand, the rules are as follows: <br>
+					- Press the colours in the correct sequence<br>
+					- 20 rounds total</p>
+					
+					<h1> Setup </h1>
+					<p>The setup for SimonSays is also very basic and is as follows:<br>
+					- Check the power box<br>
+					- Press start<br>
+					- For a more challenging mode try "strict". (Strict will make you start the game from round 1 if you dont complete the sequence correctly)</p>
+				</div>
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> This is a basic game called SimonSays, I wanted to make a game that was simple and everyone knows, that game being SimonSays. This game was actually a tutorial, I would get so far get stuck and look at the tutorial for help, the other challenge is that the language SimonSays game is built in is JavaScript which I have very little knowledge of. I chose JavaScript as it will increase my knowledge base and versatility when programming. </p>
+					
+					<p> After a little while I was able to complete this SimonSays project and display the game on a HTML webpage, the game is currently playable. The game can also be developed further by adding some UI and make the round variable adjustable instead of it being fixed to 20. </p>
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+let order 		= [];
+let playerOrder = [];
+let flash;
+let turn;
+let good;
+let compTurn;
+let intervalId;
+let strict 		= false;
+let noise 		= true;
+let on 			= false;
+let win;
+
+const turnCounter 	= document.querySelector(&quot;#turn&quot;);
+const topLeft 		= document.querySelector(&quot;#topleft&quot;);
+const topRight 		= document.querySelector(&quot;#topright&quot;);
+const bottomLeft 	= document.querySelector(&quot;#bottomleft&quot;);
+const bottomRight 	= document.querySelector(&quot;#bottomright&quot;);
+const strictButton 	= document.querySelector(&quot;#strict&quot;);
+const onButton 		= document.querySelector(&quot;#on&quot;);
+const startButton 	= document.querySelector(&quot;#start&quot;);
+
+strictButton.addEventListener('click', (event) =&gt; 
+{
+  if (strictButton.checked == true) 
+  {
+    strict = true;
+  } 
+  
+  else 
+  {
+    strict = false;
+  }
+});
+
+onButton.addEventListener('click', (event) =&gt; 
+{
+  if (onButton.checked == true) 
+  {
+    on = true;
+    turnCounter.innerHTML = &quot;-&quot;;
+  } 
+  
+  else 
+  {
+    on = false;
+    turnCounter.innerHTML = &quot;&quot;;
+    clearColor();
+    clearInterval(intervalId);
+  }
+});
+
+startButton.addEventListener('click', (event) =&gt; 
+{
+  if (on || win) 
+  {
+    play();
+  }
+});
+
+function play() 
+{
+  win = false;
+  order = [];
+  playerOrder = [];
+  flash = 0;
+  intervalId = 0;
+  turn = 1;
+  turnCounter.innerHTML = 1;
+  good = true;
+  for (var i = 0; i &lt; 20; i++) 
+  {
+    order.push(Math.floor(Math.random() * 4) + 1);
+  }
+  compTurn = true;
+
+  intervalId = setInterval(gameTurn, 800);
+}
+
+function gameTurn() 
+{
+  on = false;
+
+  if (flash == turn) 
+  {
+    clearInterval(intervalId);
+    compTurn = false;
+    clearColor();
+    on = true;
+  }
+
+  if (compTurn) 
+  {
+    clearColor();
+    setTimeout(() =&gt; 
+	{
+      if (order[flash] == 1) one();
+      if (order[flash] == 2) two();
+      if (order[flash] == 3) three();
+      if (order[flash] == 4) four();
+      flash++;
+    }, 200);
+  }
+}
+
+function one() 
+{
+  if (noise) 
+  {
+    let audio = document.getElementById(&quot;clip1&quot;);
+    audio.play();
+  }
+  noise = true;
+  topLeft.style.backgroundColor = &quot;lightgreen&quot;;
+}
+
+function two() 
+{
+  if (noise) 
+  {
+    let audio = document.getElementById(&quot;clip2&quot;);
+    audio.play();
+  }
+  noise = true;
+  topRight.style.backgroundColor = &quot;tomato&quot;;
+}
+
+function three() 
+{
+  if (noise) 
+  {
+    let audio = document.getElementById(&quot;clip3&quot;);
+    audio.play();
+  }
+  noise = true;
+  bottomLeft.style.backgroundColor = &quot;yellow&quot;;
+}
+
+function four() 
+{
+  if (noise) 
+  {
+    let audio = document.getElementById(&quot;clip4&quot;);
+    audio.play();
+  }
+  noise = true;
+  bottomRight.style.backgroundColor = &quot;lightskyblue&quot;;
+}
+
+function clearColor() 
+{
+  topLeft.style.backgroundColor = &quot;darkgreen&quot;;
+  topRight.style.backgroundColor = &quot;darkred&quot;;
+  bottomLeft.style.backgroundColor = &quot;goldenrod&quot;;
+  bottomRight.style.backgroundColor = &quot;darkblue&quot;;
+}
+
+function flashColor() 
+{
+  topLeft.style.backgroundColor = &quot;lightgreen&quot;;
+  topRight.style.backgroundColor = &quot;tomato&quot;;
+  bottomLeft.style.backgroundColor = &quot;yellow&quot;;
+  bottomRight.style.backgroundColor = &quot;lightskyblue&quot;;
+}
+
+topLeft.addEventListener('click', (event) =&gt; 
+{
+  if (on) 
+  {
+    playerOrder.push(1);
+    check();
+    one();
+    if(!win) 
+	{
+      setTimeout(() =&gt; 
+	  {
+        clearColor();
+      }, 300);
+    }
+  }
+})
+
+topRight.addEventListener('click', (event) =&gt; 
+{
+  if (on) 
+  {
+    playerOrder.push(2);
+    check();
+    two();
+	
+    if(!win) 
+	{
+      setTimeout(() =&gt; 
+	  {
+        clearColor();
+      }, 300);
+    }
+  }
+})
+
+bottomLeft.addEventListener('click', (event) =&gt; 
+{
+  if (on) 
+  {
+    playerOrder.push(3);
+    check();
+    three();
+	
+    if(!win) 
+	{
+      setTimeout(() =&gt; 
+	  {
+        clearColor();
+      }, 300);
+    }
+  }
+})
+
+bottomRight.addEventListener('click', (event) =&gt; 
+{
+  if (on) 
+  {
+    playerOrder.push(4);
+    check();
+    four();
+	
+    if(!win) 
+	{
+      setTimeout(() =&gt; 
+	  {
+        clearColor();
+      }, 300);
+    }
+  }
+})
+
+function check() 
+{
+  if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
+    good = false;
+
+  if (playerOrder.length == 20 &amp;&amp; good) /* GAME LENGTH*/
+  {
+    winGame();
+  }
+
+  if (good == false) 
+  {
+    flashColor();
+    turnCounter.innerHTML = &quot;NO!&quot;;
+    setTimeout(() =&gt; 
+	{
+      turnCounter.innerHTML = turn;
+      clearColor();
+
+      if (strict) 
+	  {
+        play();
+      } 
+	  else 
+	  {
+        compTurn = true;
+        flash = 0;
+        playerOrder = [];
+        good = true;
+        intervalId = setInterval(gameTurn, 800);
+      }
+    }, 800);
+
+    noise = false;
+  }
+
+  if (turn == playerOrder.length &amp;&amp; good &amp;&amp; !win) 
+  {
+    turn++;
+    playerOrder = [];
+    compTurn = true;
+    flash = 0;
+    turnCounter.innerHTML = turn;
+    intervalId = setInterval(gameTurn, 800);
+  }
+
+}
+
+function winGame() 
+{
+  flashColor();
+  turnCounter.innerHTML = &quot;WIN!&quot;;
+  on = false;
+  win = true;
+}
+						</code>
+					</pre>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+	</body>
+</html>

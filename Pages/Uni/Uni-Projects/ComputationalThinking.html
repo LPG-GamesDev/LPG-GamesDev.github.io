@@ -1,0 +1,493 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
+		<link rel="stylesheet" type="text/css" href="../../../style.css">
+	
+	<title>Computational Thinking</title>
+
+	</head>
+	
+	
+
+<body>
+	
+		<!-- Navbar -->
+		<div class="top">
+			<nav>
+				<div class="bar card">
+					
+					<a class="bar-item  button  padding-large  hide-medium  hide-large  right" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				
+					<a href="#About" 														class="bar-item button padding-large">Luke Gatehouse</a>
+					<a href="../../../index.html" 											class="bar-item button padding-large">Home</a>
+					<a href="../../Uni.html" 												class="bar-item button padding-large hide-small">Uni Work</a>
+				</div>
+			</nav>
+		</div>
+
+
+		<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+		<div id="navDemo" class="bar-block hide hide-large hide-medium top" style="margin-top:46px">
+			<a href="../../../index.html" 	 												class="bar-item button padding-large" onclick="myFunction()">Home</a>
+			<a href="../../Uni.html" 			 											class="bar-item button padding-large" onclick="myFunction()">Uni Work</a>
+			
+		</div>
+		
+		
+	<div class="page" id="About" style="display:block; margin-top:80px;">
+		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
+			<div align="center">
+				<div class="section-content" style="display: table-cell; vertical-align: middle;">
+					<span class="title--med title" align="center">Computational Thinking</span>
+				</div>
+			
+				<table style="margin: auto;">
+					<tbody>
+						<tr>
+							<td>
+								<strong><a> Project Type: </a></strong>
+							</td>
+							<td>
+								<a> University </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Software/Engine:  </a></strong>
+							</td>
+							<td>
+								<a> CLI (CommandLine) </a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><a> Language:  </a></strong>
+							</td>
+							<td>
+								<a> Python </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="section-desc">
+					<span class="text">
+						<p>
+							The link directly below will take you to my GitHub repositories for the current work displayed. Beware most univeristy work will not currently be shown due to that im still in university and dont want anyone using my work as their own, thefore plagurism would be an issue, this will be changed when univeristy has been completed or finished to display all work.
+						</p>
+				
+						<p align="center">
+							<a href="https://github.com/LPG-GamesDev/uni-Year-2-CO2412-Computational-Thinking" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-2-CO2412-Computational-Thinking</a>
+						</p>
+					</span>
+				</div>
+				
+			</div>		
+	
+		</div>	
+	
+		<div align="center" style="margin-left:5%; margin-right:5%;" >
+		
+			<section id="Video-Offset-Section">
+				<section id="Video-Section">
+					<video playsinline autoplay muted loop class="Video" width="70%">
+						<source src="../Video/CompThinkingVideo.mp4" type="video/mp4">
+					</video>
+				</section>
+			</section>
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> ENTER DESCRIPTION </p>
+				</div>
+				
+			<button class="accordion">Brief</button>
+				<div class="panel">
+					<iframe src="https://drive.google.com/file/d/1ROw1Oj4pbjlF5jh20q39tLoP_a_O9Fv-/preview?usp=sharing" frameBorder="0" scrolling="yes" height="800px" width="100%"></iframe>
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
+########################################
+def ReadFile():
+
+    # OPENS FILE FROM LOCATION, READS IT AND SPLITS IT
+    File = open(&quot;X:\YEAR 2\CO2412 - COMPUTATION THINKING\CompThinkingAssignment\CompThinkingAssignment\TEST.txt&quot;, &quot;r&quot;)
+    F = File.read().split()
+
+
+    # CREATES NEW LIST, CONVERTS FROM STRING TO INT
+    uData = []
+    for i in range(len(F)):
+        F[i] = int(F[i])
+    return F
+
+
+    # REMOVES THE \N FOR NEW LINE
+    for line in F:
+        if line[-1] == &quot;\n&quot;:
+            uData.append(line[:-1])
+        else:
+            uData.append(line)
+########################################
+
+
+########################################
+def Bubble_Sort(uData, ASC):
+
+    if ASC == True:
+       
+        Length = len(uData) - 1
+        Sort = False
+
+        while not Sort:
+            Sort = True
+            for i in range(0, Length):
+                if uData[i] &gt; uData[i+1]:
+                    Sort = False
+                    uData[i], uData[i+1] = uData[i+1],  uData[i]
+
+########################################
+########################################
+
+    if ASC == False:
+
+        Length = len(uData) - 1
+        Sort = False
+
+        while not Sort:
+            Sort = True
+            for i in range(0, Length):
+                if uData[i] &lt; uData[i+1]:
+                    Sort = False
+                    uData[i], uData[i+1] = uData[i+1],  uData[i]
+
+    return uData
+########################################
+
+
+########################################
+def Insertion_Sort(uData, ASC):
+
+    if ASC == True:
+        Length = range(1, len(uData))
+        for i in Length:
+            Val_Of_Sort = uData[i]
+
+            while uData[i-1] &gt; Val_Of_Sort and i&gt;0:
+                uData[i], uData[i-1] = uData[i-1], uData[i]
+                i = i -1
+
+########################################
+########################################
+
+    if ASC == False:
+         Length = range(1, len(uData))
+         for i in Length:
+            Val_Of_Sort = uData[i]
+
+            while uData[i-1] &lt; Val_Of_Sort and i&gt;0:
+                uData[i], uData[i-1] = uData[i-1], uData[i]
+                i = i -1
+
+    return uData
+########################################
+
+
+
+
+########################################
+#def Binary_Insertion_Sort(uData):
+########################################
+def Binary_Search(uData):
+
+    Start_Length = 0
+    End_Length = len(uData) - 1
+
+    while Start_Length &lt;= End_Length:
+        Middle = Start_Length + (End_Length - Start_Length) // 2 
+        Mid_Val = uData[Middle]
+
+        if Mid_Val == Item:
+            return Middle
+
+        elif Item &lt; Mid_Val:
+            End_Length = Middle -1
+
+        else:
+            Start_Length = Middle + 1
+
+    return None
+########################################
+
+
+
+
+########################################
+def Merge_Sort(uData, ASC):
+
+    if ASC == True:
+        if len(uData) &gt; 1:
+            Left_Array = uData[:len(uData)//2]
+            Right_Array = uData[len(uData)//2:]
+
+            Merge_Sort(Left_Array, ASC)
+            Merge_Sort(Right_Array, ASC)
+
+            i = 0 # Left
+            o = 0 # Right
+            m = 0 # Merged
+
+            while i &lt; len(Left_Array) and o &lt; len(Right_Array):
+                if Left_Array[i] &lt; Right_Array[o]:
+                    uData[m] = Left_Array[i]
+                    i += 1
+                else:
+                    uData[m] = Right_Array[o]
+                    o += 1
+                m += 1
+
+            while i &lt; len(Left_Array):
+                uData[m] = Left_Array[i]
+                i += 1
+                m += 1
+
+            while o &lt; len(Right_Array):
+                uData[m] = Right_Array[o]
+                o += 1
+                m += 1
+
+########################################
+########################################
+
+    if ASC == False:
+        if len(uData) &gt; 1:
+            Left_Array = uData[:len(uData)//2]
+            Right_Array = uData[len(uData)//2:]
+
+            Merge_Sort(Left_Array, ASC)
+            Merge_Sort(Right_Array, ASC)
+
+            i = 0 # Left
+            o = 0 # Right
+            m = 0 # Merged
+
+            while i &lt; len(Left_Array) and o &lt; len(Right_Array):
+                if Left_Array[i] &gt; Right_Array[o]:
+                    uData[m] = Left_Array[i]
+                    i += 1
+                else:
+                    uData[m] = Right_Array[o]
+                    o += 1
+                m += 1
+
+            while i &lt; len(Left_Array):
+                uData[m] = Left_Array[i]
+                i += 1
+                m += 1
+
+            while o &lt; len(Right_Array):
+                uData[m] = Right_Array[o]
+                o += 1
+                m += 1
+
+    return uData
+########################################
+
+
+########################################
+def Quick_Sort(uData, ASC):
+
+    if ASC == True:
+        Length = len(uData)
+        if Length &lt;= 0:
+            return uData
+        else:
+            Pivot = uData.pop()
+
+            Items_Higher = []
+            Items_Lower = []
+
+            for Item in uData:
+                if Item &gt; Pivot:
+                    Items_Higher.append(Item)
+
+                else:
+                    Items_Lower.append(Item)
+
+            return Quick_Sort(Items_Lower, ASC) + [Pivot] + Quick_Sort(Items_Higher, ASC)
+
+########################################
+########################################
+
+    if ASC == False:
+        Length = len(uData)
+        if Length &lt;= 0:
+            return uData
+        else:
+            Pivot = uData.pop()
+
+            Items_Higher = []
+            Items_Lower = []
+
+            for Item in uData:
+                if Item &lt; Pivot:
+                    Items_Higher.append(Item)
+
+                else:
+                    Items_Lower.append(Item)
+
+
+            return Quick_Sort(Items_Lower, ASC) + [Pivot] + Quick_Sort(Items_Higher, ASC)
+########################################
+
+
+################################################################################
+def ComptSort(ReadFile, Bubble_Sort, Insertion_Sort, Merge_Sort, Quick_Sort):
+
+   uData = ReadFile()
+   ASC = True
+
+########################################
+########################################
+
+   print(&quot;STANDARD FILE&quot;)
+   print(ReadFile())
+   print(&quot; &quot;)
+   print(&quot; &quot;)
+
+########################################
+########################################
+
+   if ASC == True: print(&quot;ASCENDING&quot;, &quot;BUBBLE SORT&quot;)
+   if ASC == False: print(&quot;DESCENDING&quot;, &quot;BUBBLE SORT&quot;)
+   print(Bubble_Sort(uData, ASC))
+   uData = ReadFile()
+   print(&quot; &quot;)
+
+########################################
+########################################
+   
+   if ASC == True: print(&quot;ASCENDING&quot;, &quot;INSERTION SORT&quot;)
+   if ASC == False: print(&quot;DESCENDING&quot;, &quot;INSERTION SORT&quot;)
+   print(Insertion_Sort(uData, ASC))
+   uData = ReadFile()
+   print(&quot; &quot;)
+
+########################################
+#########################################   
+
+   if ASC == True: print(&quot;ASCENDING&quot;, &quot;MERGE SORT&quot;)
+   if ASC == False: print(&quot;DESCENDING&quot;, &quot;MERGE SORT&quot;)
+   print(Merge_Sort(uData, ASC))
+   uData = ReadFile()
+   print(&quot; &quot;)
+
+########################################
+########################################
+
+   if ASC == True: print(&quot;ASCENDING&quot;, &quot;QUICK SORT&quot;)
+   if ASC == False: print(&quot;DESCENDING&quot;, &quot;QUICK SORT&quot;)
+   print (Quick_Sort(uData, ASC))
+   uData = ReadFile()
+   print(&quot; &quot;)
+################################################################################
+
+################################################################################
+ComptSort(ReadFile, Bubble_Sort, Insertion_Sort, Merge_Sort, Quick_Sort)
+################################################################################
+						</code>
+					</pre>
+				</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- CONTACT -->
+		<section id="Contact-Offset-Section" style="background-color: rgba(100,0,0,1)">
+			<section class="title">
+				<h1 align="center"> CONTACT ME </h1>
+			</section>
+				<section id="Contact-Text-Section">
+					<span class="text">
+						<p align="center"> 
+							Feel free to send me an Email at:
+							<a href="mailto:lpg.gamesdev@gmail.com" target="_blank">lpg.gamesdev@gmail.com</a><br>
+							I'll respond as soon as I'm able. <br>
+							
+							<br>
+							
+							<a href="https://www.linkedin.com/in/luke-gatehouse/" target="_blank">LinkedIn</a>
+							
+							 | 
+							
+							<a href="https://github.com/LPG-GamesDev" target="_blank">Github</a>
+						</p>
+						
+					</span>
+				</section>
+		</section>
+
+		
+		<!-- Spacer -->
+		<section id="spacer">
+		</section>
+		
+		
+		
+<script>
+	function myFunction() 
+	{
+		var x = document.getElementById("navDemo");
+		
+	if (x.className.indexOf("show") == -1) 
+		{
+			x.className += " show";
+		} 
+	else 
+		{ 
+			x.className = x.className.replace(" show", "");
+		}
+	}
+</script>
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+	</body>
+</html>
