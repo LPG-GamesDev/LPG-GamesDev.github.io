@@ -90,6 +90,8 @@
 	
 		</div>	
 	
+		<div align="center" style="margin-left:5%; margin-right:5%;" >
+		
 			<section id="Video-Offset-Section">
 				<section id="Video-Section">
 					<video playsinline autoplay muted loop class="Video" width="70%">
@@ -98,327 +100,38 @@
 				</section>
 			</section>
 				
-			<div style="margin-left:5%; margin-right:5%;">
 			
-				<button class="accordion">Rules & Setup</button>
-					<div class="panel">
-						<h1> Rules </h1>
-						<p>The rules for SimonSays are basic and easy to understand, the rules are as follows: <br>
-						- Press the colours in the correct sequence<br>
-						- 20 rounds total</p>
-						
-						<h1> Setup </h1>
-						<p>The setup for SimonSays is also very basic and is as follows:<br>
-						- Check the power box<br>
-						- Press start<br>
-						- For a more challenging mode try "strict". (Strict will make you start the game from round 1 if you dont complete the sequence correctly)</p>
-					</div>
-				
-				<button class="accordion">Description</button>
-					<div class="panel">
-						<p> This is a basic game called SimonSays, I wanted to make a game that was simple and everyone knows, that game being SimonSays. This game was actually a tutorial, I would get so far get stuck and look at the tutorial for help, the other challenge is that the language SimonSays game is built in is JavaScript which I have very little knowledge of. I chose JavaScript as it will increase my knowledge base and versatility when programming. </p>
-						
-						<p> After a little while I was able to complete this SimonSays project and display the game on a HTML webpage, the game is currently playable. The game can also be developed further by adding some UI and make the round variable adjustable instead of it being fixed to 20. </p>
-					</div>
+			
+			<button class="accordion">Rules & Setup</button>
+				<div class="panel">
+					<h1> Rules </h1>
+					<p>The rules for SimonSays are basic and easy to understand, the rules are as follows: <br>
+					- Press the colours in the correct sequence<br>
+					- 20 rounds total</p>
 					
-				<button class="accordion">Code</button>
-					<div class="panel">
-						<pre>
-							<code>
-let order 		= [];
-let playerOrder = [];
-let flash;
-let turn;
-let good;
-let compTurn;
-let intervalId;
-let strict 		= false;
-let noise 		= true;
-let on 			= false;
-let win;
+					<h1> Setup </h1>
+					<p>The setup for SimonSays is also very basic and is as follows:<br>
+					- Check the power box<br>
+					- Press start<br>
+					- For a more challenging mode try "strict". (Strict will make you start the game from round 1 if you dont complete the sequence correctly)</p>
+				</div>
+			
+			<button class="accordion">Description</button>
+				<div class="panel">
+					<p> This is a basic game called SimonSays, I wanted to make a game that was simple and everyone knows, that game being SimonSays. This game was actually a tutorial, I would get so far get stuck and look at the tutorial for help, the other challenge is that the language SimonSays game is built in is JavaScript which I have very little knowledge of. I chose JavaScript as it will increase my knowledge base and versatility when programming. </p>
+					
+					<p> After a little while I was able to complete this SimonSays project and display the game on a HTML webpage, the game is currently playable. The game can also be developed further by adding some UI and make the round variable adjustable instead of it being fixed to 20. </p>
+				</div>
+				
+			<button class="accordion">Code</button>
+				<div class="panel">
+					<pre>
+						<code>
 
-const turnCounter 	= document.querySelector(&quot;#turn&quot;);
-const topLeft 		= document.querySelector(&quot;#topleft&quot;);
-const topRight 		= document.querySelector(&quot;#topright&quot;);
-const bottomLeft 	= document.querySelector(&quot;#bottomleft&quot;);
-const bottomRight 	= document.querySelector(&quot;#bottomright&quot;);
-const strictButton 	= document.querySelector(&quot;#strict&quot;);
-const onButton 		= document.querySelector(&quot;#on&quot;);
-const startButton 	= document.querySelector(&quot;#start&quot;);
-
-strictButton.addEventListener('click', (event) =&gt; 
-{
-  if (strictButton.checked == true) 
-  {
-    strict = true;
-  } 
-  
-  else 
-  {
-    strict = false;
-  }
-});
-
-onButton.addEventListener('click', (event) =&gt; 
-{
-  if (onButton.checked == true) 
-  {
-    on = true;
-    turnCounter.innerHTML = &quot;-&quot;;
-  } 
-  
-  else 
-  {
-    on = false;
-    turnCounter.innerHTML = &quot;&quot;;
-    clearColor();
-    clearInterval(intervalId);
-  }
-});
-
-startButton.addEventListener('click', (event) =&gt; 
-{
-  if (on || win) 
-  {
-    play();
-  }
-});
-
-function play() 
-{
-  win = false;
-  order = [];
-  playerOrder = [];
-  flash = 0;
-  intervalId = 0;
-  turn = 1;
-  turnCounter.innerHTML = 1;
-  good = true;
-  for (var i = 0; i &lt; 20; i++) 
-  {
-    order.push(Math.floor(Math.random() * 4) + 1);
-  }
-  compTurn = true;
-
-  intervalId = setInterval(gameTurn, 800);
-}
-
-function gameTurn() 
-{
-  on = false;
-
-  if (flash == turn) 
-  {
-    clearInterval(intervalId);
-    compTurn = false;
-    clearColor();
-    on = true;
-  }
-
-  if (compTurn) 
-  {
-    clearColor();
-    setTimeout(() =&gt; 
-	{
-      if (order[flash] == 1) one();
-      if (order[flash] == 2) two();
-      if (order[flash] == 3) three();
-      if (order[flash] == 4) four();
-      flash++;
-    }, 200);
-  }
-}
-
-function one() 
-{
-  if (noise) 
-  {
-    let audio = document.getElementById(&quot;clip1&quot;);
-    audio.play();
-  }
-  noise = true;
-  topLeft.style.backgroundColor = &quot;lightgreen&quot;;
-}
-
-function two() 
-{
-  if (noise) 
-  {
-    let audio = document.getElementById(&quot;clip2&quot;);
-    audio.play();
-  }
-  noise = true;
-  topRight.style.backgroundColor = &quot;tomato&quot;;
-}
-
-function three() 
-{
-  if (noise) 
-  {
-    let audio = document.getElementById(&quot;clip3&quot;);
-    audio.play();
-  }
-  noise = true;
-  bottomLeft.style.backgroundColor = &quot;yellow&quot;;
-}
-
-function four() 
-{
-  if (noise) 
-  {
-    let audio = document.getElementById(&quot;clip4&quot;);
-    audio.play();
-  }
-  noise = true;
-  bottomRight.style.backgroundColor = &quot;lightskyblue&quot;;
-}
-
-function clearColor() 
-{
-  topLeft.style.backgroundColor = &quot;darkgreen&quot;;
-  topRight.style.backgroundColor = &quot;darkred&quot;;
-  bottomLeft.style.backgroundColor = &quot;goldenrod&quot;;
-  bottomRight.style.backgroundColor = &quot;darkblue&quot;;
-}
-
-function flashColor() 
-{
-  topLeft.style.backgroundColor = &quot;lightgreen&quot;;
-  topRight.style.backgroundColor = &quot;tomato&quot;;
-  bottomLeft.style.backgroundColor = &quot;yellow&quot;;
-  bottomRight.style.backgroundColor = &quot;lightskyblue&quot;;
-}
-
-topLeft.addEventListener('click', (event) =&gt; 
-{
-  if (on) 
-  {
-    playerOrder.push(1);
-    check();
-    one();
-    if(!win) 
-	{
-      setTimeout(() =&gt; 
-	  {
-        clearColor();
-      }, 300);
-    }
-  }
-})
-
-topRight.addEventListener('click', (event) =&gt; 
-{
-  if (on) 
-  {
-    playerOrder.push(2);
-    check();
-    two();
-	
-    if(!win) 
-	{
-      setTimeout(() =&gt; 
-	  {
-        clearColor();
-      }, 300);
-    }
-  }
-})
-
-bottomLeft.addEventListener('click', (event) =&gt; 
-{
-  if (on) 
-  {
-    playerOrder.push(3);
-    check();
-    three();
-	
-    if(!win) 
-	{
-      setTimeout(() =&gt; 
-	  {
-        clearColor();
-      }, 300);
-    }
-  }
-})
-
-bottomRight.addEventListener('click', (event) =&gt; 
-{
-  if (on) 
-  {
-    playerOrder.push(4);
-    check();
-    four();
-	
-    if(!win) 
-	{
-      setTimeout(() =&gt; 
-	  {
-        clearColor();
-      }, 300);
-    }
-  }
-})
-
-function check() 
-{
-  if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
-    good = false;
-
-  if (playerOrder.length == 20 &amp;&amp; good) /* GAME LENGTH*/
-  {
-    winGame();
-  }
-
-  if (good == false) 
-  {
-    flashColor();
-    turnCounter.innerHTML = &quot;NO!&quot;;
-    setTimeout(() =&gt; 
-	{
-      turnCounter.innerHTML = turn;
-      clearColor();
-
-      if (strict) 
-	  {
-        play();
-      } 
-	  else 
-	  {
-        compTurn = true;
-        flash = 0;
-        playerOrder = [];
-        good = true;
-        intervalId = setInterval(gameTurn, 800);
-      }
-    }, 800);
-
-    noise = false;
-  }
-
-  if (turn == playerOrder.length &amp;&amp; good &amp;&amp; !win) 
-  {
-    turn++;
-    playerOrder = [];
-    compTurn = true;
-    flash = 0;
-    turnCounter.innerHTML = turn;
-    intervalId = setInterval(gameTurn, 800);
-  }
-
-}
-
-function winGame() 
-{
-  flashColor();
-  turnCounter.innerHTML = &quot;WIN!&quot;;
-  on = false;
-  win = true;
-}
-							</code>
-						</pre>
-					</div>
-			</div>
+						</code>
+					</pre>
+				</div>
+		</div>
 	</div>
 
 
