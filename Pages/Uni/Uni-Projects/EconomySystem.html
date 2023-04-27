@@ -3,12 +3,12 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+		
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="/css/BootstrapXL.css">
 		<link rel="stylesheet" type="text/css" href="../../../style.css">
 	
-	<title>Word Search</title>
+	<title>Economy System</title>
 
 	</head>
 	
@@ -43,7 +43,7 @@
 		<div class="section--med section" style="background-color:	rgba(100,0,0,1)">
 			<div align="center">
 				<div class="section-content" style="display: table-cell; vertical-align: middle;">
-					<span class="title--med title" align="center">Word Search</span>
+					<span class="title--med title" align="center">Economy System</span>
 				</div>
 			
 				<table style="margin: auto;">
@@ -61,7 +61,7 @@
 								<strong><a> Software/Engine:  </a></strong>
 							</td>
 							<td>
-								<a> CLI (CommandLine) </a>
+								<a> UE4 (Unreal Engine 4) </a>
 							</td>
 						</tr>
 						<tr>
@@ -82,7 +82,7 @@
 						</p>
 				
 						<p align="center">
-							<a href="https://github.com/LPG-GamesDev/uni-Year-1-CO1404-Programming" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-1-CO1404-Programming </a>
+							<a href="https://github.com/LPG-GamesDev/uni-Year-3-CO3301-Games-Development-2" target="_blank"> https://github.com/LPG-GamesDev/uni-Year-3-CO3301-Games-Development-2 </a>
 						</p>
 					</span>
 				</div>
@@ -96,7 +96,7 @@
 			<section id="Video-Offset-Section">
 				<section id="Video-Section">
 					<video playsinline autoplay muted loop class="Video" width="70%">
-						<source src="../VIDEO/WordSearchVideo.mp4" type="video/mp4">
+						<source src="../../../Video/TestVideo.mp4" type="video/mp4">
 					</video>
 				</section>
 			</section>
@@ -108,135 +108,14 @@
 				
 			<button class="accordion">Brief</button>
 				<div class="panel">
-					<iframe src="https://drive.google.com/file/d/1xKIts6pe9rwA8KC7_bRePspoqYx0hALT/preview?usp=sharing" frameBorder="0" scrolling="yes" height="800px" width="100%"></iframe>
+					<iframe src="https://drive.google.com/file/d/1SUkaa8odaCXVKRRjjnXSKW466CNKa2Iv/preview?usp=sharing" frameBorder="0" scrolling="yes" height="800px" width="100%"></iframe>
 				</div>
 				
 			<button class="accordion">Code</button>
 				<div class="panel">
 					<pre>
 						<code>
-#include &lt;iostream&gt;
-#include &lt;fstream&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
 
-using namespace std;
-
-// removes punctuation so the word can be checked
-void RemovePuncuationCheck_CaseSensitivity(string&amp; RPCS)
-{
-	for (int i = 0; i &lt; RPCS.size(); ++i)
-	{
-		if (!(RPCS[i] &gt;= 65 &amp;&amp; RPCS[i] &lt;= 90 ||
-			RPCS[i] &gt;= 97 &amp;&amp; RPCS[i] &lt;= 122))
-		{
-			RPCS.erase(RPCS.begin() + i);
-		}
-
-		if (RPCS[i] &gt;= 65 &amp;&amp; RPCS[i] &lt;= 90)
-		{
-			RPCS[i] += 32;
-		}
-	}
-}
-
-void CheckFiles(string FileName)
-{
-	std::vector &lt;string&gt; WordArray; // new file array
-	std::vector &lt;string&gt; BannedWordsArray; // holds all banned words
-	std::vector &lt;string&gt; CheckingWordArray; // holds selected files
-
-	// creates files for filtered txt files
-	ofstream NewFileCreated(FileName + &quot; filtered.txt&quot;);
-
-	// opens existing file
-	fstream CheckFile;
-	CheckFile.open(FileName + &quot;.txt&quot;, ios::in);
-	if (!CheckFile)
-	{
-		cout &lt;&lt; &quot;file doesn't exist&quot;; // if it doesnt exist, stops running function
-	}
-	else
-	{
-		// opens banned file
-		fstream BannedFile;
-		BannedFile.open(&quot;banned.txt&quot;, ios::in);
-
-		// temp holds strings
-		string BannedWords;
-		while (true)
-		{
-			BannedFile &gt;&gt; BannedWords; // overwrites temp value with next value in banned file
-			BannedWordsArray.push_back(BannedWords); // adds temp value to array
-			if (BannedFile.eof())
-			{
-				break;
-			}
-		}
-
-		// temp holds strings
-		string CheckedWords;
-		while (true)
-		{
-			CheckFile &gt;&gt; CheckedWords; // overwrites temp value with the next value in checked file
-			RemovePuncuationCheck_CaseSensitivity(CheckedWords);
-			CheckingWordArray.push_back(CheckedWords); // adds temp value to array
-			if (CheckFile.eof())
-			{
-				break;
-			}
-
-		}
-
-		WordArray = CheckingWordArray;
-
-		int WordCount = 0;
-		cout &lt;&lt; FileName &lt;&lt; endl;
-		for (int A = 0; A &lt; BannedWordsArray.size(); A++) // each bannmed word is checked against each word in the check file
-		{
-			for (int B = 0; B &lt; CheckingWordArray.size(); B++) // itterates through the check file
-			{
-				int i = CheckingWordArray[B].find(BannedWordsArray[A]);
-				if (i != -1)
-				{
-					WordCount++;
-					for (int C = i; C &lt; BannedWordsArray[A].size(); ++C)
-					{
-						WordArray[B][C] = '*';
-					}
-				}
-			}
-			// shows how many banned words in each file
-			cout &lt;&lt; &quot;'&quot; + BannedWordsArray[A] + &quot;' banned word found &quot; + to_string(WordCount) + &quot; Time/s&quot; &lt;&lt; endl;
-			WordCount = 0; // resets after each word
-		}
-
-		// seperates each file
-		cout &lt;&lt; endl;
-		cout &lt;&lt; endl;
-
-		// writes each word from new word array to word array
-		for (size_t i = 0; i &lt; WordArray.size(); i++)
-		{
-			NewFileCreated &lt;&lt; WordArray[i] + &quot; &quot;; // adds space after each word
-		}
-
-		// closes files
-		NewFileCreated.close();
-		BannedFile.close();
-		CheckFile.close();
-	}
-
-}
-
-// calls all functions
-int main()
-{
-	CheckFiles(&quot;text1&quot;);
-	CheckFiles(&quot;text2&quot;);
-	CheckFiles(&quot;text3&quot;);
-	CheckFiles(&quot;text4&quot;);
-}
 						</code>
 					</pre>
 				</div>
@@ -320,9 +199,5 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
-
 	</body>
 </html>
